@@ -318,3 +318,26 @@ a:hover {
 .project-details li {
     margin-bottom: .5rem;
 }
+
+.project-logo-link {
+
+    display: inline-block;
+
+    margin-bottom: 1.5rem;
+}
+
+.project-logo {
+
+    max-width: 220px;
+
+    max-height: 90px;
+
+    object-fit: contain;
+
+    transition: transform .2s ease;
+}
+
+.project-logo:hover {
+
+    transform: scale(1.03);
+}
