@@ -40,6 +40,12 @@
 
     --body-line-height: 1.75;
 
+    --space-section: 4rem;
+    --space-page-x: 2rem;
+    --radius-card: 12px;
+    --radius-button: 8px;
+    --header-height: 72px;
+
 }
 
 /* ---------- Base ---------- */
@@ -250,7 +256,12 @@ a:hover {
 
 .secondary:hover {
 
+    /*
     background: #f5f5f5;
+    */
+
+    background: var(--primary-dark);
+    color: white;
 
     text-decoration: none;
 }
@@ -398,3 +409,63 @@ a:hover {
     display: block;
 }
 
+.project-card {
+    padding: 0;
+    cursor: pointer;
+}
+
+.project-summary {
+    display: block;
+    padding: 1.75rem;
+    list-style: none;
+}
+
+.project-summary::-webkit-details-marker {
+    display: none;
+}
+
+.project-details {
+    margin-top: 0;
+    border-top: 1px solid var(--border);
+    padding: 1.75rem;
+}
+
+.expand-hint {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.project-card[open] .expand-hint {
+    display: none;
+}
+
+.project-card:hover {
+    border-color: var(--primary);
+}
+
+.project-card:hover .expand-hint {
+    text-decoration: underline;
+}
+
+/* May or may not use this:
+.project-details {
+    margin-top: 0;
+    border-top: 1px solid var(--border);
+    padding: 1.75rem;
+}
+
+.project-logo-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.project-logo {
+    display: block;
+    max-width: 220px;
+    max-height: 90px;
+    object-fit: contain;
+}
+*/
