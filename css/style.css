@@ -341,3 +341,28 @@ a:hover {
 
     transform: scale(1.03);
 }
+
+.background-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(220px, 0.8fr);
+    gap: 3rem;
+    align-items: start;
+}
+
+.background-text h1 {
+    margin-bottom: 2rem;
+}
+
+.headshot-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.headshot {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
