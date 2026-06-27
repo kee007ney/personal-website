@@ -5,6 +5,7 @@
 /* ---------- Color Palette ---------- */
 
 :root {
+/*
     --background: #fafafa;
     --surface: #ffffff;
 
@@ -17,6 +18,21 @@
     --primary-dark: #1d4ed8;
 
     --max-width: 1100px;
+*/
+
+    --background: #F7F8FA;
+    --surface: #ffffff;
+
+    --text: #273746;
+    --text-light: #6b7280;
+
+    --border: #D6DEE6;
+
+    --primary: #4F6D8A;
+    --primary-dark: #6485A5;
+
+    --max-width: 1100px;
+
 
     --site-font:
       "Inter",
@@ -32,12 +48,20 @@
       sans-serif;
       */
 
+
+/*
     --h1-size: 3rem;
     --h2-size: 2rem;
     --h3-size: 1.35rem;
+*/
+    --h1-size: 56px;
+    --h2-size: 36px;
+    --h3-size: 24px;
 
-    --body-size: 1.1rem;
-
+/*    --body-size: 1.1rem;
+      --body-line-height: 1.75;
+*/
+    --body-size: 20px;
     --body-line-height: 1.75;
 
     --space-section: 4rem;
@@ -46,6 +70,12 @@
     --radius-button: 8px;
     --header-height: 72px;
 
+}
+
+@media (max-width: 1100px) {
+  .page-marginalia {
+    display: none;
+  }
 }
 
 /* ---------- Base ---------- */
@@ -124,6 +154,7 @@ a {
 a:hover {
 
     text-decoration: underline;
+    color: #6485A5;
 }
 
 /* ---------- Header ---------- */
@@ -182,6 +213,7 @@ a:hover {
     padding: 7rem 2rem 5rem 2rem;
 }
 
+/*
 .eyebrow {
 
     text-transform: uppercase;
@@ -193,6 +225,16 @@ a:hover {
     color: var(--primary);
 
     font-weight: 600;
+}
+*/
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--primary);
+  font-weight: 600;
 }
 
 .hero h1 {
@@ -343,9 +385,11 @@ a:hover {
     display: none;
 }
 
+/*
 .project-card[open] {
     grid-column: 1 / -1;
 }
+*/
 
 .project-details {
     margin-top: 1.5rem;
@@ -469,3 +513,256 @@ a:hover {
     object-fit: contain;
 }
 */
+
+.page-marginalia {
+  position: fixed;
+  right: max(1.5rem, calc((100vw - var(--max-width)) / 2 - 260px));
+  bottom: 2rem;
+
+  width: min(420px, 30vw);
+
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 1000ms ease,
+    transform 1000ms ease;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-marginalia.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-marginalia img {
+  width: 100%;
+  display: block;
+
+  filter:
+    grayscale(1)
+    contrast(0.7)
+    brightness(1.12);
+
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+}
+
+/*
+.fieldnote-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.fieldnote-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fieldnote-figure {
+  position: absolute;
+  right: -6rem;
+  top: 2rem;
+  width: min(520px, 45vw);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 900ms ease,
+    transform 900ms ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fieldnote-figure img {
+  width: 100%;
+  display: block;
+  filter: grayscale(1) contrast(0.8);
+  opacity: 0.13;
+  mix-blend-mode: multiply;
+}
+
+.fieldnote-section.is-visible .fieldnote-figure {
+  opacity: 1;
+  transform: translateY(0);
+}
+*/
+
+.section {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 6rem 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 30px rgba(39, 55, 70, 0.08);
+}
+
+.project-card {
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.project-card:not(.active) {
+  filter: grayscale(1);
+  opacity: 0.48;
+}
+
+.project-card.active {
+  border-color: var(--primary);
+  box-shadow: 0 12px 30px rgba(39, 55, 70, 0.08);
+}
+
+.project-detail-panel {
+  margin-top: 2rem;
+}
+
+.project-detail {
+  display: none;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 2rem;
+}
+
+.project-detail.active {
+  display: block;
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Publication Lists ---------- */
+
+.publist ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* One publication */
+
+.publist > ul > li {
+    margin-bottom: 0.15rem;
+    line-height: 1.55;
+}
+
+/* Metadata under each publication */
+
+.publist ul ul {
+    list-style: none;
+    padding-left: 2.5rem;
+    margin-top: 0.15rem;
+    margin-bottom: 1.75rem;
+}
+
+.publist ul ul li {
+    margin: 0.15rem 0;        /* very tight spacing */
+    line-height: 1.4;
+    color: var(--text-light); /* optional, but I like it */
+}
+
+
+
+
+
+
+
+.publist ul ul {
+    padding-left: 1.5rem;
+    margin-top: 0.2rem;
+    font-size: 0.92em;
+}
+.publist ul ul a {
+    color: var(--text-light);
+}
+
+.publist ul ul a:hover {
+    color: var(--primary);
+}
+
+.nav-links a {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* ---------- Page Table of Contents ---------- */
+
+.page-with-sidebar {
+    max-width: calc(var(--max-width) + 220px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 180px minmax(0, var(--max-width));
+    gap: 2.5rem;
+    padding: 0 2rem;
+}
+
+.page-content .hero,
+.page-content .section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page-toc {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    align-self: start;
+
+    padding-top: 7rem;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.page-toc a {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 0.85rem;
+    text-decoration: none;
+}
+
+.page-toc a:hover {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Hide the sidebar on smaller screens */
+
+@media (max-width: 900px) {
+    .page-with-sidebar {
+        display: block;
+        max-width: var(--max-width);
+    }
+
+    .page-toc {
+        position: static;
+        padding-top: 0;
+        margin: 0 2rem 2rem 2rem;
+        border-left: 2px solid var(--border);
+        padding-left: 1rem;
+    }
+
+    .page-toc a {
+        display: inline-block;
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
