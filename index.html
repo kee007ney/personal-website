@@ -25,18 +25,21 @@
         <a href="#projects">Projects</a>
         <a href="#presentations">Presentations</a>
         <a href="publications.html">Publications</a>
-        <a href="https://observablehq.com/@neurogenomics?tab=collections" target="_blank">Visualizations</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Technical Leadership · Scientific Computing · Government Technology Adoption</p>
+    <div class="page-marginalia" aria-hidden="true">
+      <img src="images/down3-mod.png" alt="Network analysis, binned by category">
+    </div>
 
+    <section class="hero">
+      <!--      <p class="eyebrow">Technical Leadership · Scientific Computing · Government Technology Adoption</p>
+-->
       <h1>
-        Hello!
+        Hello
       </h1>
 
       <p class="hero-text">
@@ -75,20 +78,32 @@ Alongside my research, I've worked extensively with federal agencies, academic i
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <h2>Selected Projects</h2>
+    <section class="section fieldnote-section" id="projects">
+      <div class="fieldnote-content">
+        <h2>Selected Projects</h2>
 
-
-      <div class="card-grid project-grid">
-        <details class="card project-card">
-          <summary class="project-summary">
+        <div class="card-grid project-grid">
+          <button class="card project-card active" data-project="biocompute">
             <h3>BioCompute</h3>
-            <p>
-              International standard for communicating complex bioinformatics workflows.
-            </p>
-            <span class="expand-hint">Click to expand</span>
-          </summary>
-          <div class="project-details">
+            <p>International standard for communicating complex bioinformatics workflows.</p>
+            <span class="expand-hint">View details</span>
+          </button>
+
+          <button class="card project-card" data-project="argos">
+            <h3>Argos</h3>
+            <p>Government-facing infectious disease knowledge platform for FDA and BARDA.</p>
+            <span class="expand-hint">View details</span>
+          </button>
+
+          <button class="card project-card" data-project="hive">
+            <h3>HIVE Bioinformatics Platform</h3>
+            <p>Bioinformatics platform supporting scientific users in regulated environments.</p>
+            <span class="expand-hint">View details</span>
+          </button>
+        </div>
+
+        <div class="project-detail-panel">
+          <article class="project-detail active" id="project-biocompute">
             <a class="project-logo-link" href="https://biocomputeobject.org/" target="_blank" rel="noopener noreferrer">
 
               <img class="project-logo" src="images/bco.png" alt="BioCompute Objects Logo">
@@ -105,61 +120,45 @@ Alongside my research, I've worked extensively with federal agencies, academic i
                 target="_blank">Data Standards Catalog</a>.
             </p>
             <ul>
-              <li>Led cross-functional collaboration with FDA, industry, and academic partners to standardize BioCompute
+              <li>Led cross-functional collaboration with FDA, industry, and academic partners to standardize
+                BioCompute
                 as IEEE 2791-2020</li>
               <li>Facilitated adoption of the standard by Federal partners</li>
               <li>Directed development of the BioCompute Portal</li>
               <li>Delivered workshops, webinars, and technical training</li>
             </ul>
-          </div>
-        </details>
+          </article>
 
-        <details class="card project-card">
-          <summary class="project-summary">
-            <h3>Argos</h3>
-            <p>Government-facing infectious disease knowledge platform for FDA and BARDA.</p>
-            <span class="expand-hint">Click to expand</span>
-          </summary>
-
-          <div class="project-details">
+          <article class="project-detail" id="project-argos">
             <a class="project-logo-link" href="https://argosdb.org/" target="_blank" rel="noopener noreferrer">
 
               <div
                 style="font-weight: bold; font-size: 40px; color: rgb(70, 75, 106); margin: 0px 0px 0px 5%; padding: 0px; border: 0px dashed red;">
                 ARGOS</div>
-              <!--	      
-    <img
-      class="project-logo"
-      src="images/hive-logo.png"
-      alt="HIVE Logo">
--->
             </a>
+
             <p>
               Ideally, doctors and public health officials could send a biological sample for sequencing and know
               exactly what's in their sample quickly. A major barrier to this future is a high quality database that
               doctors and researchers can trust. A database with higher standards for quality than GenBank and more
-              purpose-built than RefSeq. Argos is a regulatory-grade database of infectious disease genomes that can do
+              purpose-built than RefSeq. Argos is a regulatory-grade database of infectious disease genomes that can
+              do
               exactly that. As a Co-Investigator for the Argos project, I co-led development of the regulatory
               decision-support platform that integrates heterogeneous infectious disease datasets for scientific and
               government users.
             </p>
+
             <ul>
               <li>Translated scientific requirements into practical platform capabilities</li>
-              <li>Designed curation and analytical workflows, QA processes, and <a href="https://data.argosdb.org/overview" target="_blank" rel="noopener noreferrer">visualizations</a></li>
+              <li>Designed curation and analytical workflows, QA processes, and <a
+                  href="https://data.argosdb.org/overview" target="_blank" rel="noopener noreferrer">visualizations</a>
+              </li>
               <li>Presented platform capabilities to scientific and government stakeholders</li>
               <li>Deployed the software in regulated environments with support from dev ops</li>
             </ul>
-          </div>
-        </details>
+          </article>
 
-        <details class="card project-card">
-          <summary class="project-summary">
-            <h3>HIVE Bioinformatics Platform</h3>
-            <p>Bioinformatics platform supporting scientific users in regulated environments.</p>
-            <span class="expand-hint">Click to expand</span>
-          </summary>
-
-          <div class="project-details">
+          <article class="project-detail" id="project-hive">
             <a class="project-logo-link" href="https://hive.biochemistry.gwu.edu/dna.cgi?cmd=main" target="_blank"
               rel="noopener noreferrer">
 
@@ -180,11 +179,127 @@ Alongside my research, I've worked extensively with federal agencies, academic i
               <li>Worked with software engineers and FDA DevOps teams</li>
               <li>Developed training, documentation, and onboarding resources</li>
             </ul>
+          </article>
+        </div>
+
+
+
+        <!--
+          <div class="card-grid project-grid">
+          <details class="card project-card">
+            <summary class="project-summary">
+              <h3>BioCompute</h3>
+              <p>
+                International standard for communicating complex bioinformatics workflows.
+              </p>
+              <span class="expand-hint">Click to expand</span>
+            </summary>
+            <div class="project-details">
+              <a class="project-logo-link" href="https://biocomputeobject.org/" target="_blank"
+                rel="noopener noreferrer">
+
+                <img class="project-logo" src="images/bco.png" alt="BioCompute Objects Logo">
+
+              </a>
+              <p>
+                BioCompute is an internationally recognized standard for communicating computational workflows across
+                government, academia, and industry. The <a href="https://standards.ieee.org/ieee/2791/7337/"
+                  target="_blank">official standard</a> has been <a
+                  href="https://www.federalregister.gov/documents/2020/07/22/2020-15771/electronic-submissions-data-standards-support-for-the-international-institute-of-electrical-and"
+                  target="_blank">adopted</a> by three Centers at the FDA (CBER, CDER, and HFP), the only framework
+                standard ever to have been adopted by the FDA's <a
+                  href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/data-standards-catalog"
+                  target="_blank">Data Standards Catalog</a>.
+              </p>
+              <ul>
+                <li>Led cross-functional collaboration with FDA, industry, and academic partners to standardize
+                  BioCompute
+                  as IEEE 2791-2020</li>
+                <li>Facilitated adoption of the standard by Federal partners</li>
+                <li>Directed development of the BioCompute Portal</li>
+                <li>Delivered workshops, webinars, and technical training</li>
+              </ul>
+            </div>
+          </details>
+
+
+          <details class="card project-card">
+            <summary class="project-summary">
+              <h3>Argos</h3>
+              <p>Government-facing infectious disease knowledge platform for FDA and BARDA.</p>
+              <span class="expand-hint">Click to expand</span>
+            </summary>
+
+            <div class="project-details">
+              <a class="project-logo-link" href="https://argosdb.org/" target="_blank" rel="noopener noreferrer">
+
+                <div
+                  style="font-weight: bold; font-size: 40px; color: rgb(70, 75, 106); margin: 0px 0px 0px 5%; padding: 0px; border: 0px dashed red;">
+                  ARGOS</div>
+
+              </a>
+              <p>
+                Ideally, doctors and public health officials could send a biological sample for sequencing and know
+                exactly what's in their sample quickly. A major barrier to this future is a high quality database that
+                doctors and researchers can trust. A database with higher standards for quality than GenBank and more
+                purpose-built than RefSeq. Argos is a regulatory-grade database of infectious disease genomes that can
+                do
+                exactly that. As a Co-Investigator for the Argos project, I co-led development of the regulatory
+                decision-support platform that integrates heterogeneous infectious disease datasets for scientific and
+                government users.
+              </p>
+              <ul>
+                <li>Translated scientific requirements into practical platform capabilities</li>
+                <li>Designed curation and analytical workflows, QA processes, and <a
+                    href="https://data.argosdb.org/overview" target="_blank"
+                    rel="noopener noreferrer">visualizations</a></li>
+                <li>Presented platform capabilities to scientific and government stakeholders</li>
+                <li>Deployed the software in regulated environments with support from dev ops</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="card project-card">
+            <summary class="project-summary">
+              <h3>HIVE Bioinformatics Platform</h3>
+              <p>Bioinformatics platform supporting scientific users in regulated environments.</p>
+              <span class="expand-hint">Click to expand</span>
+            </summary>
+            
+            <div class="project-details">
+              <a class="project-logo-link" href="https://hive.biochemistry.gwu.edu/dna.cgi?cmd=main" target="_blank"
+              rel="noopener noreferrer">
+              
+              <img class="project-logo" src="images/hive-logo.png" alt="HIVE Logo">
+              
+            </a>
+            <p>
+              The High-performance Integrated Virtual Environment (HIVE) is a bioinformatics platform originally
+              developed at the FDA for both scientific research and regulatory submissions. The George Washington
+              University runs the only publicly accessible instance of this software, which is used for internal
+              research, and for collaborations with Federal partners, other institutions, and private industry. In
+              addition to research, I led platform operations, authored and enforced policy, carried out user support,
+              training, and technical consulting for other scientists.
+            </p>
+            <ul>
+              <li>Led or supported research projects using bioinformatic workflows, QA/QC, and machine learning</li>
+              <li>Supported users across regulated scientific environments</li>
+              <li>Worked with software engineers and FDA DevOps teams</li>
+              <li>Developed training, documentation, and onboarding resources</li>
+            </ul>
           </div>
         </details>
       </div>
+      -->
 
-      <!--
+
+
+
+
+
+
+
+        <!--
       <div class="card-grid">
         <article class="card">
           <h3>BioCompute</h3>
@@ -222,6 +337,22 @@ Alongside my research, I've worked extensively with federal agencies, academic i
         </article>
       </div>
   -->
+
+
+
+
+      </div>
+    </section>
+
+    <section class="section" id="visualizations">
+      <h2>Scientific Visualizations</h2>
+      <p>
+        I use visualization to explore complex datasets and communicate scientific patterns clearly.
+      </p>
+      <a class="button secondary" href="https://observablehq.com/@neurogenomics?tab=collections" target="_blank"
+        rel="noopener noreferrer">
+        View Observable notebooks
+      </a>
     </section>
 
     <section class="section" id="presentations">
@@ -229,7 +360,7 @@ Alongside my research, I've worked extensively with federal agencies, academic i
 
       <p>
         I regularly develop and deliver technical presentations, workshops, webinars, and training
-        materials for scientific, regulatory, and industry audiences.
+        materials for scientific, regulatory, and industry audiences. Some recorded examples are below.
       </p>
 
       <ul class="link-list">
@@ -254,9 +385,15 @@ Alongside my research, I've worked extensively with federal agencies, academic i
           <a href="https://summit.nextflow.io/2024/boston/agenda/05-23--introduction-to-biocompute-and-integration/">
             Nextflow Summit
           </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=zGflJhjdG38&list=PLey4Qe-Uxcxb-BL6z5V9Heb7Q9pGiCCbA">
+            FDA Scientific Computing
+          </a>
+        </li>
       </ul>
     </section>
-<!--
+    <!--
     <section class="section" id="publications">
       <h2>Publications & Technical Work</h2>
 
@@ -286,6 +423,50 @@ Alongside my research, I've worked extensively with federal agencies, academic i
   </footer>
 
   <script src="js/script.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".project-card");
+      const details = document.querySelectorAll(".project-detail");
+
+      cards.forEach(card => {
+        card.addEventListener("click", () => {
+          const project = card.dataset.project;
+
+          cards.forEach(c => c.classList.remove("active"));
+          details.forEach(d => d.classList.remove("active"));
+
+          card.classList.add("active");
+          document
+            .querySelector(`#project-${project}`)
+            .classList.add("active");
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const marginalia = document.querySelector(".page-marginalia");
+      const trigger = document.querySelector(".project-detail-panel");
+
+      if (!marginalia || !trigger) return;
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            marginalia.classList.toggle("is-visible", entry.isIntersecting);
+          });
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+      observer.observe(trigger);
+    });
+  </script>
+
 </body>
 
 </html>
