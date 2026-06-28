@@ -5,7 +5,7 @@
 /* ---------- Color Palette ---------- */
 
 :root {
-/*
+    /*
     --background: #fafafa;
     --surface: #ffffff;
 
@@ -35,21 +35,21 @@
 
 
     --site-font:
-      "Inter",
-      sans-serif;
+        "Inter",
+        sans-serif;
 
-      /*
+    /*
       "Manrope",
       sans-serif;
       */
 
-      /*
+    /*
       "IBM Plex Sans",
       sans-serif;
       */
 
 
-/*
+    /*
     --h1-size: 3rem;
     --h2-size: 2rem;
     --h3-size: 1.35rem;
@@ -58,7 +58,7 @@
     --h2-size: 36px;
     --h3-size: 24px;
 
-/*    --body-size: 1.1rem;
+    /*    --body-size: 1.1rem;
       --body-line-height: 1.75;
 */
     --body-size: 20px;
@@ -73,9 +73,9 @@
 }
 
 @media (max-width: 1100px) {
-  .page-marginalia {
-    display: none;
-  }
+    .page-marginalia {
+        display: none;
+    }
 }
 
 /* ---------- Base ---------- */
@@ -116,7 +116,9 @@ body {
 
 /* ---------- Typography ---------- */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
 
     font-weight: 700;
     line-height: 1.2;
@@ -229,12 +231,12 @@ a:hover {
 */
 
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 13px;
-  line-height: 1.4;
-  color: var(--primary);
-  font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .hero h1 {
@@ -514,141 +516,206 @@ a:hover {
 }
 */
 
+/* ---------- Scientific Marginalia ---------- */
+
 .page-marginalia {
   position: fixed;
-  right: max(1.5rem, calc((100vw - var(--max-width)) / 2 - 260px));
-  bottom: 2rem;
+  top: var(--header-height);
+  right: max(1.5rem, calc((100vw - var(--max-width)) / 2 - 300px));
+  bottom: 0;
 
-  width: min(420px, 30vw);
+  width: 260px;
+  padding-left: 2rem;
 
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 1000ms ease,
-    transform 1000ms ease;
+  display: flex;
+  align-items: center;
 
   z-index: 0;
   pointer-events: none;
+
+  opacity: 1;
+  transform: none;
 }
 
-.page-marginalia.is-visible {
+.page-marginalia::before {
+    content: "";
+    position: fixed;
+
+    top: var(--header-height);
+    bottom: 0;
+
+    left: calc(
+        100vw
+        - max(1.5rem, calc((100vw - var(--max-width)) / 2 - 300px))
+        - 260px
+        - 2rem
+    );
+
+    width: 64px;
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.00) 0%,
+        rgba(0,0,0,0.05) 20%,
+        rgba(0,0,0,0.12) 35%,
+        rgba(0,0,0,0.4) 50%,
+        rgba(0,0,0,0.12) 65%,
+        rgba(0,0,0,0.05) 80%,
+        rgba(0,0,0,0.00) 100%
+    );
+
+    opacity: 0.8;
+}
+
+/* 
+.page-marginalia::before {
+    content: "";
+    position: fixed;
+
+    top: var(--header-height);
+    bottom: 0;
+
+    left: calc(
+        100vw
+        - max(1.5rem, calc((100vw - var(--max-width)) / 2 - 300px))
+        - 260px
+        - 2rem
+    );
+
+    width: 64px;
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.00) 0%,
+        rgba(0,0,0,0.05) 20%,
+        rgba(0,0,0,0.12) 35%,
+        rgba(0,0,0,0.28) 50%,
+        rgba(0,0,0,0.12) 65%,
+        rgba(0,0,0,0.05) 80%,
+        rgba(0,0,0,0.00) 100%
+    );
+
+    opacity: 0.8;
+}
+ */
+
+.marginalia-figure {
+  margin: 0;
+  width: 100%;
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+}
+
+.page-marginalia.is-visible .marginalia-figure {
   opacity: 1;
   transform: translateY(0);
 }
 
-.page-marginalia img {
+.marginalia-figure img {
   width: 100%;
+  max-height: 42vh;
+  object-fit: contain;
   display: block;
 
   filter:
     grayscale(1)
-    contrast(0.7)
-    brightness(1.12);
+    contrast(0.75)
+    brightness(1.08);
 
-  opacity: 0.16;
+  opacity: 0.26;
   mix-blend-mode: multiply;
 }
 
-/*
-.fieldnote-section {
-  position: relative;
-  overflow: hidden;
+.marginalia-caption {
+  margin-top: 0.85rem;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: 0.26;
 }
 
-.fieldnote-content {
-  position: relative;
-  z-index: 2;
-}
-
-.fieldnote-figure {
-  position: absolute;
-  right: -6rem;
-  top: 2rem;
-  width: min(520px, 45vw);
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 900ms ease,
-    transform 900ms ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.fieldnote-figure img {
-  width: 100%;
+.marginalia-caption strong {
   display: block;
-  filter: grayscale(1) contrast(0.8);
-  opacity: 0.13;
-  mix-blend-mode: multiply;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
-.fieldnote-section.is-visible .fieldnote-figure {
-  opacity: 1;
-  transform: translateY(0);
+@media (max-width: 1200px) {
+  .page-marginalia {
+    display: none;
+  }
 }
-*/
+
+
+
 
 .section {
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 6rem 2rem;
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 6rem 2rem;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2rem;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary);
-  box-shadow: 0 12px 30px rgba(39, 55, 70, 0.08);
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: 0 12px 30px rgba(39, 55, 70, 0.08);
 }
 
 .project-card {
-  text-align: left;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
 }
 
 .project-card:not(.active) {
-  filter: grayscale(1);
-  opacity: 0.48;
+    filter: grayscale(1);
+    opacity: 0.48;
 }
 
 .project-card.active {
-  border-color: var(--primary);
-  box-shadow: 0 12px 30px rgba(39, 55, 70, 0.08);
+    border-color: var(--primary);
+    box-shadow: 0 12px 30px rgba(39, 55, 70, 0.08);
 }
 
 .project-detail-panel {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
 .project-detail {
-  display: none;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  padding: 2rem;
+    display: none;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 2rem;
 }
 
 .project-detail.active {
-  display: block;
+    display: block;
 }
 
 .site-header,
 main,
 .site-footer {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 /* ---------- Publication Lists ---------- */
@@ -661,7 +728,7 @@ main,
 
 /* One publication */
 
-.publist > ul > li {
+.publist>ul>li {
     margin-bottom: 0.15rem;
     line-height: 1.55;
 }
@@ -676,22 +743,19 @@ main,
 }
 
 .publist ul ul li {
-    margin: 0.15rem 0;        /* very tight spacing */
+    margin: 0.15rem 0;
+    /* very tight spacing */
     line-height: 1.4;
-    color: var(--text-light); /* optional, but I like it */
+    color: var(--text-light);
+    /* optional, but I like it */
 }
-
-
-
-
-
-
 
 .publist ul ul {
     padding-left: 1.5rem;
     margin-top: 0.2rem;
     font-size: 0.92em;
 }
+
 .publist ul ul a {
     color: var(--text-light);
 }
@@ -770,97 +834,113 @@ main,
 /* ---------- Embedded Videos ---------- */
 
 .video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .video-card h3 {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .video-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--surface);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--surface);
 }
 
 .video-frame iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
 }
 
 .embedded-video {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  display: block;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    display: block;
 }
 
 .video-group {
-  margin-top: 4rem;
+    margin-top: 4rem;
 }
 
 .video-group-title {
-  margin-bottom: 1.5rem;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+    margin-bottom: 1.5rem;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
 }
 
 .video-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
 }
 
 .video-card h4 {
-  font-size: 22px;
-  line-height: 1.25;
-  margin-bottom: 1rem;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 1rem;
 }
 
 .video-frame {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--surface);
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--surface);
 }
 
 .video-frame iframe,
 .video-frame video {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
 }
 
 @media (max-width: 800px) {
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .video-card h4,
 .audio-card h4 {
-  min-height: 3.1em;      /* reserves room for 2 title lines */
-  margin: 0 0 0.45rem 0; /* closer to the video */
-  font-size: 22px;
-  line-height: 1.35;
+    min-height: 3.1em;
+    /* reserves room for 2 title lines */
+    margin: 0 0 0.45rem 0;
+    /* closer to the video */
+    font-size: 22px;
+    line-height: 1.35;
 }
 
 .video-frame {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .audio-card h4 {
-  min-height: auto;
+    min-height: auto;
+}
+
+.dev-mode iframe,
+.dev-mode video {
+  display: none;
+}
+
+.dev-mode .video-frame::after {
+  content: "Video disabled during local testing";
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--text-light);
+  font-size: 14px;
 }
