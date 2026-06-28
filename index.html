@@ -17,6 +17,8 @@
 
 </head>
 
+
+<!--<body class="dev-mode">-->
 <body>
   <header class="site-header">
     <nav class="nav">
@@ -32,8 +34,24 @@
 
   <main>
     <div class="page-marginalia" aria-hidden="true">
-      <img src="images/down3-mod.png" alt="Network analysis, binned by category">
+      <figure class="marginalia-figure">
+        <img id="marginalia-image" src="" alt="">
+        <figcaption class="marginalia-caption">
+          <strong id="marginalia-label"></strong>
+          <span id="marginalia-caption"></span>
+        </figcaption>
+      </figure>
     </div>
+
+    <!--
+    <div class="page-marginalia" aria-hidden="true">
+      <img id="marginalia-image" src="" alt="">
+    </div>
+  -->
+    <!--    <div class="page-marginalia" id="marginalia-image" src="images/down3-mod.png"
+      alt="Network analysis, binned by category" aria-hidden="true">
+    </div>
+-->
 
     <section class="hero">
       <!--      <p class="eyebrow">Technical Leadership · Scientific Computing · Government Technology Adoption</p>
@@ -70,7 +88,14 @@
     <!-- *******************************PROJECTS********************************** -->
 
 
-    <section class="section fieldnote-section" id="projects">
+    <!--    <div class="nes" data-marginalia="images/down3-mod.png" height="0px">-->
+<!--    <section class="section fieldnote-section" id="projects">-->
+  <section
+  class="section fieldnote-section"
+  id="projects"
+  data-marginalia="images/down3-mod.png"
+  data-marginalia-label="Figure 1"
+  data-marginalia-caption="Network analysis used to organize pathway-level patterns across experimental conditions.">
       <div class="fieldnote-content">
         <h2>Selected Projects</h2>
 
@@ -93,6 +118,7 @@
             <span class="expand-hint">View details</span>
           </button>
         </div>
+
 
         <div class="project-detail-panel">
           <article class="project-detail active" id="project-biocompute">
@@ -175,12 +201,17 @@
         </div>
       </div>
     </section>
-
-
+    </div>
     <!-- *******************************VISUALIZATIONS********************************** -->
+    <!--<div class="section" id="heatmap" data-marginalia="images/heatmap.png" height="0px">-->
 
-
-    <section class="section" id="visualizations">
+      <section
+  class="section"
+  id="visualizations"
+  data-marginalia="images/heatmap.png"
+  data-marginalia-label="Figure 2"
+  data-marginalia-caption="Heatmap visualization showing clustered structure across biological measurements.">
+<!--    <section class="section" id="visualizations">-->
       <h2>Scientific Visualizations</h2>
       <p>
         I use visualization to explore complex datasets and communicate scientific patterns clearly.
@@ -191,6 +222,7 @@
       </a>
     </section>
 
+    </div>
 
     <!-- *******************************PRESENTATIONS********************************** -->
 
@@ -265,7 +297,11 @@
       <div class="video-grid">
         <div class="audio-card">
           <h4>Unlocking BioCompute Objects: Advancing Interoperability and Regulatory Excellence</h4>
-          <iframe title="BioCompute - Open and Connected Gene Communication - Re-Think Health" allowtransparency="true" height="300" width="100%" style="border: none; min-width: min(100%, 430px);height:300px;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?from=embed&i=f55qc-ef25f8-pb&square=1&share=0&download=0&fonts=Arial&skin=f6f6f6&font-color=auto&rtl=0&logo_link=none&btn-skin=3ab278&size=300" loading="lazy" allowfullscreen=""></iframe>
+          <iframe title="BioCompute - Open and Connected Gene Communication - Re-Think Health" allowtransparency="true"
+            height="300" width="100%" style="border: none; min-width: min(100%, 430px);height:300px;" scrolling="no"
+            data-name="pb-iframe-player"
+            src="https://www.podbean.com/player-v2/?from=embed&i=f55qc-ef25f8-pb&square=1&share=0&download=0&fonts=Arial&skin=f6f6f6&font-color=auto&rtl=0&logo_link=none&btn-skin=3ab278&size=300"
+            loading="lazy" allowfullscreen=""></iframe>
         </div>
       </div>
     </section>
@@ -315,28 +351,135 @@
     });
   </script>
 
+  <!-- *******************************IMAGE MARGINALIA SCRIPT********************************** -->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const marginalia = document.querySelector(".page-marginalia");
+    const marginaliaImage = document.getElementById("marginalia-image");
+    const marginaliaLabel = document.getElementById("marginalia-label");
+    const marginaliaCaption = document.getElementById("marginalia-caption");
+    const marginaliaSections = document.querySelectorAll("[data-marginalia]");
+
+    if (!marginalia || !marginaliaImage || marginaliaSections.length === 0) return;
+
+    let currentImage = "";
+    let fadeTimer = null;
+
+    const showMarginalia = section => {
+      const newImage = section.dataset.marginalia;
+      const newLabel = section.dataset.marginaliaLabel || "";
+      const newCaption = section.dataset.marginaliaCaption || "";
+
+      if (!newImage) return;
+
+      if (newImage === currentImage) {
+        marginalia.classList.add("is-visible");
+        return;
+      }
+
+      clearTimeout(fadeTimer);
+      marginalia.classList.remove("is-visible");
+
+      fadeTimer = setTimeout(() => {
+        marginaliaImage.src = newImage;
+        marginaliaLabel.textContent = newLabel;
+        marginaliaCaption.textContent = newCaption;
+        currentImage = newImage;
+        marginalia.classList.add("is-visible");
+      }, 200);
+    };
+
+    const hideMarginalia = () => {
+      marginalia.classList.remove("is-visible");
+    };
+
+    const updateMarginalia = () => {
+      const triggerLine = window.innerHeight * 0.45;
+      let activeSection = null;
+
+      marginaliaSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= triggerLine && rect.bottom >= triggerLine) {
+          activeSection = section;
+        }
+      });
+
+      if (activeSection) {
+        showMarginalia(activeSection);
+      } else {
+        hideMarginalia();
+      }
+    };
+
+    window.addEventListener("scroll", updateMarginalia, { passive: true });
+    window.addEventListener("resize", updateMarginalia);
+
+    updateMarginalia();
+  });
+</script>
+<!--
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const marginalia = document.querySelector(".page-marginalia");
-      const trigger = document.querySelector(".project-detail-panel");
+      const marginaliaImage = document.getElementById("marginalia-image");
+      const marginaliaSections = document.querySelectorAll("[data-marginalia]");
 
-      if (!marginalia || !trigger) return;
+      if (!marginalia || !marginaliaImage || marginaliaSections.length === 0) return;
 
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            marginalia.classList.toggle("is-visible", entry.isIntersecting);
-          });
-        },
-        {
-          threshold: 0.15
+      let currentImage = "";
+      let fadeTimer = null;
+
+      const showMarginalia = newImage => {
+        if (!newImage) return;
+
+        if (newImage === currentImage) {
+          marginalia.classList.add("is-visible");
+          return;
         }
-      );
 
-      observer.observe(trigger);
+        clearTimeout(fadeTimer);
+        marginalia.classList.remove("is-visible");
+
+        fadeTimer = setTimeout(() => {
+          marginaliaImage.src = newImage;
+          currentImage = newImage;
+          marginalia.classList.add("is-visible");
+        }, 200);
+      };
+
+      const hideMarginalia = () => {
+        marginalia.classList.remove("is-visible");
+      };
+
+      const updateMarginalia = () => {
+        const triggerLine = window.innerHeight * 0.45;
+
+        let activeSection = null;
+
+        marginaliaSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+
+          if (rect.top <= triggerLine && rect.bottom >= triggerLine) {
+            activeSection = section;
+          }
+        });
+
+        if (activeSection) {
+          showMarginalia(activeSection.dataset.marginalia);
+        } else {
+          hideMarginalia();
+        }
+      };
+
+      window.addEventListener("scroll", updateMarginalia, { passive: true });
+      window.addEventListener("resize", updateMarginalia);
+
+      updateMarginalia();
     });
   </script>
-
+-->
 </body>
 
 </html>
