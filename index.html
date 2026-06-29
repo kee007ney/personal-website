@@ -15,6 +15,9 @@
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200..900&display=swap" rel="stylesheet">
 
+  <link rel="preload" as="image" href="images/down3-mod.png">
+  <link rel="preload" as="image" href="images/heatmap.png">
+
 </head>
 
 
@@ -93,7 +96,7 @@
   <section
   class="section fieldnote-section"
   id="projects"
-  data-marginalia="images/down3-mod.png"
+  data-marginalia="images/down3.webp"
   data-marginalia-label="Figure 1"
   data-marginalia-caption="Network analysis used to organize pathway-level patterns across experimental conditions.">
       <div class="fieldnote-content">
@@ -208,9 +211,9 @@
       <section
   class="section"
   id="visualizations"
-  data-marginalia="images/heatmap.png"
+  data-marginalia="images/heatmap.webp"
   data-marginalia-label="Figure 2"
-  data-marginalia-caption="Heatmap visualization showing clustered structure across biological measurements.">
+  data-marginalia-caption="Heatmap visualization showing clustered structure across multiple measurements.">
 <!--    <section class="section" id="visualizations">-->
       <h2>Scientific Visualizations</h2>
       <p>
@@ -361,11 +364,57 @@
     const marginaliaCaption = document.getElementById("marginalia-caption");
     const marginaliaSections = document.querySelectorAll("[data-marginalia]");
 
+const preloadedImages = new Map();
+
+marginaliaSections.forEach(section => {
+  const src = section.dataset.marginalia;
+  if (!src || preloadedImages.has(src)) return;
+
+  const image = new Image();
+  image.src = src;
+  preloadedImages.set(src, image);
+});
+
     if (!marginalia || !marginaliaImage || marginaliaSections.length === 0) return;
 
     let currentImage = "";
     let fadeTimer = null;
 
+    const showMarginalia = section => {
+  const newImage = section.dataset.marginalia;
+  const newLabel = section.dataset.marginaliaLabel || "";
+  const newCaption = section.dataset.marginaliaCaption || "";
+
+  if (!newImage) return;
+
+  if (newImage === currentImage) {
+    marginalia.classList.add("is-visible");
+    return;
+  }
+
+  clearTimeout(fadeTimer);
+  marginalia.classList.remove("is-visible");
+
+  const image = preloadedImages.get(newImage) || new Image();
+
+  image.onload = () => {
+    fadeTimer = setTimeout(() => {
+      marginaliaImage.src = newImage;
+      marginaliaLabel.textContent = newLabel;
+      marginaliaCaption.textContent = newCaption;
+      currentImage = newImage;
+      marginalia.classList.add("is-visible");
+    }, 150);
+  };
+
+  if (image.complete) {
+    image.onload();
+  } else {
+    image.src = newImage;
+  }
+};
+
+    /*
     const showMarginalia = section => {
       const newImage = section.dataset.marginalia;
       const newLabel = section.dataset.marginaliaLabel || "";
@@ -389,6 +438,7 @@
         marginalia.classList.add("is-visible");
       }, 200);
     };
+*/
 
     const hideMarginalia = () => {
       marginalia.classList.remove("is-visible");
