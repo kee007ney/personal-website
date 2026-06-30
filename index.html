@@ -21,7 +21,7 @@
 </head>
 
 
-<!--<body class="dev-mode">-->
+<!--<body class="dev-mode"> -->
 <body>
   <header class="site-header">
     <nav class="nav">
@@ -29,7 +29,8 @@
       <div class="nav-links">
         <a href="#projects">Projects</a>
         <a href="#presentations">Presentations</a>
-        <a href="publications.html">Publications</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/notes.html">Notes</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -294,7 +295,15 @@
             </video>
           </div>
         </article>
-        <!--<section class="section fieldnote-section" id="presentations" data-marginalia="images/heatmap.webp"></section>-->
+      </div>
+
+      <div class="fieldnote-break"
+        data-marginalia="images/pca.webp"
+        data-marginalia-label=""
+        data-marginalia-caption="">
+      </div>
+
+      <div class="video-grid">
         <article class="video-card">
           <h4>FDA Scientific Computing</h4>
           <div class="video-frame">
@@ -336,7 +345,7 @@
 
 
   <footer class="site-footer">
-    <p>&copy; 2026 Jonathon Keeney. Built as a static site with GitHub and Cloudflare Pages.</p>
+    <p>&copy; 2026 Jonathon Keeney. Built as a static site with <a href="https://github.com/kee007ney/personal-website">GitHub</a> and Cloudflare Pages.</p>
   </footer>
 
   <script src="js/script.js"></script>
@@ -422,32 +431,6 @@ marginaliaSections.forEach(section => {
   }
 };
 
-    /*
-    const showMarginalia = section => {
-      const newImage = section.dataset.marginalia;
-      const newLabel = section.dataset.marginaliaLabel || "";
-      const newCaption = section.dataset.marginaliaCaption || "";
-
-      if (!newImage) return;
-
-      if (newImage === currentImage) {
-        marginalia.classList.add("is-visible");
-        return;
-      }
-
-      clearTimeout(fadeTimer);
-      marginalia.classList.remove("is-visible");
-
-      fadeTimer = setTimeout(() => {
-        marginaliaImage.src = newImage;
-        marginaliaLabel.textContent = newLabel;
-        marginaliaCaption.textContent = newCaption;
-        currentImage = newImage;
-        marginalia.classList.add("is-visible");
-      }, 200);
-    };
-*/
-
     const hideMarginalia = () => {
       marginalia.classList.remove("is-visible");
     };
@@ -459,7 +442,7 @@ marginaliaSections.forEach(section => {
       marginaliaSections.forEach(section => {
         const rect = section.getBoundingClientRect();
 
-        if (rect.top <= triggerLine && rect.bottom >= triggerLine) {
+        if (rect.top <= triggerLine) {
           activeSection = section;
         }
       });
@@ -477,67 +460,7 @@ marginaliaSections.forEach(section => {
     updateMarginalia();
   });
 </script>
-<!--
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const marginalia = document.querySelector(".page-marginalia");
-      const marginaliaImage = document.getElementById("marginalia-image");
-      const marginaliaSections = document.querySelectorAll("[data-marginalia]");
 
-      if (!marginalia || !marginaliaImage || marginaliaSections.length === 0) return;
-
-      let currentImage = "";
-      let fadeTimer = null;
-
-      const showMarginalia = newImage => {
-        if (!newImage) return;
-
-        if (newImage === currentImage) {
-          marginalia.classList.add("is-visible");
-          return;
-        }
-
-        clearTimeout(fadeTimer);
-        marginalia.classList.remove("is-visible");
-
-        fadeTimer = setTimeout(() => {
-          marginaliaImage.src = newImage;
-          currentImage = newImage;
-          marginalia.classList.add("is-visible");
-        }, 200);
-      };
-
-      const hideMarginalia = () => {
-        marginalia.classList.remove("is-visible");
-      };
-
-      const updateMarginalia = () => {
-        const triggerLine = window.innerHeight * 0.45;
-
-        let activeSection = null;
-
-        marginaliaSections.forEach(section => {
-          const rect = section.getBoundingClientRect();
-
-          if (rect.top <= triggerLine && rect.bottom >= triggerLine) {
-            activeSection = section;
-          }
-        });
-
-        if (activeSection) {
-          showMarginalia(activeSection.dataset.marginalia);
-        } else {
-          hideMarginalia();
-        }
-      };
-
-      window.addEventListener("scroll", updateMarginalia, { passive: true });
-      window.addEventListener("resize", updateMarginalia);
-
-      updateMarginalia();
-    });
-  </script>
--->
 </body>
 
 </html>
