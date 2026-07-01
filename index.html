@@ -22,6 +22,7 @@
 
 
 <!--<body class="dev-mode"> -->
+
 <body>
   <header class="site-header">
     <nav class="nav">
@@ -47,16 +48,6 @@
       </figure>
     </div>
 
-    <!--
-    <div class="page-marginalia" aria-hidden="true">
-      <img id="marginalia-image" src="" alt="">
-    </div>
-  -->
-    <!--    <div class="page-marginalia" id="marginalia-image" src="images/down3-mod.png"
-      alt="Network analysis, binned by category" aria-hidden="true">
-    </div>
--->
-
     <section class="hero">
       <!--      <p class="eyebrow">Technical Leadership · Scientific Computing · Government Technology Adoption</p>
 -->
@@ -69,6 +60,7 @@
         solutions that help people make sense of them.
       </p>
       <p class="hero-text">
+        Frontier AI needs useful abstractions across domains, not just the implementation of known techniques.
         Throughout my career I've been drawn to problems that are technically complex, scientifically ambiguous, or
         organizationally difficult to navigate. Whether studying the evolution of the human brain, developing scientific
         software, leading international technical standards, or exploring artificial intelligence, my work has followed
@@ -91,17 +83,8 @@
 
     <!-- *******************************PROJECTS********************************** -->
 
-
-    <!--    <div class="nes" data-marginalia="images/down3-mod.png" height="0px">-->
-<!--    <section class="section fieldnote-section" id="projects">-->
-  <section
-  class="section fieldnote-section"
-  id="projects"
-  data-marginalia="images/heatmap2.webp"
-  data-marginalia-label=""
-  data-marginalia-caption="">
-<!--  data-marginalia-label="Figure 1"
-  data-marginalia-caption="Network analysis used to organize pathway-level patterns across experimental conditions.">-->
+    <section class="section fieldnote-section" id="projects" data-marginalia="images/heatmap2.webp"
+      data-marginalia-label="" data-marginalia-caption="">
       <div class="fieldnote-content">
         <h2>Selected Projects</h2>
 
@@ -209,17 +192,8 @@
     </section>
     </div>
     <!-- *******************************VISUALIZATIONS********************************** -->
-    <!--<div class="section" id="heatmap" data-marginalia="images/heatmap.png" height="0px">-->
-
-      <section
-  class="section"
-  id="visualizations"
-  data-marginalia="images/down4.webp"
-  data-marginalia-label=""
-  data-marginalia-caption="">
-<!--  data-marginalia-label="Figure 2"
-  data-marginalia-caption="Heatmap visualization showing clustered structure across multiple measurements.">-->
-<!--    <section class="section" id="visualizations">-->
+    <section class="section" id="visualizations" data-marginalia="images/down4.webp" data-marginalia-label=""
+      data-marginalia-caption="">
       <h2>Scientific Visualizations</h2>
       <p>
         I use visualization to explore complex datasets and communicate scientific patterns clearly.
@@ -235,11 +209,8 @@
     <!-- *******************************PRESENTATIONS********************************** -->
 
 
-    <section class="section fieldnote-section"
-  id="presentations"
-  data-marginalia="images/pipeline.webp"
-  data-marginalia-label=""
-  data-marginalia-caption="">
+    <section class="section fieldnote-section" id="presentations" data-marginalia="images/pipeline.webp"
+      data-marginalia-label="" data-marginalia-caption="">
       <h2 style="margin-top: 2rem; margin-bottom: 0.15rem;">Presentations & Workshops</h2>
       <p>
         I regularly develop and deliver technical presentations, workshops, webinars,
@@ -297,9 +268,7 @@
         </article>
       </div>
 
-      <div class="fieldnote-break"
-        data-marginalia="images/pca.webp"
-        data-marginalia-label=""
+      <div class="fieldnote-break" data-marginalia="images/pca.webp" data-marginalia-label=""
         data-marginalia-caption="">
       </div>
 
@@ -328,8 +297,6 @@
 
 
     <!-- *******************************CONTACT********************************** -->
-
-
     <section class="section" id="contact">
       <h2>Contact</h2>
 
@@ -342,10 +309,9 @@
 
 
   <!-- *******************************POSTSCRIPT********************************** -->
-
-
   <footer class="site-footer">
-    <p>&copy; 2026 Jonathon Keeney. Built as a static site with <a href="https://github.com/kee007ney/personal-website">GitHub</a> and Cloudflare Pages.</p>
+    <p>&copy; 2026 Jonathon Keeney. Built as a static site with <a
+        href="https://github.com/kee007ney/personal-website">GitHub</a> and Cloudflare Pages.</p>
   </footer>
 
   <script src="js/script.js"></script>
@@ -372,95 +338,93 @@
   </script>
 
   <!-- *******************************IMAGE MARGINALIA SCRIPT********************************** -->
-
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const marginalia = document.querySelector(".page-marginalia");
-    const marginaliaImage = document.getElementById("marginalia-image");
-    const marginaliaLabel = document.getElementById("marginalia-label");
-    const marginaliaCaption = document.getElementById("marginalia-caption");
-    const marginaliaSections = document.querySelectorAll("[data-marginalia]");
+    document.addEventListener("DOMContentLoaded", () => {
+      const marginalia = document.querySelector(".page-marginalia");
+      const marginaliaImage = document.getElementById("marginalia-image");
+      const marginaliaLabel = document.getElementById("marginalia-label");
+      const marginaliaCaption = document.getElementById("marginalia-caption");
+      const marginaliaSections = document.querySelectorAll("[data-marginalia]");
 
-const preloadedImages = new Map();
-
-marginaliaSections.forEach(section => {
-  const src = section.dataset.marginalia;
-  if (!src || preloadedImages.has(src)) return;
-
-  const image = new Image();
-  image.src = src;
-  preloadedImages.set(src, image);
-});
-
-    if (!marginalia || !marginaliaImage || marginaliaSections.length === 0) return;
-
-    let currentImage = "";
-    let fadeTimer = null;
-
-    const showMarginalia = section => {
-  const newImage = section.dataset.marginalia;
-  const newLabel = section.dataset.marginaliaLabel || "";
-  const newCaption = section.dataset.marginaliaCaption || "";
-
-  if (!newImage) return;
-
-  if (newImage === currentImage) {
-    marginalia.classList.add("is-visible");
-    return;
-  }
-
-  clearTimeout(fadeTimer);
-  marginalia.classList.remove("is-visible");
-
-  const image = preloadedImages.get(newImage) || new Image();
-
-  image.onload = () => {
-    fadeTimer = setTimeout(() => {
-      marginaliaImage.src = newImage;
-      marginaliaLabel.textContent = newLabel;
-      marginaliaCaption.textContent = newCaption;
-      currentImage = newImage;
-      marginalia.classList.add("is-visible");
-    }, 150);
-  };
-
-  if (image.complete) {
-    image.onload();
-  } else {
-    image.src = newImage;
-  }
-};
-
-    const hideMarginalia = () => {
-      marginalia.classList.remove("is-visible");
-    };
-
-    const updateMarginalia = () => {
-      const triggerLine = window.innerHeight * 0.45;
-      let activeSection = null;
+      const preloadedImages = new Map();
 
       marginaliaSections.forEach(section => {
-        const rect = section.getBoundingClientRect();
+        const src = section.dataset.marginalia;
+        if (!src || preloadedImages.has(src)) return;
 
-        if (rect.top <= triggerLine) {
-          activeSection = section;
-        }
+        const image = new Image();
+        image.src = src;
+        preloadedImages.set(src, image);
       });
 
-      if (activeSection) {
-        showMarginalia(activeSection);
-      } else {
-        hideMarginalia();
-      }
-    };
+      if (!marginalia || !marginaliaImage || marginaliaSections.length === 0) return;
 
-    window.addEventListener("scroll", updateMarginalia, { passive: true });
-    window.addEventListener("resize", updateMarginalia);
+      let currentImage = "";
+      let fadeTimer = null;
 
-    updateMarginalia();
-  });
-</script>
+      const showMarginalia = section => {
+        const newImage = section.dataset.marginalia;
+        const newLabel = section.dataset.marginaliaLabel || "";
+        const newCaption = section.dataset.marginaliaCaption || "";
 
+        if (!newImage) return;
+
+        if (newImage === currentImage) {
+          marginalia.classList.add("is-visible");
+          return;
+        }
+
+        clearTimeout(fadeTimer);
+        marginalia.classList.remove("is-visible");
+
+        const image = preloadedImages.get(newImage) || new Image();
+
+        image.onload = () => {
+          fadeTimer = setTimeout(() => {
+            marginaliaImage.src = newImage;
+            marginaliaLabel.textContent = newLabel;
+            marginaliaCaption.textContent = newCaption;
+            currentImage = newImage;
+            marginalia.classList.add("is-visible");
+          }, 150);
+        };
+
+        if (image.complete) {
+          image.onload();
+        } else {
+          image.src = newImage;
+        }
+      };
+
+      const hideMarginalia = () => {
+        marginalia.classList.remove("is-visible");
+      };
+
+      const updateMarginalia = () => {
+        const triggerLine = window.innerHeight * 0.45;
+        let activeSection = null;
+
+        marginaliaSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+
+          if (rect.top <= triggerLine) {
+            activeSection = section;
+          }
+        });
+
+        if (activeSection) {
+          showMarginalia(activeSection);
+        } else {
+          hideMarginalia();
+        }
+      };
+
+      window.addEventListener("scroll", updateMarginalia, { passive: true });
+      window.addEventListener("resize", updateMarginalia);
+
+      updateMarginalia();
+    });
+  </script>
 </body>
 
 </html>
