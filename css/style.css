@@ -1090,3 +1090,125 @@ main,
     color: #61755F;
 }
 
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+  :root {
+    --h1-size: 34px;
+    --h2-size: 28px;
+    --h3-size: 21px;
+    --body-size: 18px;
+    --space-page-x: 1rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    position: static;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .hero,
+  .hero.article-page,
+  .section,
+  .article {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    text-align: center;
+  }
+
+  .card-grid,
+  .project-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-detail,
+  .card {
+    padding: 1.25rem;
+  }
+
+  .page-marginalia {
+    display: none;
+  }
+
+  .hero-text,
+  .article p {
+    max-width: 100%;
+  }
+
+  img,
+  iframe,
+  video {
+    max-width: 100%;
+  }
+
+  .video-card h4,
+  .audio-card h4 {
+    min-height: auto;
+    font-size: 19px;
+  }
+}
+
+.browser-note {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+.unavailable-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.video-placeholder p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.teaching-card {
+  max-width: 800px;
+}
+
+.teaching-card p {
+  max-width: 700px;
+}
