@@ -1,0 +1,244 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f5f0df;
+  background: #0e1512;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(119, 166, 101, 0.18), transparent 36rem),
+    radial-gradient(circle at bottom right, rgba(61, 117, 118, 0.16), transparent 34rem),
+    #0e1512;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 28px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.eyebrow,
+.panel-kicker,
+.node-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: #afc39c;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(2.2rem, 5vw, 4.6rem);
+  line-height: 0.95;
+}
+
+.lede {
+  max-width: 820px;
+  color: #d7ceb7;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f5f0df;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.roadmap-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+  min-height: 72vh;
+}
+
+.flow-card,
+.detail-panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(11, 18, 15, 0.82);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+
+.flow-card {
+  min-height: 720px;
+}
+
+.react-flow {
+  --xy-background-color: rgba(0, 0, 0, 0);
+  --xy-controls-button-background-color: #17221d;
+  --xy-controls-button-color: #f5f0df;
+  --xy-controls-button-border-color: rgba(255, 255, 255, 0.12);
+  --xy-minimap-background-color: rgba(15, 24, 20, 0.9);
+  color: #0e1512;
+}
+
+.roadmap-node {
+  width: 250px;
+  border-radius: 20px;
+  padding: 14px;
+  background: #fbf3dc;
+  border: 2px solid rgba(14, 21, 18, 0.22);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+.node-title {
+  margin-top: 5px;
+  color: #18231d;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.node-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  margin-top: 14px;
+  color: #425249;
+  font-size: 0.76rem;
+}
+
+.node-status {
+  font-weight: 800;
+}
+
+.status-done { border-color: #82bd72; }
+.status-inProgress { border-color: #e0b44d; }
+.status-planned { border-color: #7fa7bf; }
+.status-exploring { border-color: #b18ad6; }
+.status-pruned { border-color: #c56d63; opacity: 0.74; }
+
+.detail-panel {
+  position: relative;
+  padding: 24px;
+  color: #f5f0df;
+}
+
+.detail-panel h2 {
+  margin: 4px 0 12px;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.detail-panel h3 {
+  margin: 24px 0 6px;
+  font-size: 0.86rem;
+  color: #afc39c;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.detail-panel p,
+.detail-panel li {
+  color: #ddd3be;
+  line-height: 1.55;
+}
+
+.detail-panel ul {
+  padding-left: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 0;
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  color: #f5f0df;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.panel-note {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.feedback-box {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.feedback-box p {
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.feedback-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.feedback-actions button {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: #f5f0df;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.react-flow__edge-path {
+  stroke: rgba(245, 240, 223, 0.45);
+  stroke-width: 2.5;
+}
+
+@media (max-width: 980px) {
+  .site-header,
+  .roadmap-layout {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .legend {
+    justify-content: flex-start;
+  }
+
+  .flow-card {
+    min-height: 620px;
+  }
+}
