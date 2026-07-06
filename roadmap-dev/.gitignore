@@ -1,4 +1,8 @@
 node_modules
 dist
 .vite
+<<<<<<< background-rewrite1
 .env
+=======
+.env
+>>>>>>> main
