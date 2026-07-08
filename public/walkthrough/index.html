@@ -161,7 +161,7 @@
                       data-open-task="task-harvester">harvester</a> mission is launched.</li>
                   <li>When you find you finish building your first vesicle, the <a href="#task-er"
                       data-open-task="task-er">endoplasmic reticulum</a> mission is launched.</li>
-                  <li>The endoplasmic reticulum will start to decay over time, and will trigger the <a href="#task-wall"
+                  <li>Protocells will start to decay over time, and will trigger the <a href="#task-wall"
                       data-open-task="task-wall">cell wall</a> mini task if you repair it</li>
                 </ul>
                 <li>After finishing the ATP task, you're prompted to search the environment more, initiating the <a
@@ -251,7 +251,8 @@
                   or it runs out of energy (if powered). More channels or transporters move resources faster.
                 </p>
                 <p class="duration">~15-20 min.</p>
-                <span><img src="images/harvesters.png" alt="In game raw material harvesters"></span>
+                <span><img src="images/harvesters.png"
+                    alt="In game raw material harvesters are protocells with channels or transporters in them. Different colors are used to represent different resource affinities."></span>
                 <p>Harvesters (protocells with channels or transporters in them) are used to collect raw materials.
                   Ribose (RbsC) in pink, water (aquaporin VII) in blue, fatty acids (FATP1) in yellow, basic glucose
                   (GLUT1) in dark green, high capacity glucose/glucosamine (GLUT2) in light green, and phosphate
@@ -288,9 +289,12 @@
                     membrane doesn't roll away and you collect it</li>
                   <ul>
                     <li>Unlocks the ability to add more membrane to protocells, making them larger as you do</li>
+                    <li>Larger protocells can store more resources, but also become more unstable. They will require a
+                      cell wall to hold together for longer periods.</li>
                   </ul>
                 </ol>
                 <p class="duration">~20-25 min.</p>
+                <span><img src="images/ser.png" alt="Mockup for the smooth endoplasmic reticulum model."></span>
               </div>
             </details>
 
@@ -302,7 +306,7 @@
               </summary>
               <div class="task-body">
                 <p class="trigger">
-                  <strong>Trigger:</strong> Repair the endoplasmic reticulum before it decays
+                  <strong>Trigger:</strong> Repair a cellular structure before it decays
                 </p>
                 <p>
                   <i>Alternate Trigger:</i> One cellular structure fully disintegrates
@@ -347,23 +351,25 @@
                 </p>
 
                 <ol>
-                    <li>AI text: "Search for clues to scale up energy production"</li>
-                    <li>Scan green structures</li>
-                    <li>Build a vesicle near a source of water</li>
-                    <li>Build photosystem II in the membrane (oriented so that it's filling up the vesicle with protons)
+                  <li>AI text: "Search for clues to scale up energy production"</li>
+                  <li>Scan green structures</li>
+                  <li>Build a vesicle near a source of water</li>
+                  <li>Build photosystem II in the membrane (oriented so that it's filling up the vesicle with protons)
+                  </li>
+                  <ul>
+                    <li>Scan elements in the environment to get the sequence</li>
+                  </ul>
+                  <li>Build ATP synthase, oriented so that it's using the protons to power the synthase machine
+                    <ul>
+                      <li>Also obtained by scaning elements in the environment</li>
+                    </ul>
+                  <li>Optional task item: encase the entire thing in another vesicle</li>
+                  <ul>
+                    <li>If you do this, you'll also want to add a channel to it so that water can get in</li>
+                    <li>If you complete this optional task, you will have unlocked “thylakoid membrane” in the tech
+                      tree
                     </li>
-                    <ul>
-                      <li>Scan elements in the environment to get the sequence</li>
-                    </ul>
-                    <li>Build ATP synthase, oriented so that it's using the protons to power the synthase machine
-                      <ul><li>Also obtained by scaning elements in the environment</li></ul>
-                    <li>Optional task item: encase the entire thing in another vesicle</li>
-                    <ul>
-                      <li>If you do this, you’ll also want to add a channel to it so that water can get in</li>
-                      <li>If you complete this optional task, you will have unlocked “thylakoid membrane” in the tech
-                        tree
-                      </li>
-                    </ul>
+                  </ul>
                 </ol>
                 <p>
                   As long as the system has access to sunlight and water, it will make ATP and oxygen for you</p>
@@ -402,9 +408,14 @@
               </p>
 
               <p>
-                The Fungal Zone is a low-oxygen biome rich in sugars, fungal structures, megafauna, antibiotics, and the
-                transition toward eukaryotic complexity.
+                The Fungal Zone is a low-oxygen biome rich in sugars, fungal structures, megafauna, antibiotics, all of
+                which drive the
+                transition toward eukaryotic complexity. The Fungal Zone will be the player's source of sugars for most
+                of the game.
               </p>
+              <p>In this zone you will encounter the first megafauna. Fungi-eating beetles and slugs. The former may
+                actively target the player and try to eat them if seen. The slug will not target the player, but may eat
+                or destroy their structures.</p>
             </div>
           </div>
 
@@ -415,11 +426,82 @@
                 <span class="task-title">Eukaryogenesis</span>
               </summary>
               <div class="task-body">
-                <p>
-                  Build nucleus, rough ER, smooth ER, cytoskeleton, Golgi, lysosome,
-                  and other core eukaryotic systems.
+                <p class="trigger">
+                  <strong>Trigger:</strong> Attempt to build a cellular structure in the Fungal Zone
                 </p>
-                <p class="duration">~3 hr.</p>
+                <p>Cinematic: watch
+                  the cell wall rupture almost immediately, and the cell will deteriorate faster than usual, sort of
+                  deflating
+                </p>
+
+                <ol>
+                  <li>AI comments about the situation</li>
+                  <li>Task HUD: "Build a sturdier cell that can withstand the antibiotics in the Fungal Zone"</li>
+                  <li>Build a nucleus</li>
+                  <ul>
+                    <li>AI comment: To make a nucleus, you'll need lots of channels</li>
+                    <li>"You can make lots of any protein if you have its RNA sequence and a ribosome. If you already
+                      have the protein sequence, you can figure out an RNA sequence. You can automate the system of
+                      making proteins this way and quickly scale it up."</li>
+                  </ul>
+                  <li>Task item: construct guanine</li>
+                  <li>Task item: construct uracil</li>
+                  <li>Task item: construct cytosine</li>
+                  <li>Four out of the five nucleotides in the XNA screen will be filled in, the last grayed out (appears
+                    on the DNA screen, not either of the two RNA screens)</li>
+                  <ul>
+                    <li>This screen shows you how nucleotides connect (H-bonds)</li>
+                  </ul>
+                  <li>Once the player has nucleotides, they can make the tRNAs for each amino acid</li>
+                  <ul>
+                    <li>For this, the player enters the XNA designer screen, one of the in game menus</li>
+                    <ul>
+                      <li>Used for tRNA, mRNA, and DNA designs</li>
+                    </ul>
+                    <li>tRNAs have 3 slots for adding their sequence (anti-codon)</li>
+                    <li>AI instructs player to build the tRNA for each of the five amino acids that are required to
+                      build channels (regardless of whether they've discovered the additional two or not by now), and to
+                      see the XNA Screen if they need to know which nucleotides are needed for an amino acid</li>
+                    <li>A small animation of the tRNA binding to the codon plays in the XNA screen as confirmation when
+                      they get it correct to really drive the point home</li>
+                    <li>Between the binding mode of player's nucleotide sheet and the amino acid sheet (with the
+                      codons), player should be able to build the 5 tRNA molecules to construct a channel</li>
+                    <li>tRNAs are recyclable</li>
+                    <li>Put the three physical nucleotides in the correct order to make the tRNA for a given amino acid
+                    </li>
+                    <li>Player gets a visual indication of which tRNA after building it (which amino acid they can now
+                      use), and the count of that codon notches up by one in the mRNA screen</li>
+                    <li>It's possible to make more than one tRNA for a given amino acid, if desired</li>
+                    <li>The more tRNAs that are available, the faster transcription goes</li>
+                    <li>The game will not let you build tRNAs for amino acids before you discover the amino acid</li>
+                  </ul>
+                  <li>Task item: construct an mRNA that has the right sequence to produce a channel</li>
+                  <ul>
+                    <li>Once you've built the 5 tRNAs that are needed, player can start to build the mRNA</li>
+                    <li>mRNA is complementary to the tRNAs; the XNA Screen shows which are needed</li>
+                    <li>The full sequence will be short, maybe 10 amino acids long or so</li>
+                    <li>mRNAs are not recyclable like tRNAs, they have a short life in which they can be used</li>
+                    <li>Task item: craft a ribosome</li>
+                    <li>This is the only molecule that's comprised of both protein and mRNA</li>
+                    <li>Have to find several more amino acids to make this</li>
+                  </ul>
+                  <li>Task item: add a rough ER to the nucleus (add ribosomes to some of the ER)</li>
+                  <li>Task item: Add a smooth ER to the nucleus</li>
+                  <li>Task item: build a cytoskeleton</li>
+                  <ul>
+                    <li>At this point, player can build cellular structures in this area</li>
+                    <li>This will let the player provide structure for their cellular creations, instead of blobs</li>
+                  </ul>
+                  <li>Task item: build a photosystem power and oxygen source</li>
+                  <ul>
+                    <li>Build 3 power sources</li>
+                    <li>Build thylakoid to hold them</li>
+                  </ul>
+                  <li>Build golgi to route proteins to thylakoid (photosystem proteins (like all proteins) wear out
+                    after awhile and need to be broken down by lysosome and rebuilt)</li>
+                  <li>Task item: build a lysosome</li>
+
+                  <p class="duration">~3 hr.</p>
               </div>
             </details>
           </aside>
