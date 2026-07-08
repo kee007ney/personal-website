@@ -647,12 +647,9 @@
         </div>
       </details>
 
-    </section>
-
     <!-- ==========================================================================================-->
     <!-- =================================== HIGH OXYGEN ZONE =====================================-->
     <!-- ==========================================================================================-->
-
     <!--
       <section class="zone" id="high-oxygen-zone" data-zone="03">
         <div class="zone-header">
@@ -663,7 +660,6 @@
           </p>
         </div>
       -->
-
     <details class="zone-card" id="high-oxygen-zone">
       <summary class="zone-summary">
         <span class="zone-number">03</span>
@@ -947,12 +943,6 @@
       </div>
     </details>
 
-
-
-    </aside>
-    </div>
-    </details>
-
     <!--
           <article class="task-card">
             <p class="label">Mini task</p>
@@ -971,19 +961,142 @@
       </section>
 -->
 
+    <!-- =====================================================================================-->
+    <!-- =================================== THE CHAMBER =====================================-->
+    <!-- =====================================================================================-->
 
-    <!--
+    <details class="zone-card" id="chamber">
+      <summary class="zone-summary">
+        <span class="zone-number">04</span>
+        <span class="zone-title">The Chamber</span>
+      </summary>
 
-    <section class="zone" id="chamber" data-zone="04">
-      <div class="zone-header">
-        <p class="zone-number">04</p>
-        <h2>The Chamber</h2>
-        <p>
-          The player must build a large differentiated multicellular structure connecting water and light while managing energy costs, pathogens, and cell specialization.
-        </p>
-      </div>
+      <div class="zone-inner">
+        <div class="zone-main">
 
-      <div class="content-grid">
+          <img class="zone-hero" src="images/chamber.png"
+            alt="View of the Chamber, a dimly lit dome with an occulus of light shining through, and pools of water on the ground.">
+
+          <div class="zone-copy">
+            <p>
+              The Chamber is the final zone in the game, a large, underground room with water and sunlight streaming in through an occulus above, the only passage to the end game.</p>
+            <p>Main events:</p>
+            <ul>
+              <li>You enter with the <a href="#task-stem-cell"
+                  data-open-task="task-stem-cell">Stem Cells</a> task active</li>
+                  <li>Completing this task activates the <a href="#task-differentiation"
+                  data-open-task="task-differentiation">Differentiation</a> task.</li>
+                  <li>You can optionally pursue a task creating <a href="#task-lyse"
+                  data-open-task="task-lyse">Lysosomes</a>, giving a major efficiency boost</li>
+                  <li>To speed growth rate further, you can also choose to pursue the <a href="#task-phagosome" data-open-task="phagosome">Phagosome</a> task</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="task-rail" aria-label="Chamber tasks">
+
+          <details class="task-card" id="task-stem-cell">
+            <summary>
+              <span class="task-type">Minor Task</span>
+              <span class="task-title">Stem Cells</span>
+            </summary>
+            <div class="task-body">
+              <p class="trigger">
+                <strong>Trigger:</strong> Finish Mitosis task
+              </p>
+              <ol>
+                <li>
+                  AI directs you to the final area, The Chamber, and informs the player that the final destination is through the small hole in the ceiling
+                </li>
+                <li>You are instructed to build at least 3 cells on site that can divide (3 stem cells), and use these to climb out of the chamber</li>
+                <ul>
+                  <li>You can use one stem cell to create the other two</li>
+                  <li>As cells are created by the stem cells, the player can harvest them like any other resource</li>
+                </ul>
+                <li>When you try to build you way up, you observe skyrocketing energy costs for building new cells, repair, and maintenance</li>
+                <li>As the player either 1) repairs a certain number of cells manually, or 2) watches a couple of cells deteriorate to the point of not being useful, the AI suggests a different approach. "It will take too long and require too much energy to build this structure manually. Simply automating cell production with stem cells is not enough, we need to generate massive amounts of energy, meaning we'll need both the water and the sunlight. We'll have to use a more creative approach."" AI unlocks the pathway screen</li>
+                <li><a href="#task-differentiation" data-open-task="task-differentiation">Differentiation</a> task is triggered</li>
+              </ol>
+              <p class="duration">~10-15 min.</p>
+            </div>
+          </details>
+
+          <details class="task-card" id="task-differentiation">
+            <summary>
+              <span class="task-type">Minor Task</span>
+              <span class="task-title">Differentiation</span>
+            </summary>
+            <div class="task-body">
+              <p class="trigger">
+                <strong>Trigger:</strong> Finish Stem Cells task
+              </p>
+              <p>The Stem Cells task terminates and is replaced by Differentiation. A new in game menu opens up that includes a graphical depiction of a pathway with a flowchart. AI tells you that, after cell division, the cells will need to differentiate into either root cells to absorb water or light harvesting cells to absorb sunlight. This differentiation plan will help you do that.</p>
+              <ol>
+                <li>Build a structure that connects the water source with the light source</li>
+                <ul>
+                  <li>You will be able to see cells in the light differentiate into green cells, producing lots of energy</li>
+                  <li>You may decide to build multiple tendrils to other pools to speed the growth process</li>
+                  <li>Progress is slow at first, but the more cells you add, the more energy is created, and the faster growth happens</li>
+<!--                  <li>You are still manually placing cells to build your structure</li>-->
+                  </ul>
+                <li><a href="#task-differentiation" data-open-task="task-differentiation">Differentiation</a> task is triggered</li>
+              </ol>
+              <span><img src="images/pathway.png" class="lightbox-image" data-lightbox-src="images/pathway.png" alt="Schematic for simple development plan, used to tell a cell to be a root cell or a stem/leaf cell (root by default, the presence of sunlight inhibits the default and triggers light harvesting pathway)."></span>
+              <p class="duration">~1-2 hr.</p>
+            </div>
+          </details>
+
+          <details class="task-card" id="task-lyse">
+            <summary>
+              <span class="task-type">Minor Task</span>
+              <span class="task-title">Lyse Lyse Lyse</span>
+            </summary>
+            <div class="task-body">
+              <p class="trigger">
+                <strong>Trigger:</strong> Finish Stem Cells task
+              </p>
+              <p>You can choose to optionally pursue the task of crafting lysosomes as well. This will boost construction substantially.</p>
+              <ol>
+                <li>You are instructed to scan a nearby structure for the lysosome technology
+                </li>
+                <li>Add 5 lysosomes to each stem cell</li>
+                <ul>
+                  <li>When added to stem cells, lysosomes give a 500% reduction in energy and raw materials required by recycling biomolecules after they break down</li>
+              </ol>
+              <p class="duration">~20 min.</p>
+            </div>
+          </details>
+
+          <details class="task-card" id="task-phagosome">
+            <summary>
+              <span class="task-type">Minor Task</span>
+              <span class="task-title">Phagosome</span>
+            </summary>
+            <div class="task-body">
+              <p class="trigger">
+                <strong>Trigger:</strong> Reach 50% height in Differentiation task.
+              </p>
+              <p>While building, you will notice bacteria in the pools, and some of their cells dying in the pools. The bacteria there are pathogenic. They cannot be avoided, since this is the only source of water for a very long distance. The more that they break down your cells, the more populous they become. Combating and destroying them gives a growth bonus.</p>
+              <p>This task is optional. You can choose to just deal with the hit to growth rate and lower efficiency, or make prokaryotic cells to combat them with phage. (The pathogenic bacteria produce phage, and these can be engulfed by the root cells, but nothing happens. The phage are blocked at the nucleus and cannot reproduce.)</p>
+              <ol>
+                <li>Upgrade lysosomes to phagosomes
+                </li>
+                <ul>
+                  <li>Add lots of membrane</li>
+                  <li>Add more enzymes</li>
+                </ul>
+                  <li>Add 3 phagosomes to each root cells in the water</li>
+                  <ul>
+                    <li>may decide to build a stem cell dedicated to making these</li>
+                  </ul>
+              </ol>
+              <p>Cells with the phagosome property will engulf and destroy bacteria that attempt to attach to them. Completing this task eliminates the pathogenic bacteria threat, which is a drain of about 10% at start, grows to about 50% if left unchecked.</p>
+              <p class="duration">~20 min.</p>
+            </div>
+          </details>
+
+
+          <!--      <div class="content-grid">
         <article class="task-card">
           <p class="label">Major task</p>
           <h3>Mitosis</h3>
@@ -997,14 +1110,10 @@
           <p>Create root-like and leaf-like cells using a pathway system that responds to environmental inputs.</p>
           <p class="duration">~1–2 hr.</p>
         </article>
+-->
 
-        <figure class="media-card wide">
-          <img src="images/chamber-placeholder.jpg" alt="The Chamber concept art placeholder" />
-          <figcaption>Concept art placeholder: scattered pools, a distant opening, and sunlight from above.</figcaption>
-        </figure>
-      </div>
-    </section>
 
+<!--
     <section class="zone compact" id="sandbox">
       <div class="zone-header">
         <h2>Sandbox</h2>
@@ -1022,11 +1131,8 @@
         </p>
       </div>
     </section>
-
-
-    -->
-
-
+  -->
+    </section>
   </main>
 
   <button class="back-to-top" data-back-to-top aria-label="Back to top">↑</button>
