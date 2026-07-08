@@ -82,7 +82,8 @@ document.querySelectorAll("[data-lightbox-src]").forEach((image) => {
     lightboxZoom = 1;
     lightboxImage.src = image.dataset.lightboxSrc;
     lightboxImage.alt = image.alt;
-    lightboxImage.style.width = "min(95vw, 1800px)";
+//    lightboxImage.style.width = "min(95vw, 1800px)";
+    lightboxImage.style.transform = "scale(1)";
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
   });
@@ -100,6 +101,7 @@ lightbox?.addEventListener("click", (event) => {
   if (event.target === lightbox) closeLightbox();
 });
 
+/*
 zoomIn?.addEventListener("click", () => {
   lightboxZoom = Math.min(lightboxZoom + 0.25, 3);
   lightboxImage.style.width = `${95 * lightboxZoom}vw`;
@@ -108,6 +110,17 @@ zoomIn?.addEventListener("click", () => {
 zoomOut?.addEventListener("click", () => {
   lightboxZoom = Math.max(lightboxZoom - 0.25, 0.75);
   lightboxImage.style.width = `${95 * lightboxZoom}vw`;
+});
+*/
+
+zoomIn?.addEventListener("click", () => {
+  lightboxZoom = Math.min(lightboxZoom + 0.25, 3);
+  lightboxImage.style.transform = `scale(${lightboxZoom})`;
+});
+
+zoomOut?.addEventListener("click", () => {
+  lightboxZoom = Math.max(lightboxZoom - 0.25, 0.75);
+  lightboxImage.style.transform = `scale(${lightboxZoom})`;
 });
 
 window.addEventListener("keydown", (event) => {
