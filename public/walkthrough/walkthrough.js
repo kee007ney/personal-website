@@ -56,6 +56,7 @@ document.querySelectorAll("[data-open-task]").forEach((link) => {
   });
 });
 
+/*
 task.classList.add("task-highlight");
 
 task.scrollIntoView({
@@ -66,3 +67,51 @@ task.scrollIntoView({
 window.setTimeout(() => {
   task.classList.remove("task-highlight");
 }, 1200);
+*/
+
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImage = document.querySelector("[data-lightbox-full-image]");
+const lightboxClose = document.querySelector("[data-lightbox-close]");
+const zoomIn = document.querySelector("[data-lightbox-zoom-in]");
+const zoomOut = document.querySelector("[data-lightbox-zoom-out]");
+
+let lightboxZoom = 1;
+
+document.querySelectorAll("[data-lightbox-src]").forEach((image) => {
+  image.addEventListener("click", () => {
+    lightboxZoom = 1;
+    lightboxImage.src = image.dataset.lightboxSrc;
+    lightboxImage.alt = image.alt;
+    lightboxImage.style.width = "min(95vw, 1800px)";
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeLightbox() {
+  lightbox.hidden = true;
+  lightboxImage.src = "";
+  document.body.style.overflow = "";
+}
+
+lightboxClose?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+zoomIn?.addEventListener("click", () => {
+  lightboxZoom = Math.min(lightboxZoom + 0.25, 3);
+  lightboxImage.style.width = `${95 * lightboxZoom}vw`;
+});
+
+zoomOut?.addEventListener("click", () => {
+  lightboxZoom = Math.max(lightboxZoom - 0.25, 0.75);
+  lightboxImage.style.width = `${95 * lightboxZoom}vw`;
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !lightbox.hidden) {
+    closeLightbox();
+  }
+});

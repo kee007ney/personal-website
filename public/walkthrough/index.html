@@ -72,44 +72,135 @@
 
     <section class="intro-panel">
       <h2>You are an Endonaut.</h2>
-      <p>You pilot an organic nanobot powered by ATP, the same molecular fuel that powers life. You scan, harvest,
+      <p>You pilot an organic nanobot powered by ATP, the same molecular fuel that powers life. You explore to find resources, you scan, harvest,
         synthesize, and assemble living structures to survive environments that keep escalating in scale and complexity.
       </p>
       <p>You start the size of a bacterial cell, 1 micrometer. The main storyline is driven by expanding your available
-        energy. When certain thresholds are met, player bonuses are received. Your character can expand its size, and
-        add various sci fi components. These components influence the way that you can interact with the environment
-        (faster movement, faster harvesting, larger storage, carrying capacity (number of vesicles), etc.). You can
-        freely
-        scale up or down, up to a maximum of the ATP threshold that you've achieved. If you run out of ATP, your bot
-        will completely power down. You can drop a new bot at a landing zone (respawn), and scrap your previous bot for
-        materials, if you can reach it.</p>
-      <p>To accomplish this, you are equipped with two important tools: a scanner and a synthesizer. The scanner shows
-        the world in terms of its hydrophobic properties (a gradient from water-interacting, blue, to water-repelling,
-        yellow). The synthesizer allows the player to create complex biological structures from simpler components. For
-        example, combining phosphates and fatty acids to build lipids.</p>
-      <p>You can build cellular structures that you can enter to help navigate the environment. One of the earliest
-        structures is the vesicle, which are used for storage. To build this, you learn to create phosphates from
-        phosphorous and oxygen, and to combine those with fatty acids to make lipids. Several lipids can be combined
-        into a sheet of lipids called a membrane, and two sheets can be used to make a vesicle.</p>
+        energy, which increases your size and expands your capabilities. To accomplish this, you are equipped with two important tools: a scanner and a synthesizer. The scanner reveals properties about the world in ways that help the player advance, and the synthesizer allows the player to create complex biological structures from simpler components.</p>
+
+        <!--
       <p>The next structure that can be built is a protocell, a base structure which is made from 5 membranes. Resources
         can be collected manually, but doing so is laborious and time consuming. One of the major uses for protocells is
         as harvesters. To make harvesters, you add specific channels or transporters to a protocell, for example, RbsC
         for ribose collection, GLUT1 for a basic glucose transporter, GLUT2 for high capacity glucose transport, and
         others.</p>
-      <p>The basic raw materials for building in the game are water, oxygen, phosphorus, fatty acids, ribose, glucose,
-        and glucosamine, though extracellular components can be harvested from other products (muramic acid,
-        glucosamine, and polysaccharides). Part of the flow of the game is controlled by making structures and craftable
-        items out of more advanced amino acids, which are only found in certain zones. To build anything in those zones,
-        you have to have the tech to do it.</p>
-      <p>Another game flow control is power. You're really limited in the amount of power that you can generate
-        initially, and will have to build and upgrade structures to scale up. You start by manually crafting ATP by
-        synthesizing adenine, and combining it with ribose and 3 phosphates. Manually crafting ATPs is also laborious
-        and time consuming, and you will need millions of them.</p>
+-->
+
       <p>The core game loop is to explore → gather resources → build structures and craft items that enable scaling up
         energy production → enable further exploration.</p>
     </section>
 
     <section class="zone-list">
+
+      <!-- ========================================================================================-->
+      <!-- =================================== GAME MECHANICS =====================================-->
+      <!-- ========================================================================================-->
+
+
+      <details class="zone-card zone-card-full" id="mechanics">
+        <summary class="zone-summary">
+          <!--<span class="zone-number">00</span>-->
+          <span class="zone-title">Game Mechanics</span>
+        </summary>
+
+        <div class="zone-inner">
+          <div class="zone-main">
+
+            <img class="zone-hero" src="images/primordialHero.png" alt="Primordial Zone concept art">
+
+            <div class="zone-copy">
+              <p>
+                The main game mechanic is the use of energy to build and keep systems running. This game mechanic drives exploration and progress through the tech tree.
+                The game has a few components in the service of exploration, and energy generation and use.
+              </p>
+      <p>The basic raw materials for building in the game are water, oxygen, phosphorus, fatty acids, ribose, glucose,
+        and glucosamine, though extracellular components can be harvested from other products (muramic acid,
+        glucosamine, and polysaccharides). As with other open world crafting games, the player is tasked with exploring to find new resources, then using those resources to build structures and craftable items. Part of the flow of the game is controlled by making structures and craftable items out of more advanced amino acids, which are only found in certain zones.
+        For example, combining phosphates and fatty acids to build lipids. As you progress, you will need to adaptations in order to build anything in other zones, which can be found in the tech tree.</p>
+              <p>The cellular structures that you build can help you navigate the environment. One of the earliest
+        structures is the vesicle, which are used for storage. To build this, you learn to create phosphates from
+        phosphorous and oxygen, and to combine those with fatty acids to make lipids. Several lipids can be combined
+        into a sheet of lipids called a membrane, which can be combined to make a multipurpose protocell, a vesicle, and ultimately a cell membrane.</p>
+                      <h3><u>Free Energy</u></h3>
+              <p>
+                The central pillar for the main story arc is the generation and use of energy in your systems, in the
+                form of ATP.
+                You start out the same size as the bacterial cells around you, and you can craft individual ATP
+                molecules manually.
+                As you work your way through the tech tree, you develop the capacity to generate and use ATP at scale,
+                such that you're using billions of molecules of ATP.
+                When certain thresholds are met as you're scaling up, player bonuses are received. Your character can
+                expand its size, and add various sci fi components. These components influence the way that you can
+                interact with the environment (faster movement, faster harvesting, larger storage, carrying capacity
+                (number of vesicles), etc.). You can freely scale up or down, up to a maximum of the ATP threshold that
+                you've achieved. If you run out of ATP, your bot will completely power down. You can drop a new bot at a
+                landing zone (respawn), and scrap your previous bot for materials, if you can reach it.
+              </p>
+              <img src="images/freeEnergy.png"
+                alt="In game screen for showing progress in energy production and use. Several game mechanics are tied to this, including player size, movement speed, and harvesting speed. Other sci-fi upgrades, like a jetpack, can be obtained at very high energy production levels.">
+                <br>
+                <h3><u>Water</u></h3>
+                <p>
+                  The scanner shows the world in terms of its hydrophobic properties (a gradient from water-interacting, blue, to water-repelling, yellow).
+                  Managing water interactions and osmotic pressures is a core part of the game, in which the player learns to build membrane-bound structures.
+                  Early in the game, the player builds cell walls to counteract osmotic pressure. Later, the player can build cytoskeletons to help maintain their shape, as well as channels and transporters to move water in and out of their structures to maintain osmotic balance.
+                </p>
+                <img src="images/hydrophobicity.png"
+                alt="Concept art for showing hydrophobicity in the game. A scene in which the player is placing a vesicle near a pool of water is seen without the visor on (bottom), and with the visor on (top).">
+            </div>
+
+          </div>
+        </div>
+      </details>
+
+      <!-- ==========================================================================================-->
+      <!-- =================================== GAME PROGRESSION =====================================-->
+      <!-- ==========================================================================================-->
+
+
+      <details class="zone-card zone-card-full" id="progression">
+        <summary class="zone-summary">
+          <!--<span class="zone-number">00</span>-->
+          <span class="zone-title">Game Progression</span>
+        </summary>
+
+        <div class="zone-inner">
+          <div class="zone-main">
+
+            <img class="zone-hero" src="images/progression.png" alt="Primordial Zone concept art">
+
+            <div class="zone-copy">
+              <p>Exploration and resource extraction from different biomes plays a central role in the game. Exploration and progress through the tech tree are tightly linked, and both in the service of conveying fundamental concepts in life sciences.</p>
+                <h3><u>Tech Tree</u></h3>
+                <p>
+                  The technology tree maps out player progression through the game. Progress through the tree opens up new capabilities and upgrades.
+                  The tree is organized into sugar, protein, and fat branches, which ultimately converge into the process/organelle pathway.
+                  Progress through the pathway does not follow a typical linear textbook format, but instead is designed to introduce concepts just as they're needed for survival and progression.
+                  Use of a novel technology outside the context of a typical cell helps isolate it to more deeply understand its functionality.
+                </p>
+                <img
+  class="lightbox-image"
+  src="images/techTree.png"
+  alt="Concept art for showing the tech tree in the game, organized into sugar, protein, and fat branches, all of which converge into the process/organelle pathway."
+  data-lightbox-src="images/techTree.png">
+  <p><i>Click to zoom.</i></p>
+                <h3><u>Biomes</u></h3>
+                <p>
+                  The game features several biomes, each with unique resources and challenges. Progress through the game requires exploration of these biomes to gather resources and advance through the tech tree, but to be able to fully explore and extract resources, you must progress through the tree. The critical choke points in the game, each of which align with a biological concept, are presented in this figure.
+                  At the end of the primordial zone, you're building simple protocells with membranes. These counteract osmotic pressure through the use of a cell wall.
+                  When you enter the Fungal Zone, naturally occuring antibiotics will dissolve the cell wall, making it impossible to build structures in this zone until more complex cellular structures can be built. This starts a quest to build eukaryotic cells.
+                At the end of the fungal zone, you have advanced eukarotic structures that are more dynamic, robust, and complex. However, the next zone, the High Oxygen Zone, challenges you to build multicellular structures. For this, you will need a rich source of oxygen, which comes with high levels of oxidation.
+                To overcome this, the player must develop antioxidants. At the end of the High Oxygen Zone, you can connect multiple eukaryotic cells through a shared extracellular matrix and cytoskeletal connections, but to reach the final goal, the occulus in the dome, you must be able to differentiate your cells so that some are harvesting water for your epic megastructure, and some are harvesting light. This is the final challenge of the game, and success puts the player in the sandbox zone with ample resources, where they can build anything.
+              </p>
+                <img
+  class="lightbox-image"
+  src="images/gameProgression.png"
+  alt="Concept art for showing the game progression through different biomes, and choke points for each."
+  data-lightbox-src="images/gameProgression.png"
+  style="max-width: 50%; valign: middle; margin: 0 auto; display: block;">
+  <p style="text-align: center;"><i>Click to zoom.</i></p>
+</div></div></div></details>
+
       <!-- =========================================================================================-->
       <!-- =================================== PRIMORDIAL ZONE =====================================-->
       <!-- =========================================================================================-->
@@ -127,7 +218,10 @@
         <h2>Primordial Zone</h2>
 -->
 
-            <img class="zone-hero" src="images/primordialHero.png" alt="Starting Zone concept art">
+            <img class="zone-hero" src="images/primordial2.png" alt="Primordial Zone concept art">
+            <p><i>A landscape view of the primordial zone. An uneven, rocky terrain with small pools of water are
+                visible. Many small bacteria can be seen throughout the landscape, as well as many, much larger diatoms,
+                in a variety of shapes and sizes.</i></p>
 
             <div class="zone-copy">
               <p>
@@ -170,6 +264,9 @@
                   support. Seek out an area rich in sugars and establish a base nearby.</li>
               </ol>
             </div>
+            <img class="zone-hero" src="images/primordialPerspective.png" alt="Primordial Zone concept art">
+            <p><i>A view from within the primordial zone.</i></p>
+
           </div>
 
           <aside class="task-rail" aria-label="Starting Zone tasks">
@@ -688,6 +785,16 @@
     <p>Atlas Vegrandis</p>
     <p><a href="mailto:info@atlasvegrandis.com">info@atlasvegrandis.com</a></p>
   </footer>
+
+  <div class="lightbox" data-lightbox hidden>
+  <button class="lightbox-close" data-lightbox-close aria-label="Close image">×</button>
+  <button class="lightbox-zoom" data-lightbox-zoom-in>+</button>
+  <button class="lightbox-zoom lightbox-zoom-out" data-lightbox-zoom-out>−</button>
+
+  <div class="lightbox-stage" data-lightbox-stage>
+    <img class="lightbox-full-image" data-lightbox-full-image alt="">
+  </div>
+</div>
 
   <script src="walkthrough.js"></script>
 </body>
