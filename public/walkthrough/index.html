@@ -1,6 +1,7 @@
 <!-- walkthrough.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +10,31 @@
 </head>
 
 <body>
+  <section class="page-hero">
+
+    <img class="page-hero-image" src="images/hero.png" alt="Atlas Vegrandis">
+
+    <div class="page-hero-overlay">
+      <!--
+        <p class="page-kicker">
+            Atlas Vegrandis
+        </p>
+-->
+      <h1 class="page-title">
+        What does it mean to be alive?
+      </h1>
+      <!--
+        <p class="page-tagline">
+            What really is life?
+        </p>
+-->
+      <a href="#overview" class="page-scroll">
+        Begin ↓
+      </a>
+
+    </div>
+
+  </section>
   <header class="site-header">
     <a class="brand" href="/">Atlas Vegrandis</a>
 
@@ -18,7 +44,7 @@
 
     <nav class="site-nav" data-nav>
       <a href="#overview">Overview</a>
-      <a href="#starting-zone">Starting Zone</a>
+      <a href="#starting-zone">Primordial Zone</a>
       <a href="#fungal-zone">Fungal Zone</a>
       <a href="#high-oxygen-zone">High Oxygen Zone</a>
       <a href="#chamber">The Chamber</a>
@@ -30,14 +56,14 @@
   <main>
     <section class="hero" id="overview">
       <p class="eyebrow">Game Walkthrough</p>
-      <h1>The journey from simple chemistry to engineered life.</h1>
+      <!--      <h1>What does it mean to be alive?</h1>-->
       <p class="hero-text">
-        Atlas Vegrandis is an open-world survival craft game about building biological systems from the inside out.
+        Atlas Vegrandis is an open-world survival craft game about building living systems from the inside out.
         This page outlines the current progression path, major zones, core mechanics, and concept direction.
       </p>
 
       <div class="jump-grid" aria-label="Jump to zone">
-        <a href="#starting-zone"><span>01</span> Starting Zone</a>
+        <a href="#starting-zone"><span>01</span> Primordial Zone</a>
         <a href="#fungal-zone"><span>02</span> Fungal Zone</a>
         <a href="#high-oxygen-zone"><span>03</span> High Oxygen Zone</a>
         <a href="#chamber"><span>04</span> The Chamber</a>
@@ -46,11 +72,371 @@
 
     <section class="intro-panel">
       <h2>You are an Endonaut.</h2>
-      <p>
-        You pilot an organic nanobot powered by ATP, the same molecular fuel that powers life.
-        You scan, harvest, synthesize, and assemble living structures to survive environments that keep escalating in scale and complexity.
+      <p>You pilot an organic nanobot powered by ATP, the same molecular fuel that powers life. You scan, harvest,
+        synthesize, and assemble living structures to survive environments that keep escalating in scale and complexity.
       </p>
+      <p>You start the size of a bacterial cell, 1 micrometer. The main storyline is driven by expanding your available
+        energy. When certain thresholds are met, player bonuses are received. Your character can expand its size, and
+        add various sci fi components. These components influence the way that you can interact with the environment
+        (faster movement, faster harvesting, larger storage, carrying capacity (number of vesicles), etc.). You can
+        freely
+        scale up or down, up to a maximum of the ATP threshold that you've achieved. If you run out of ATP, your bot
+        will completely power down. You can drop a new bot at a landing zone (respawn), and scrap your previous bot for
+        materials, if you can reach it.</p>
+      <p>To accomplish this, you are equipped with two important tools: a scanner and a synthesizer. The scanner shows
+        the world in terms of its hydrophobic properties (a gradient from water-interacting, blue, to water-repelling,
+        yellow). The synthesizer allows the player to create complex biological structures from simpler components. For
+        example, combining phosphates and fatty acids to build lipids.</p>
+      <p>You can build cellular structures that you can enter to help navigate the environment. One of the earliest
+        structures is the vesicle, which are used for storage. To build this, you learn to create phosphates from
+        phosphorous and oxygen, and to combine those with fatty acids to make lipids. Several lipids can be combined
+        into a sheet of lipids called a membrane, and two sheets can be used to make a vesicle.</p>
+      <p>The next structure that can be built is a protocell, a base structure which is made from 5 membranes. Resources
+        can be collected manually, but doing so is laborious and time consuming. One of the major uses for protocells is
+        as harvesters. To make harvesters, you add specific channels or transporters to a protocell, for example, RbsC
+        for ribose collection, GLUT1 for a basic glucose transporter, GLUT2 for high capacity glucose transport, and
+        others.</p>
+      <p>The basic raw materials for building in the game are water, oxygen, phosphorus, fatty acids, ribose, glucose,
+        and glucosamine, though extracellular components can be harvested from other products (muramic acid,
+        glucosamine, and polysaccharides). Part of the flow of the game is controlled by making structures and craftable
+        items out of more advanced amino acids, which are only found in certain zones. To build anything in those zones,
+        you have to have the tech to do it.</p>
+      <p>Another game flow control is power. You're really limited in the amount of power that you can generate
+        initially, and will have to build and upgrade structures to scale up. You start by manually crafting ATP by
+        synthesizing adenine, and combining it with ribose and 3 phosphates. Manually crafting ATPs is also laborious
+        and time consuming, and you will need millions of them.</p>
+      <p>The core game loop is to explore → gather resources → build structures and craft items that enable scaling up
+        energy production → enable further exploration.</p>
     </section>
+
+    <section class="zone-list">
+      <!-- =========================================================================================-->
+      <!-- =================================== PRIMORDIAL ZONE =====================================-->
+      <!-- =========================================================================================-->
+
+      <details class="zone-card" id="starting-zone">
+        <summary class="zone-summary">
+          <span class="zone-number">01</span>
+          <span class="zone-title">Primordial Zone</span>
+        </summary>
+
+        <div class="zone-inner">
+          <div class="zone-main">
+            <!--
+        <p class="zone-number">01</p>
+        <h2>Primordial Zone</h2>
+-->
+
+            <img class="zone-hero" src="images/primordialHero.png" alt="Starting Zone concept art">
+
+            <div class="zone-copy">
+              <p>
+                The player begins by learning the basic survival loop: scanning the
+                environment, harvesting simple molecular resources, synthesizing ATP,
+                and building the first primitive biological structures.
+                Missions in this zone establish the foundation for later cellular automation.
+              </p>
+
+              <p>
+                This zone has large aqueous bodies to explore, as well as dry land. Most things are harmless, except for
+                the (rare) bacterial species that produce toxins.
+              </p>
+
+              <p>Main events:</p>
+              <ol>
+                <li>Dropped at landing zone</li>
+                <li>AI suggests that you start scanning your surroundings, tells you the button/key to do it</li>
+                <ul>
+                  <li>When you get near a resource, an on screen prompt to take it appears</li>
+                </ul>
+                <li>Start exploring/scanning/collecting resources (ribose, phosphorus, fatty acids, 3 amino acids are
+                  common at this point)</li>
+                <ul>
+                  <li>Glycine, aspartic acid, glutamine</li>
+                  <li>When you gather 10 units in total of any resources, the <a href="#task-vesicle"
+                      data-open-task="task-vesicle">vesicles</a> mission is launched.</li>
+                  <li>After 10 minutes in the game, the <a href="#task-atp" data-open-task="task-atp">ATP</a> mission is
+                    launched.</li>
+                  <li>When you find your first amino acid, the <a href="#task-harvester"
+                      data-open-task="task-harvester">harvester</a> mission is launched.</li>
+                  <li>When you find you finish building your first vesicle, the <a href="#task-er"
+                      data-open-task="task-er">endoplasmic reticulum</a> mission is launched.</li>
+                  <li>The endoplasmic reticulum will start to decay over time, and will trigger the <a href="#task-wall"
+                      data-open-task="task-wall">cell wall</a> mini task if you repair it</li>
+                </ul>
+                <li>After finishing the ATP task, you're prompted to search the environment more, initiating the <a
+                    href="#task-solar" data-open-task="task-solar">solar power</a> mission.</li>
+                <li>AI informs player that a reliable source of sugars should be found for walls and other structural
+                  support. Seek out an area rich in sugars and establish a base nearby.</li>
+              </ol>
+            </div>
+          </div>
+
+          <aside class="task-rail" aria-label="Starting Zone tasks">
+
+            <!-- =================================== VESICLE =====================================-->
+            <details class="task-card" id="task-vesicle">
+              <summary>
+                <span class="task-type">Mini Task</span>
+                <span class="task-title">Vesicles</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger"><strong>Trigger:</strong> Accumulate 10 units of any resource</p>
+
+                <ol>
+                  <li>Harvest phosphorus, and oxygen to create phosphate</li>
+                  <li>Harvest fatty acids and combine with phosphate to create lipids</li>
+                  <li>Combine lipids (x2) into membranes</li>
+                  <li>Combine membranes (x2) into protocells</li>
+                  <li>Add one more mebrane to a protocell to create a vesicle</li>
+                </ol>
+                <p class="duration">~15-20 min.</p>
+                <span><img src="images/protocell.png"
+                    alt="A protocell is a simple cell-like structure that serves as a basic functional unit, from which other structures are built"></span>
+              </div>
+            </details>
+
+            <!-- =================================== ATP =====================================-->
+            <details class="task-card" id="task-atp">
+              <summary>
+                <span class="task-type">Mini Task</span>
+                <span class="task-title">ATP</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger"><strong>Trigger:</strong> Spend 10 minutes in game</p>
+
+                <p>
+                  Items in these lists are presented in game as task items. Each craftable appears automatically in your
+                  recipe sheet after you craft it once.
+                </p>
+                <ol>
+                  <li>Get HUD notification that ATP stockpile is at half, will have to find a new source or make your
+                    own (draws attention to HUD ATP meter)</li>
+                  <ul>
+                    <li>Find sources of phosphorus and oxygen</li>
+                    <li>Synthesize phosphate (1 phosphorus + 4 oxygen)</li>
+                    <li>Find source of ribose</li>
+                    <li>Find source of adenine</li>
+                    <li>Craft ATP (3 phosphates, 1 adenine)</li>
+                  </ul>
+                  <li>This is a low yield, laborious way of producing ATP</li>
+                  <ul>
+                    <li>When an ATP is used, it produces AMP</li>
+                    <li>HUD indicates that there are ways of producing ATP in large quantities automatically, and that
+                      “we” (the player and the AI) should search the area for more details on how to do this</li>
+                  </ul>
+                </ol>
+
+                </p>
+                <p class="duration">~15-20 min.</p>
+                <span><img src="" alt=""></span>
+              </div>
+            </details>
+
+            <!-- =================================== HARVESTER =====================================-->
+            <details class="task-card" id="task-harvester">
+              <summary>
+                <span class="task-type">Mini Task</span>
+                <span class="task-title">Harvester</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger">
+                  <strong>Trigger:</strong> Find your first amino acid
+                </p>
+                <p>
+                  AI gives player the (artificial) sequence to build a water channel: "amino acids are both acidic and
+                  basic, and can be used to build protein structures." Once the player has enough of each amino acid,
+                  they can combine them into the water channel protein, and add it to a protocell to create a harvester.
+                  When placed on its matching resource, a harvester will automatically gather that resource until full,
+                  or it runs out of energy (if powered). More channels or transporters move resources faster.
+                </p>
+                <p class="duration">~15-20 min.</p>
+                <span><img src="images/harvesters.png" alt="In game raw material harvesters"></span>
+                <p>Harvesters (protocells with channels or transporters in them) are used to collect raw materials.
+                  Ribose (RbsC) in pink, water (aquaporin VII) in blue, fatty acids (FATP1) in yellow, basic glucose
+                  (GLUT1) in dark green, high capacity glucose/glucosamine (GLUT2) in light green, and phosphate
+                  (NaPi-IIc) in red.</p>
+              </div>
+            </details>
+
+            <!-- =================================== ENDOPOLASMIC RETICULUM =====================================-->
+            <details class="task-card" id="task-er">
+              <summary>
+                <span class="task-type">Mini Task</span>
+                <span class="task-title">Endoplasmic Reticulum</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger">
+                  <strong>Trigger:</strong> Finish creating a vesicle
+                </p>
+                <ol>
+                  <li>AI informs you that you can automate the construction of lipids and even membranes</li>
+                  <ul>
+                    <li>Drops a pin in your map where the remnants of one exist for you to scan</li>
+                  </ul>
+                  <li>Scan to get recipe</li>
+                  <li>SER requires massive amounts of membrane to build</li>
+                  <li>Scan to get recipe</li>
+                  <li>SER gently lets out vesicles every so often if you keep it supplied with phosphorus and fatty
+                    acids (manually)</li>
+                  <ul>
+                    <li>SER has a docking attachment for the nucleus, but you can't use that yet</li>
+                  </ul>
+                  <li>You can break down a vesicle for membrane if you need it</li>
+                  <li>AI prompt: create a large enough protocell that the entire ER system can fit in, so that the
+                    manufactured
+                    membrane doesn't roll away and you collect it</li>
+                  <ul>
+                    <li>Unlocks the ability to add more membrane to protocells, making them larger as you do</li>
+                  </ul>
+                </ol>
+                <p class="duration">~20-25 min.</p>
+              </div>
+            </details>
+
+            <!-- =================================== CELL WALL =====================================-->
+            <details class="task-card" id="task-wall">
+              <summary>
+                <span class="task-type">Mini Task</span>
+                <span class="task-title">Cell Wall</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger">
+                  <strong>Trigger:</strong> Repair the endoplasmic reticulum before it decays
+                </p>
+                <p>
+                  <i>Alternate Trigger:</i> One cellular structure fully disintegrates
+                </p>
+                <p>
+                  <i>Alternate Trigger:</i> Scan nearby structures (reveals glucose, glucosamine, and muramic
+                  acid in recipe sheet). AI narrative subplot: trying to understand what all these sugars (and sugar
+                  acids) are being used for.
+                </p>
+                <p>
+                  <i>Alternate Trigger:</i> Combine the right ingredients in the bioreactor yourself
+                </p>
+
+                <ol>
+                  <li>Find fragments of Cell Wall, scan for Cell Wall recipe</li>
+                  <ul>
+                    <li>Many fragments are near fungal zone</li>
+                  </ul>
+                  <li>Craft or find source of glucose</li>
+                  <li>Craft or find source of glucosamine</li>
+                  <li>Craft or find source of muramic acid</li>
+                  <li>Craft Cell Wall</li>
+                  <ul>
+                    <li>Build enough to wrap a cell in</li>
+                  </ul>
+                  <li>AI message: In order to build more of these structures, a source of sugars is required</li>
+                </ol>
+                <p class="duration">~15-20 min.</p>
+              </div>
+            </details>
+
+
+            <!-- =================================== SOLAR POWER =====================================-->
+            <details class="task-card" id="task-solar">
+              <summary>
+                <span class="task-type">Mini Task</span>
+                <span class="task-title">Solar Power</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger">
+                  <strong>Trigger:</strong> Complete the ATP mini task
+                </p>
+
+                <ol>
+                    <li>AI text: "Search for clues to scale up energy production"</li>
+                    <li>Scan green structures</li>
+                    <li>Build a vesicle near a source of water</li>
+                    <li>Build photosystem II in the membrane (oriented so that it's filling up the vesicle with protons)
+                    </li>
+                    <ul>
+                      <li>Scan elements in the environment to get the sequence</li>
+                    </ul>
+                    <li>Build ATP synthase, oriented so that it's using the protons to power the synthase machine
+                      <ul><li>Also obtained by scaning elements in the environment</li></ul>
+                    <li>Optional task item: encase the entire thing in another vesicle</li>
+                    <ul>
+                      <li>If you do this, you’ll also want to add a channel to it so that water can get in</li>
+                      <li>If you complete this optional task, you will have unlocked “thylakoid membrane” in the tech
+                        tree
+                      </li>
+                    </ul>
+                </ol>
+                <p>
+                  As long as the system has access to sunlight and water, it will make ATP and oxygen for you</p>
+                <p class="duration">~20-25 min.</p>
+              </div>
+            </details>
+          </aside>
+        </div>
+      </details>
+
+      </aside>
+      </div>
+      </details>
+
+      <!-- =====================================================================================-->
+      <!-- =================================== FUNGAL ZONE =====================================-->
+      <!-- =====================================================================================-->
+
+
+      <details class="zone-card" id="fungal-zone">
+        <summary class="zone-summary">
+          <span class="zone-number">02</span>
+          <span class="zone-title">Fungal Zone</span>
+        </summary>
+
+        <div class="zone-inner">
+          <div class="zone-main">
+
+            <img class="zone-hero" src="images/fungal.png"
+              alt="Fungal Zone concept art; the player is larger now, but still tiny compared to the mushroom they are walking on, and the enormous slug beneath it.">
+
+            <div class="zone-copy">
+              <p>
+                The Fungal Zone introduces new environmental mechanics and pressures the player toward eukaryotic
+                complexity. The central milestone pushes the player to build more organized internal cellular systems.
+              </p>
+
+              <p>
+                The Fungal Zone is a low-oxygen biome rich in sugars, fungal structures, megafauna, antibiotics, and the
+                transition toward eukaryotic complexity.
+              </p>
+            </div>
+          </div>
+
+          <aside class="task-rail" aria-label="Fungal Zone tasks">
+            <details class="task-card" id="task-eukaryogenesis">
+              <summary>
+                <span class="task-type">Major Task</span>
+                <span class="task-title">Eukaryogenesis</span>
+              </summary>
+              <div class="task-body">
+                <p>
+                  Build nucleus, rough ER, smooth ER, cytoskeleton, Golgi, lysosome,
+                  and other core eukaryotic systems.
+                </p>
+                <p class="duration">~3 hr.</p>
+              </div>
+            </details>
+          </aside>
+        </div>
+      </details>
+
+    </section>
+
+
+
+
+
+
+
+
+    <!--
+
 
     <section class="zone" id="starting-zone" data-zone="01">
       <div class="zone-header">
@@ -207,6 +593,11 @@
         </p>
       </div>
     </section>
+
+
+    -->
+
+
   </main>
 
   <button class="back-to-top" data-back-to-top aria-label="Back to top">↑</button>
@@ -218,4 +609,5 @@
 
   <script src="walkthrough.js"></script>
 </body>
+
 </html>

@@ -23,3 +23,33 @@ window.addEventListener("scroll", () => {
 backToTop?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+document.querySelectorAll("[data-open-task]").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const taskId = link.dataset.openTask;
+    const task = document.getElementById(taskId);
+
+    if (!task) return;
+
+    const parentZone = task.closest(".zone-card");
+
+    if (parentZone) {
+      parentZone.open = true;
+    }
+
+    task.open = true;
+
+    task.classList.add("task-highlight");
+
+    task.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    window.setTimeout(() => {
+      task.classList.remove("task-highlight");
+    }, 1200);
+  });
+});
