@@ -110,6 +110,17 @@ export const roadmapItems = [
     details: 'This should not compromise the consumer game. It comes later as an overlay for educators, not as the design center of the core experience.',
   },
   {
+    id: 'antibiotics',
+    title: 'Additional Antibiotics',
+    category: 'Education Layer',
+    column: 'education',
+    status: 'exploring',
+    communitySignal: 'Later-stage',
+    dependsOn: ['primordial-pool', 'scanning'],
+    description: 'Additional antibiotics would deepen gameplay, enable copmetitive play, and push a player\'s understanding of the systems they build.',
+    details: 'Beyond Penicillin, Polymixin B (cell membrane), Streptomycin (ribosome), Rifampicin (RNA polymerase), Bleomycin (DNA), sulfonamides (folate metabolism) could be added.',
+  },
+  {
     id: 'quiz-gates',
     title: 'Quiz Gates',
     category: 'Rejected Pattern',
