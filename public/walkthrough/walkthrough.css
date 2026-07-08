@@ -253,6 +253,17 @@ main {
   font-family: var(--font-body);
 }
 
+.task-body a {
+  color: var(--accent);
+  font-weight: 750;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.task-body a:hover {
+  color: var(--accent-2);
+}
+
 .jump-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
