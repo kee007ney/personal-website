@@ -41,6 +41,11 @@
   --max: 1180px;
 }
 
+.ai{
+  font-style: italic;
+  color: antiquewhite;
+}
+
 * {
   box-sizing: border-box;
 }
