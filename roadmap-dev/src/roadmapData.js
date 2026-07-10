@@ -142,6 +142,17 @@ export const roadmapItems = [
     description: 'A separate mode that introduces developmental biology.',
     details: 'Create structures that change over time. Stem cells create certain types of cell for a limited amount of time, and certain cell types exist only temporarily. The timing and position of these cells can create completely different organisms. Can model heterochrony very well.',
   },
+  {
+    id: 'sci-fi',
+    title: 'Sci Fi Elements',
+    category: 'Resource System',
+    column: 'mechanics',
+    status: 'exploring',
+    communitySignal: 'Needs clarity',
+    dependsOn: [],
+    description: 'In addition to the organic craftables and structures, add some more sci fi content.',
+    details: 'Movement upgrades, structures, lasers...',
+  },
   /*
   {
     id: 'fatty-acids',
@@ -188,6 +199,17 @@ export const roadmapItems = [
     dependsOn: ['differentiation', 'multicellularity'],
     description: 'Specialized cells beyond root and leaf cells could be introduced.',
     details: 'This goes well with the ability to create one\'s own structures. Defining new cell types (or even letting players define their own custome cell types) could introduce new creativity and new complexity.',
+  },
+  {
+    id: 'silica',
+    title: 'Harvest silica from diatoms',
+    category: 'Cell Biology Concepts',
+    column: 'biology',
+    status: 'exploring',
+    communitySignal: 'Visually promising',
+    dependsOn: [],
+    description: 'Diatoms, already in the game, could be a source of silica.',
+    details: 'Could be used to make glass for building purposes.',
   },
   {
     id: 'more-cell-types',
