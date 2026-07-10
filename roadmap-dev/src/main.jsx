@@ -30,10 +30,20 @@ const statusRank = {
 };
 
 function RoadmapNode({ data }) {
+  const isPruned = data.status === 'pruned';
+
   return (
-    <div className={`roadmap-node status-${data.status}`}>
+    <div
+      className={`roadmap-node status-${data.status} ${
+        isPruned ? 'roadmap-node-pruned' : ''
+      }`}
+      style={{ '--column-color': data.columnColor }}
+    >
       <div className="node-kicker">{data.category}</div>
-      <div className="node-title">{data.title}</div>
+      <div className="node-title">
+        {isPruned && '✕ '}
+        {data.title}
+      </div>
       <div className="node-footer">
         <span className="node-status">{statusLabels[data.status]}</span>
         <span className="node-signal">{data.communitySignal}</span>
@@ -42,9 +52,40 @@ function RoadmapNode({ data }) {
   );
 }
 
-const nodeTypes = { roadmapNode: RoadmapNode };
+const COLUMN_SPACING = 285;
+const CARD_SPACING_Y = 155;
+const HEADER_OFFSET_Y = 0;
+const CARD_OFFSET_Y = 80;
+
+const columnConfig = {
+  foundations: { index: 0, label: 'Foundations', color: '#8fbf7f' },
+  gameModes: { index: 1, label: 'Game Modes', color: '#7fa7bf' },
+  biology: { index: 2, label: 'Biology', color: '#b18ad6' },
+  biomes: { index: 3, label: 'Biomes', color: '#d4a64f' },
+  progression: { index: 4, label: 'Progression', color: '#6fb7a8' },
+  education: { index: 5, label: 'Education', color: '#c9877a' },
+  dlc: { index: 6, label: 'DLC', color: '#b7a46a' },
+};
+
+function ColumnHeaderNode({ data }) {
+  return (
+    <div
+      className="column-header-node"
+      style={{ '--column-color': data.columnColor }}
+    >
+      {data.label}
+    </div>
+  );
+}
+
+const nodeTypes = {
+  roadmapNode: RoadmapNode,
+  columnHeader: ColumnHeaderNode,
+};
 
 /*
+const nodeTypes = { roadmapNode: RoadmapNode };
+
 function layoutRoadmap(items) {
   const columns = {
     gameModes: 0,
@@ -77,7 +118,7 @@ function layoutRoadmap(items) {
       };
     });
 }
-*/
+
 
 function layoutRoadmap(items) {
   const columns = {
@@ -87,16 +128,71 @@ function layoutRoadmap(items) {
     biomes: 3,
     progression: 4,
     education: 5,
+    dlc: 6
   };
 
+  const fallbackColumn = 0;
+  const rowCounts = {};
+  return items
+  .slice()
+  .sort((a, b) => {
+    const aColumn = columns[a.column] ?? fallbackColumn;
+    const bColumn = columns[b.column] ?? fallbackColumn;
+    const columnDelta = aColumn - bColumn;
+    if (columnDelta !== 0) return columnDelta;
+    
+    const aStatus = statusRank[a.status] ?? 999;
+    const bStatus = statusRank[b.status] ?? 999;
+    return aStatus - bStatus;
+  })
+  .map((item) => {
+    const columnIndex = columns[item.column] ?? fallbackColumn;
+    const rowKey = item.column || 'uncategorized';
+    const row = rowCounts[rowKey] || 0;
+    rowCounts[rowKey] = row + 1;
+    
+    return {
+      id: item.id,
+      type: 'roadmapNode',
+      position: {
+        x: columnIndex * 330,
+        y: row * 170,
+      },
+      data: item,
+    };
+  });
+}
+*/
+
+function makeColumnHeaders() {
+  return Object.entries(columnConfig).map(([columnKey, column]) => ({
+    id: `column-header-${columnKey}`,
+    type: 'columnHeader',
+    position: {
+      //      x: column.index * 330,
+      x: column.index * COLUMN_SPACING,
+      y: 0,
+    },
+    /*    data: { label: column.label },*/
+    data: {
+      label: column.label,
+      columnColor: column.color,
+    },
+    draggable: false,
+    selectable: false,
+    connectable: false,
+  }));
+}
+
+function layoutRoadmap(items) {
   const fallbackColumn = 0;
   const rowCounts = {};
 
   return items
     .slice()
     .sort((a, b) => {
-      const aColumn = columns[a.column] ?? fallbackColumn;
-      const bColumn = columns[b.column] ?? fallbackColumn;
+      const aColumn = columnConfig[a.column]?.index ?? fallbackColumn;
+      const bColumn = columnConfig[b.column]?.index ?? fallbackColumn;
       const columnDelta = aColumn - bColumn;
       if (columnDelta !== 0) return columnDelta;
 
@@ -105,7 +201,7 @@ function layoutRoadmap(items) {
       return aStatus - bStatus;
     })
     .map((item) => {
-      const columnIndex = columns[item.column] ?? fallbackColumn;
+      const columnIndex = columnConfig[item.column]?.index ?? fallbackColumn;
       const rowKey = item.column || 'uncategorized';
       const row = rowCounts[rowKey] || 0;
       rowCounts[rowKey] = row + 1;
@@ -114,10 +210,15 @@ function layoutRoadmap(items) {
         id: item.id,
         type: 'roadmapNode',
         position: {
-          x: columnIndex * 330,
-          y: row * 170,
+          //          x: columnIndex * 330,
+          x: columnIndex * COLUMN_SPACING,
+          //          y: 80 + row * 170,
+          y: CARD_OFFSET_Y + row * CARD_SPACING_Y,
         },
-        data: item,
+        data: {
+          ...item,
+          columnColor: columnConfig[item.column]?.color ?? '#fbf3dc',
+        },
       };
     });
 }
@@ -181,7 +282,10 @@ function DetailPanel({ selectedItem, onClose }) {
 }
 
 function App() {
-  const initialNodes = useMemo(() => layoutRoadmap(roadmapItems), []);
+  const initialNodes = useMemo(
+    () => [...makeColumnHeaders(), ...layoutRoadmap(roadmapItems)],
+    []
+  );
   const initialEdges = useMemo(() => makeEdges(roadmapItems), []);
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
@@ -216,7 +320,11 @@ function App() {
             nodeTypes={nodeTypes}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
-            onNodeClick={(_, node) => setSelectedId(node.id)}
+            /*            onNodeClick={(_, node) => setSelectedId(node.id)}*/
+            onNodeClick={(_, node) => {
+              if (node.type === 'columnHeader') return;
+              setSelectedId(node.id);
+            }}
             fitView
             minZoom={0.25}
             maxZoom={1.4}
