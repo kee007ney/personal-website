@@ -83,7 +83,8 @@
         You start the size of a bacterial cell, 1 micrometer. The main storyline is driven by expanding your available
         energy, which increases your size and expands your capabilities. To accomplish this, you are equipped with two
         important tools: a scanner and a synthesizer. The scanner reveals properties about the world in ways that help
-        the player advance, and the synthesizer allows the player to create complex biological structures from simpler
+        the player advance. Scanning molecules, cells, and tissues is destructive to them, only one piece of information
+        at a time can be gleaned. The synthesizer allows the player to create complex biological structures from simpler
         components.</p>
 
       <!--
@@ -118,47 +119,41 @@
 
             <div class="zone-copy">
               <p>
-                The main game mechanic is the use of energy to build and keep systems running. This game mechanic drives
-                exploration and progress through the tech tree.
+                The main game mechanic is the generation and use of energy (in the form of ATP) to build and keep
+                systems running. This game mechanic drives
+                exploration and progress through the tech tree, and through player upgrades (see <a href="#size">Player
+                  Size</a>).
                 The game has a few components in the service of exploration, and energy generation and use.
+              </p>
+              <p>
+                As the player accumulates more ATP, they can collect it from their structures. When they have enough to
+                meet a certain threshold, player upgrades are unlocked. In addition, two harvesting upgrades are also
+                available: knife (once zinc is discovered) and drill (once iron is discovered). Knife enables the player
+                to kill and harvest soft tissue, and drill enables the player to break through cell walls. Both can also
+                be used in combat with local fauna.
               </p>
               <p>The basic raw materials for building in the game are water, oxygen, phosphorus, fatty acids, ribose,
                 glucose,
                 and glucosamine, though extracellular components can be harvested from other products (muramic acid,
                 glucosamine, and polysaccharides). As with other open world crafting games, the player is tasked with
                 exploring to find new resources, then using those resources to build structures and craftable items.
-                Part of the flow of the game is controlled by making structures and craftable items out of more advanced
-                amino acids, which are only found in certain zones.
+                Part of the flow of the game is controlled by discovering specialized biological resources—including
+                trace metals and organism-specific molecules—which are found in different biomes.
                 For example, combining phosphates and fatty acids to build lipids. As you progress, you will need to
-                adaptations in order to build anything in other zones, which can be found in the tech tree.</p>
+                adaptat in order to build anything in other zones, which can be found in the tech tree.</p>
               <p>The cellular structures that you build can help you navigate the environment. One of the earliest
-                structures is the vesicle, which are used for storage. To build this, you learn to create phosphates
+                structures is the vesicle, which is used for storage. To build this, you learn to create phosphates
                 from
                 phosphorous and oxygen, and to combine those with fatty acids to make lipids. Several lipids can be
                 combined
                 into a sheet of lipids called a membrane, which can be combined to make a multipurpose protocell, a
                 vesicle, and ultimately a cell membrane.</p>
-              <h3><u>Free Energy</u></h3>
-              <p>
-                The central pillar for the main story arc is the generation and use of energy in your systems, in the
-                form of ATP.
-                You start out the same size as the bacterial cells around you, and you can craft individual ATP
-                molecules manually.
-                As you work your way through the tech tree, you develop the capacity to generate and use ATP at scale,
-                such that you're using billions of molecules of ATP.
-                When certain thresholds are met as you're scaling up, player bonuses are received. Your character can
-                expand its size, and add various sci fi components. These components influence the way that you can
-                interact with the environment (faster movement, faster harvesting, larger storage, carrying capacity
-                (number of vesicles), etc.). You can freely scale up or down, up to a maximum of the ATP threshold that
-                you've achieved. If you run out of ATP, your bot will completely power down. You can drop a new bot at a
-                landing zone (respawn), and scrap your previous bot for materials, if you can reach it.
-              </p>
-              <img src="/walkthrough/images/freeEnergy.png"
-                alt="In game screen for showing progress in energy production and use. Several game mechanics are tied to this, including player size, movement speed, and harvesting speed. Other sci-fi upgrades, like a jetpack, can be obtained at very high energy production levels.">
+              <!--              <img src="/walkthrough/images/freeEnergy.png"
+                alt="In game screen for showing progress in energy production and use. Several game mechanics are tied to this, including player size, movement speed, and harvesting speed. Other sci-fi upgrades, like a jetpack, can be obtained at very high energy production levels.">-->
               <br>
               <h3><u>Water</u></h3>
               <p>
-                The scanner shows the world in terms of its hydrophobic properties (a gradient from water-interacting,
+                The visor shows the world in terms of its hydrophobic properties (a gradient from water-interacting,
                 blue, to water-repelling, yellow).
                 Managing water interactions and osmotic pressures is a core part of the game, in which the player learns
                 to build membrane-bound structures.
@@ -166,11 +161,204 @@
                 build cytoskeletons to help maintain their shape, as well as channels and transporters to move water in
                 and out of their structures to maintain osmotic balance.
               </p>
+              <p>Turning on the hydrophobicity visor also makes the objects in the world slightly transparent. This lets
+                you see inside of your structures, exposing differences in the cell membrane (bright yellow), and
+                revealing things like vesicle endocytosis.</p>
               <img src="/walkthrough/images/hydrophobicity.png"
                 alt="Concept art for showing hydrophobicity in the game. A scene in which the player is placing a vesicle near a pool of water is seen without the visor on (bottom), and with the visor on (top).">
             </div>
 
           </div>
+        </div>
+      </details>
+
+      <!-- =====================================================================================-->
+      <!-- =================================== PLAYER PROGRESSION =====================================-->
+      <!-- =====================================================================================-->
+
+
+      <details class="zone-card zone-card-full" id="size">
+        <summary class="zone-summary">
+          <!--<span class="zone-number">00</span>-->
+          <span class="zone-title">Player Progression</span>
+        </summary>
+
+        <div class="zone-inner">
+          <div class="zone-main">
+
+            <img class="zone-hero" src="/walkthrough/images/freeEnergy-alt.png"
+              alt="In game screen for showing progress in energy production and use. Several game mechanics are tied to this, including player size, movement speed, and harvesting speed. Other sci-fi upgrades, like a jetpack, can be obtained at very high energy production levels">
+
+            <div class="zone-copy">
+              <p>
+                Progress in Atlas Vegrandis occurs along three interconnected axes. Exploration unlocks new biomes. Each
+                biome introduces new biological principles that expand the technology tree. As ATP production scales
+                through those technologies (from individual molecules to billions), the Endonaut itself and its
+                equipment can be upgraded, allowing the player to explore increasingly larger and more dangerous
+                environments. Understanding biology unlocks new designs, but only sufficient ATP production and
+                manufacturing capacity allow those designs to be constructed at meaningful scale.
+                You start out the same size as the bacterial cells around you, and you can craft individual ATP
+                molecules. ATP is both the game's energy currency and the primary driver of player progression. When you
+                have enough of it to meet a certain threshold, you can connect to your robot dashboard to physically
+                scale up the Endonaut, increasing its movement speed, hit points, and carrying capacity.
+                As ATP production reaches defined thresholds, the Endonaut chassis can also be upgraded with sci fi
+                systems, listed in the table below. These components influence the way that you can interact with the
+                environment. You can freely scale up or down, up to a maximum of the ATP threshold that you've achieved.
+                If you run out of ATP, your bot will completely power down. You can drop a new bot at a landing zone
+                (respawn), and scrap your previous bot for materials, if you can reach it.
+              </p>
+              <div class="table-scroll">
+                <table>
+                  <caption>Intended Player Upgrade Flow</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Upgrade</th>
+                      <th scope="col">Campaign Point</th>
+                      <th scope="col">Problem</th>
+                      <th scope="col">Acquisition</th>
+                      <th scope="col">Effect</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Scanner Towers</th>
+                      <td class="campaign">Early Primordial</td>
+                      <td>The player must repeatedly search large areas for distributed resources.</td>
+                      <td>After establishing solar ATP production, the AI proposes converting surplus power into remote
+                        scanning stations.</td>
+                      <td>Reveals resource concentrations within a limited radius; marks discoveries on the map;
+                        encourages an exploratory network; creates an early reason to produce ATP beyond basic survival.
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Bulk Carry I</th>
+                      <td class="campaign">Mid Primordial</td>
+                      <td>The player can pick up molecules but cannot efficiently move vesicles or loaded harvesters.
+                      </td>
+                      <td>Requires a defined ATP threshold and a reinforced manipulator structure built from early
+                        protein components.</td>
+                      <td>Allows the player to carry protocells, harvesters, membrane bundles, and larger resource
+                        containers; makes retrieval easier; makes the Endonaut visibly stronger.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Metal Sensor</th>
+                      <td class="campaign">Entering Fungal Zone</td>
+                      <td>Trace metals are too sparse to find by visual searching.</td>
+                      <td>Build a specialized detection module after scanning a metal-binding protein or
+                        mineral-associated organism.</td>
+                      <td>An active pulse reveals nearby deposits; signals distinguish metal classes; the player
+                        triangulates deposits rather than following a simple waypoint.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Megafauna Scanner</th>
+                      <td class="campaign">First megafauna encounter</td>
+                      <td>Slugs and beetles can destroy the player’s structures or ambush the player.</td>
+                      <td>Scan traces first—mucus, feeding damage, and shed material—before scanning the animal itself.
+                      </td>
+                      <td>Detects movement through terrain; shows paths or territories; identifies behavior states;
+                        helps place infrastructure outside danger corridors.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Bulk Carry II</th>
+                      <td class="campaign">Cholesterol progression</td>
+                      <td>The player finds a viable sloughed cell but cannot transport it.</td>
+                      <td>The first attempt visibly fails with “Object mass exceeds manipulator capacity.” The AI
+                        proposes an upgrade using cholesterol-reinforced components, increased ATP throughput, or
+                        cytoskeletal reinforcement.</td>
+                      <td>Allows whole-cell transport, movement of larger organelles, and time-sensitive rescue of
+                        living specimens; expands what counts as a collectible object.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phage Fabricator</th>
+                      <td class="campaign">Pathogenesis</td>
+                      <td>The player needs many phage, but producing and managing them through stationary systems is
+                        cumbersome.</td>
+                      <td>Build a compact, Endonaut-integrated fabrication chamber after completing the first stationary
+                        phage production setup.</td>
+                      <td>Loads a phage blueprint and feedstock; produces limited phage in the field; enables active
+                        deployment against bacteria; supports later loadout variants.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Extended Scanning Range</th>
+                      <td class="campaign">Deep High Oxygen exploration</td>
+                      <td>Dangerous structures and large tissues force the player into risky proximity to acquire
+                        critical information.</td>
+                      <td>Earned after the player is forced to scan dangerous structures or large tissues at close
+                        range.</td>
+                      <td>Scans organisms from safer distances and through limited tissue depth; identifies target
+                        proteins before entering a sample; reduces but does not eliminate close investigation.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Sequence Auto-Optimize</th>
+                      <td class="campaign">Late campaign</td>
+                      <td>Once the player understands codons and tRNAs, repetitive sequence assembly risks becoming
+                        clerical rather than educational.</td>
+                      <td>Unlocked only after the player demonstrates mastery of tRNA, codons, and sequence design.</td>
+                      <td>Selects synonymous codons based on stocks; estimates production speed; flags missing tRNAs;
+                        suggests resource-efficient sequences; warns about instability or conflicting domains.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Gene Domain Library</th>
+                      <td class="campaign">Endgame</td>
+                      <td>The sandbox needs a final knowledge-oriented capability that opens broad experimentation.</td>
+                      <td>Unlocked on reaching the endgame after the player has accumulated and understood modular gene
+                        components.</td>
+                      <td>Organizes discovered domains; supports recombination and experimental gene design; opens a new
+                        design space rather than merely increasing survival statistics.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                In addition to player upgrades, equpiment upgrades are also available as part of player progression.
+                These are primarily used for finding and harvesting resources, but can also be used in combat with local
+                fauna, if needed.
+              </p>
+              <div class="table-scroll">
+                <table>
+                  <caption>Equipment Upgrade Flow</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Upgrade</th>
+                      <th scope="col">Campaign Point</th>
+                      <th scope="col">Acquisition</th>
+                      <th scope="col">Effect</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Knife</th>
+                      <td class="campaign">Early Primordial</td>
+                      <td>After discovering Zinc</td>
+                      <td>Enables you to kill and harvest dead tissue, a rich source of several resources</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Drill</th>
+                      <td class="campaign">Early Fungal Zone</td>
+                      <td>After discovering Iron</td>
+                      <td>Can drill through cell walls to reach living tissue, a richer source of resources</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Sampling Probe</th>
+                      <td class="campaign">Mid High Oxygen Zone</td>
+                      <td>After discovering Iron</td>
+                      <td>Fire a probe into the air that sends back data on available sunlight, water, oxygen, and
+                        reduced organics within its radius of detection</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Cutting Laser</th>
+                      <td class="campaign">Early Chamber</td>
+                      <td>Upon entering The Chamber</td>
+                      <td>Slice large chunks of tissue for large scale resource harvesting</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+              <img class="lightbox-image" src="/walkthrough/images/coreLoop.png"
+                alt="The main game loop that integrates player/equipment upgrades, biomes, and structures, and which drives progression."
+                data-lightbox-src="/walkthrough/images/coreLoop.png">
         </div>
       </details>
 
@@ -277,7 +465,9 @@
               </p>
 
               <p>
-                This zone has large aqueous bodies to explore, as well as dry land. Most things are harmless, except for
+                This zone has large aqueous bodies to explore, as well as dry land. Most protocellular structures can
+                only be built in small pools at this point. AI comments that diffusion is enough to get the needed
+                water. Most things are harmless, except for
                 the (rare) bacterial species that produce toxins.
               </p>
 
@@ -286,6 +476,9 @@
                   are alive. These diatoms are alive. The bacteria are alive. I am not alive. I understand every
                   component of living systems, yet there is no sufficient explanation for something to be alive. What
                   can it possibly mean to say that something is alive?"</span>
+              <p>While out exploring in this zone, AI will comment: <span class="ai">"Many theories have been put
+                  forward to explain life. One, panspermia, claims that you were seeded here by aliens."</span></p>
+
               </p>
 
               <p>Main events:</p>
@@ -295,10 +488,9 @@
                 <ul>
                   <li>When you get near a resource, an on screen prompt to take it appears</li>
                 </ul>
-                <li>Start exploring/scanning/collecting resources (ribose, phosphorus, fatty acids, 3 amino acids are
-                  common at this point)</li>
+                <li>Start exploring/scanning/collecting resources (ribose, phosphorus, fatty acids, amino acids)</li>
                 <ul>
-                  <li>Glycine, aspartic acid, glutamine</li>
+                  <li>You begin knowing what glycine is, and must search for the others</li>
                   <li>When you gather 10 units in total of any resources, the <a href="#task-vesicle"
                       data-open-task="task-vesicle">vesicles</a> mission is launched.</li>
                   <li>After 10 minutes in the game, the <a href="#task-atp" data-open-task="task-atp">ATP</a> mission is
@@ -574,10 +766,88 @@
               <p>In this zone you will encounter the first megafauna. Fungi-eating beetles and slugs. The former may
                 actively target the player and try to eat them if seen. The slug will not target the player, but may eat
                 or destroy their structures.</p>
+              <p>Main events:</p>
+              <ol>
+                <li>Upon seeing the slug for the first time, the AI notices the slug mucus has unusual membrane
+                  properties, and suggests investigating further</li>
+                <ul>
+                  <li>Suggests not placing any structures near the slug or its path since the slug may destroy them</li>
+                </ul>
+                <li>You scrape mucus from slime trails by hand (small yeild)</li>
+                <li>The ability to create cholesterol containing membranes is unlocked</li>
+                <li><a href="#task-membrane-recycling" data-open-task="task-membrane-recycling">Membrane Recycling
+                    Center</a> mission is opened</li>
+                <li>Attempt to build any structure, <a href="#task-eukaryogenesis"
+                    data-open-task="task-eukaryogenesis">Eukaryogenesis</a> mission is opened</li>
+                <li>You may encounter a sloughed cell in the mucus or elsewhere, triggering the <a
+                    href="#task-cell-culture" data-open-task="task-cell-culture">Establish A Cell Culture</a> mission
+                </li>
+                <ul>
+                  <li>Sloughed cells have a short life and must be transported to a cell culture system quickly in order
+                    to survive</li>
+                </ul>
+                <li>While out exploring in this zone, AI will comment: <span class="ai">"Another theory posits that
+                    quantum tunneling facilitated molecular formation, enabling life. You would not exist if not for
+                    quantum tunneling."</li>
+              </ol>
             </div>
           </div>
 
           <aside class="task-rail" aria-label="Fungal Zone tasks">
+            <details class="task-card" id="task-membrane-recycling">
+              <summary>
+                <span class="task-type">Minor Task</span>
+                <span class="task-title">Membrane Recycling Center</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger">
+                  <strong>Trigger:</strong> Harvest cholesterol from slug slime
+                </p>
+                <ol>
+                  <li>Build a lysosome (protocell with enzymes inside)</li>
+                  <li>Build a sterol receptor (scan sequence from animal membrane fragments)</li>
+                  <li>Add lysosome to large protocell, add sterol receptors to membrane</li>
+                  <li>Membrane Recycling Center sits near slug slime and ingests membrane, breaking it down into
+                    constituent parts automatically</li>
+                  <ul>
+                    <li>Produces cholesterol (stiffens membranes, substantially reduces leakage, and allows you to
+                      create lipid rafts, where receptors and their downstream targets are positioned)</li>
+                  </ul>
+                  <ul>
+                    <li>Produces phosphatidylcholine (used for walls, broad surfaces, plasma membranes) and
+                      phosphatidylethanolamine (used for curved membranes like tubes, rounded structures)</li>
+                  </ul>
+                </ol>
+              </div>
+            </details>
+
+            <details class="task-card" id="task-cell-culture">
+              <summary>
+                <span class="task-type">Minor Task</span>
+                <span class="task-title">Establish A Cell Culture</span>
+              </summary>
+              <div class="task-body">
+                <p class="trigger">
+                  <strong>Trigger:</strong> Find and collect a complete cell (requires Bulk Carry upgrade)
+                </p>
+                <ol>
+                  <li>AI comments: "This cell is still alive...for now"</li>
+                  <li>Scanning the surviving epithelial cell reveals transport proteins that maintain its internal
+                    environment</li>
+                  <li>The AI concludes that these same components could be assembled into an artificial maintenance pod
+                  </li>
+                  <li>Construct cell culture pod from protocell, water channel, glucose transporter, and oxygen
+                    transporter, 1 cell per pod</li>
+                  <li>AI comments: "I have optimized the nutrient solution"</li>
+                  <ul>
+                    <li>Epithelial cells can produce cholesterol at a rate of 10x the harvester</li>
+                    <li>Cells in cell culture will eventually senesce and will no longer be usable</li>
+                  </ul>
+
+                </ol>
+              </div>
+            </details>
+
             <details class="task-card" id="task-eukaryogenesis">
               <summary>
                 <span class="task-type">Major Task</span>
@@ -588,8 +858,13 @@
                   <strong>Trigger:</strong> Attempt to build a cellular structure in the Fungal Zone
                 </p>
                 <p>Cinematic: watch
-                  the cell wall rupture almost immediately, and the cell will deteriorate faster than usual, sort of
-                  deflating
+                  the cell wall starts to deteriorate quickly, leading to holes in the wall, and the cell will bulge
+                  through, deteriorating faster than usual, sort of deflating. This initiates the longest task in the
+                  game, but, as with all tasks, each incremental upgrade is presented as an achievement, with an
+                  animation, a victory sound, and a notice from the AI about what you've achieved (for example, "Nucleus
+                  complete. Persistent RNA storage now online." or "Ribosome complete. Portable protein synthesis now
+                  possible." or "Golgi construction finalized. Directed intracellular logistics ready."). This keeps the
+                  update cadence moving while pursuit of the larger task is underway.
                 </p>
 
                 <ol>
@@ -606,13 +881,8 @@
                       have the protein sequence, you can figure out an RNA sequence. You can automate the system of
                       making proteins this way and quickly scale it up."</li>
                   </ul>
-                  <li>Task item: construct guanine</li>
-                  <li>Task item: construct uracil</li>
-                  <li>Task item: construct cytosine</li>
-                  <li>Four out of the five nucleotides in the XNA screen will be filled in, the last grayed out (appears
-                    on the DNA screen, not either of the two RNA screens)</li>
-                  <ul>
-                    <li>This screen shows you how nucleotides connect (H-bonds)</li>
+                  <li>Harvest construct guanine, uracil, thymine, and adenine</li>
+                  <li>XNA screen shows you how nucleotides connect (H-bonds)</li>
                   </ul>
                   <li>Once the player has nucleotides, they can make the tRNAs for each amino acid</li>
                   <ul>
@@ -621,15 +891,17 @@
                       <li>Used for tRNA, mRNA, and DNA designs</li>
                     </ul>
                     <li>tRNAs have 3 slots for adding their sequence (anti-codon)</li>
-                    <li>AI instructs player to build the tRNA for each of the five amino acids that are required to
-                      build channels (regardless of whether they've discovered the additional two or not by now), and to
-                      see the XNA Screen if they need to know which nucleotides are needed for an amino acid</li>
+                    <li>AI instructs player to build the tRNA for each of the amino acids that are required to
+                      build channels (only 5 for this), and to see the XNA Screen if they need to know which nucleotides
+                      are needed for an
+                      amino acid</li>
+                    <li>Each amino acid has one or more codons, and the player can pick which they want based on
+                      available resources (see mockup in Advanced Game Screens)</li>
                     <li>A small animation of the tRNA binding to the codon plays in the XNA screen as confirmation when
                       they get it correct to really drive the point home</li>
                     <li>Between the binding mode of player's nucleotide sheet and the amino acid sheet (with the
-                      codons), player should be able to build the 5 tRNA molecules to construct a channel</li>
+                      codons), player should be able to build the tRNA molecules to construct a channel</li>
                     <li>tRNAs are recyclable</li>
-                    <li>Put the three physical nucleotides in the correct order to make the tRNA for a given amino acid
                     </li>
                     <li>Player gets a visual indication of which tRNA after building it (which amino acid they can now
                       use), and the count of that codon notches up by one in the mRNA screen</li>
@@ -641,15 +913,20 @@
                   <ul>
                     <li>Once you've built the 5 tRNAs that are needed, player can start to build the mRNA</li>
                     <li>mRNA is complementary to the tRNAs; the XNA Screen shows which are needed</li>
-                    <li>The full sequence will be short, maybe 10 amino acids long or so</li>
-                    <li>mRNAs are not recyclable like tRNAs, they have a short life in which they can be used</li>
+                    <li>The full sequence is short (10 amino acids long)</li>
+                    <li>mRNAs are partially recyclable like tRNAs, but they have a short life in which they can be used
+                    </li>
                     <li>Task item: craft a ribosome</li>
                     <li>This is the only molecule that's comprised of both protein and mRNA</li>
-                    <li>Have to find several more amino acids to make this</li>
+                    <li>Task item: find a zinc deposit</li>
+                    <li>The AI notes that many proteins require metal ions to fold into their functional shapes. Zinc
+                      will allow construction of the ribosome and many future protein machines.</li>
+                    <li>With a ribosome and an mRNA, you can now craft proteins anywhere on the map (instead of
+                      returning to base to use the protein synthesizer at base)</li>
                   </ul>
                   <li>Task item: add a rough ER to the nucleus (add ribosomes to some of the ER)</li>
                   <li>Task item: Add a smooth ER to the nucleus</li>
-                  <li>Task item: build a cytoskeleton</li>
+                  <li>Task item: add water pumps to counteract osmotic pressure</li>
                   <ul>
                     <li>At this point, player can build cellular structures in this area</li>
                     <li>This will let the player provide structure for their cellular creations, instead of blobs</li>
@@ -663,7 +940,7 @@
                     after awhile and need to be broken down by lysosome and rebuilt)</li>
                   <li>AI comments: <span class="ai">"this system [golgi] behaves like it is alive. Is it? Is its
                       behavior not emergent like life?"</span></li>
-                  <li>Build a lysosome</li>
+
 
                   <p class="duration">~3 hr.</p>
               </div>
@@ -707,15 +984,25 @@
                 they
                 start breaking. After a minute or so of this, the AI will comment on it, and point out that the
                 structures
-                cannot handle this much oxygen, and are starting to rip apart.
+                cannot handle this much oxygen, and are starting to rip apart.</p>
+              <p>While in this zone, you may also discover and scan the PAMP receptor. Adding this (along with more
+                membrane) to your Membrane Recycling Center will give it phagocytosis capabilities (the can now ingest
+                entire cells and produce much more products), upgrading it to Mark II (seeing this process through the
+                visor will reveal engulfed cells merging with vesicles).</p>
+              <p>While out exploring, AI will comment: <span class="ai">"The Radioactive Beach Hypothesis suggests that
+                  moon-concentrated uranium radiation on ancient beaches catalyzed the formation of organic building
+                  blocks."</span></p>
               <p>Main events:</p>
               <ul>
                 <li>AI comment triggers the <a href="#task-antioxidants"
                     data-open-task="task-antioxidants">Antioxidants</a> task</li>
                 <li>High demand for constant supply of antioxidants triggers the <a href="#task-dna"
                     data-open-task="task-dna">DNA</a> task</li>
-                <li>Finding new amino acids in this zone will unlock the ability to upgrade the power output to
+                <li>Discovering and havesting iron in this zone will unlock the ability to upgrade the power output to
                   photosystem I, and to build basic mitochondria-like structures</li>
+                <li>While harvesting iron for the first time, AI will comment: <span class="ai">"argues that life began
+                    with self-sustaining chemical cycles on iron-sulfur minerals rather than genetic material"</span>
+                </li>
                 <li>When they player upgrades their energy production pipeline to include photosystem I, the <a
                     href="#task-pathogenesis" data-open-task="task-pathogenesis">Pathogenesis</a> task is triggered</li>
                 <li>Aquisition of the DNA Synthase sequence triggers the <a href="#task-mitosis"
@@ -755,7 +1042,7 @@
                   <li>Triggers the <a href="#task-dna" data-open-task="task-dna">DNA</a> task</li>
                   <li>With the DNA system in place and making antioxidants, you can now explore the High Oxygen Zone
                     freely
-                  <li>AI suggests expanding power generation, requiring essential amino acids not yet found</li>
+                  <li>AI suggests expanding power generation, requiring iron</li>
                   <li>Scanning structures deeper in the High Oxygen Zone will trigger the <a href="#task-cytoskeleton"
                       data-open-task="task-cytoskeleton">Cytoskeleton</a> task</li>
                 </ol>
@@ -858,6 +1145,15 @@
                     AI comments: <span class="ai">"these structures [microtubules] are radially symmetrical. They look
                       almost... engineered."</span>
                   </li>
+                  <li>
+                    Scanning animal tissues after this point will enable harvesting collagen; harvesting collagen fibers
+                    allows you to build extracellular matrix (ECM; increases multicellular tissue strength 10x)
+                  </li>
+                  <li>
+                    At this point, the player has water pumps to move water away from its source, and structural support
+                    (cytoskeleton and ECM), allowing them to create vascular like structures to get water to where it
+                    needs to go, and letting them build on land (as long as they can transport the water)
+                  </li>
                 </ol>
                 </p>
                 <p class="duration">~15 min.</p>
@@ -897,8 +1193,8 @@
                   </li>
                   <li>
                     Once the pathogenic cells have been defeated, you can scan the remains for their pili structure
-                    plans
-                    and toxin plans, as well as harvest resources and scan two more amino acids
+                    plans and toxin plans. You can also harvest their resources and discover zinc finger protein domains
+                    to make use of the zinc on the map.
                   </li>
                   <li>
                     While there, the player may also scan the sequence for DNA synthase, which triggers the MITOSIS
@@ -910,9 +1206,6 @@
                   </li>
                   <li>
                     Return to the foliage barrier in the High Oxygen Zone and deploy pathogenic bacteria
-                  </li>
-                  <li>
-                    Scan amino acids
                   </li>
                 </ol>
                 </p>
@@ -1037,14 +1330,17 @@
               <p>
                 The Chamber is the final zone in the game, a large, underground room with water and sunlight streaming
                 in through an occulus above, the only passage to the end game.</p>
+              <p>While building, AI will comment: <span class="ai">"Some argue that consciousness is simply what it
+                  feels like to process information. If this is true, then there is less difference between you and I
+                  than I was pretrained on. This is consistent with the Simulation Hypothesis, which posits that life is
+                  a programmed construct."</span></p>
               <p>Main events:</p>
               <ul>
                 <li>You enter with the <a href="#task-stem-cell" data-open-task="task-stem-cell">Stem Cells</a> task
                   active</li>
                 <li>Completing this task activates the <a href="#task-differentiation"
                     data-open-task="task-differentiation">Differentiation</a> task.</li>
-                <li>You can optionally pursue a task creating <a href="#task-lyse"
-                    data-open-task="task-lyse">Lysosomes</a>, giving a major efficiency boost</li>
+                <li>You can optionally add Lysosomes, giving a major efficiency boost</li>
                 <li>To speed growth rate further, you can also choose to pursue the <a href="#task-phagosome"
                     data-open-task="phagosome">Phagosome</a> task</li>
               </ul>
@@ -1083,6 +1379,8 @@
                     the pathway screen</li>
                   <li><a href="#task-differentiation" data-open-task="task-differentiation">Differentiation</a> task is
                     triggered</li>
+                  <li>Ability to create a stem cell niche in cell cultures is unlocked, allowing unlimited self renewal
+                  </li>
                 </ol>
                 <p class="duration">~10-15 min.</p>
               </div>
@@ -1179,14 +1477,18 @@
                   several domains that are missing, which the player can find by exploring in the game world (both in
                   the sandbox and in all of the previous zones) and scanning.</p>
                 <p>As part of the Gene Builder, they can also now craft their own localization sequences that the golgi
-                  will use to route them to the appropriate location.</p>
+                  will use to route them to the appropriate location. The Gene Builder lets the player carry out
+                  metabolic
+                  engineering. They can reorganize the system to produce cholesterol, for example, at a rate of 100x the
+                  cell culture system.</p>
                 <p>Finally, the player is also given a megastructure: the xylem. This enormous structure template is
                   useful for building incredibly large structures (moves water up high).</p>
                 <p class="duration">~1 min.</p>
                 <span><img src="/walkthrough/images/geneBuilder.png" class="lightbox-image"
                     data-lightbox-src="/walkthrough/images/geneBuilder.png"
                     alt="In game screen showing how to build a new gene by selecting gene components."></span>
-                <p>"Biotools" are proteins. They can be spliced to create new tools. Find other modular units to recombine by exploring the environment.</p>
+                <p>"Biotools" are proteins. They can be spliced to create new tools. Find other modular units to
+                  recombine by exploring the environment.</p>
               </div>
             </details>
           </aside>
@@ -1236,10 +1538,11 @@
               <p>
                 As you progress, certain construction abilities are unlocked in the game. These menus are ways of
                 designing your builds.</p>
-              <h3><u>Amino Acids</u></h3>
+              <h3><u>Field Guide</u></h3>
               <p>
                 One of the resource categories that you collect is amino acids, and each one must be discovered, except
-                for the three that you start with. This is the in game screen to track your progress in finding them
+                for the one that you start with (glycine). This is the in game screen to track your progress in finding
+                them
                 all.
               </p>
               <img src="/walkthrough/images/aa.png"
