@@ -66,6 +66,17 @@ export const roadmapItems = [
     details: 'The buildling blocks all exist in the game, and enzymes are a fundamental concepts, but the concept of enzymes does not explicitly exist (it does implicitly). There are many places in which this idea could be implemented.',
   },
   {
+    id: 'ph',
+    title: 'Acidity',
+    category: 'Cell Biology Concepts',
+    column: 'biology',
+    status: 'exploring',
+    communitySignal: 'Core',
+    dependsOn: [],
+    description: 'Acidity might be another dimension of control in the game.',
+    details: 'As in real cells, a pH gradient can be established in a cell to control the folding of its proteins. Not too difficult to implement and big impact in terms of both game mechanics and educational value, but needs to be done thoughtfully.',
+  },
+  {
     id: 'community-sandbox',
     title: 'Community Sandbox',
     category: 'Game Modes',
