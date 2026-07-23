@@ -110,6 +110,17 @@ export const roadmapItems = [
     details: 'Content creations can be shared with the world. Those that are particularly useful for teaching, for example, may be highly in demand.',
   },
   {
+    id: 'ph-visor',
+    title: 'pH Visor',
+    category: 'Foundations',
+    column: 'foundations',
+    status: 'exploring',
+    communitySignal: 'Needs clarity',
+    dependsOn: [],
+    description: 'Players can see the world in terms of its acidity.',
+    details: 'Like the hydrophobicity visor, this translates a fundamental concept into something highly visible. Makes things like mitochondrial dynamics very clear, for example.',
+  },
+  {
     id: 'medical',
     title: 'Medical Mode',
     category: 'DLC',
