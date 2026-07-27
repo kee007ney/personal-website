@@ -78,12 +78,13 @@
       </h1>
 
       <p class="hero-text">
-        I’m Jonathon Keeney. I lead scientific software and data-platform initiatives that help researchers turn complex
+        I'm Jonathon Keeney. I lead scientific software and data-platform initiatives that help researchers turn complex
         questions, data, and workflows into reliable, usable systems.
       </p>
       <p class="hero-text">
-        My career has taken me from studying the genomics of human brain development to guiding bioinformatics
-        platforms, regulatory-grade data products, and an international technical standard. I work at the intersection
+        My career has taken me from studying the genomics of human brain development to guiding bioinformatics and
+        federated health-data platforms, regulatory-grade data products, and an international technical standard. I work
+        at the intersection
         of science, software engineering, operations, and the specialized communities these systems serve—translating
         among researchers, developers, regulators, organizational leaders, and users to establish a shared direction and
         move complex programs forward.
@@ -124,6 +125,12 @@
             <span class="expand-hint">View details</span>
           </button>
 
+          <button class="card project-card" data-project="feast">
+            <h3>FEAST</h3>
+            <p>Privacy-preserving federated analytics for biomedical and health data.</p>
+            <span class="expand-hint">View details</span>
+          </button>
+
           <button class="card project-card" data-project="argos">
             <h3>Argos</h3>
             <p>Government-facing infectious disease knowledge platform for FDA and BARDA.</p>
@@ -157,12 +164,74 @@
             </p>
             <ul>
               <li>Led cross-functional collaboration with FDA, industry, and academic partners to standardize
-                BioCompute
-                as IEEE 2791-2020</li>
+                BioCompute as IEEE 2791-2020</li>
               <li>Facilitated adoption of the standard by Federal partners</li>
               <li>Directed development of the BioCompute Portal</li>
               <li>Delivered workshops, webinars, and technical training</li>
             </ul>
+          </article>
+
+          <article class="project-detail" id="project-feast">
+                        <a class="project-logo-link" href="https://dnahive.com/feast-and-the-arpa-h-bdf-toolbox.html" target="_blank"
+              rel="noopener noreferrer">
+
+              <img class="project-logo" src="images/arpa_h_logo.png" alt="ARPA-H Logo">
+
+            </a>
+
+            <p>
+              FEAST—Federated Ecosystems for Analytics and Standardized
+              Technologies—is an ARPA-H-funded platform for analyzing sensitive
+              biomedical data distributed across healthcare and research institutions.
+              Rather than requiring organizations to pool protected records in one
+              location, FEAST brings authorized computation to participating data
+              environments while allowing institutions to retain control of their
+              underlying data.
+            </p>
+
+            <ul>
+              <li>
+                Helped shape the initial proposal and product definition for the
+                federated platform.
+              </li>
+
+              <li>
+                Maintained GW's DuckDB environment and translated data structure,
+                meaning, and operational constraints into requirements for developers.
+              </li>
+
+              <li>
+                Built a synthetic development and testing database using
+                Synthea-generated EHR records represented in HL7 FHIR.
+              </li>
+
+              <li>
+                Coordinated institutional data teams and led work involving OMOP
+                conversion tools and cross-site interoperability.
+              </li>
+
+              <li>
+                Defined local database-access rules using JSON Schema and worked with
+                developers to translate them into authentication protocols.
+              </li>
+
+              <li>
+                Contributed data curation and research to a published analysis of 61
+                cross-institutional biomedical research use cases.
+              </li>
+            </ul>
+
+            <div class="project-links">
+              <a href="https://arpa-h.gov/explore-funding/programs/arpa-h-bdf-toolbox" target="_blank"
+                rel="noopener noreferrer">
+                View the ARPA-H program
+              </a>
+
+              <a href="https://academic.oup.com/jamia/article/33/4/827/8431578" target="_blank"
+                rel="noopener noreferrer">
+                Read the JAMIA study
+              </a>
+            </div>
           </article>
 
           <article class="project-detail" id="project-argos">
@@ -210,17 +279,19 @@
               training, and technical consulting for other scientists.
             </p>
             <ul>
-              <li>Gathered needs from scientific and regulatory users and translated their workflows into user stories, technical requirements, and development priorities</li>
+              <li>Gathered needs from scientific and regulatory users and translated their workflows into user stories,
+                technical requirements, and development priorities</li>
               <li>Coordinated cross-functional delivery with FDA software engineering and DevOps teams</li>
               <li>Led platform operations, deployment, policy, and user support across regulated environments</li>
               <li>Supported adoption through technical consulting, training, documentation, and onboarding</li>
               <li>Maintained hands-on technical fluency with HIVE's distributed, Hadoop-like architecture, SQL-based
-    access, Python and JSON module integration, and bioinformatics QA/QC workflows</li>
+                access, Python and JSON module integration, and bioinformatics QA/QC workflows</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
-<!--    </div>-->
+    <!--    </div>-->
     <!-- *******************************VISUALIZATIONS********************************** -->
     <section class="section" id="visualizations" data-marginalia="images/down4.webp" data-marginalia-label=""
       data-marginalia-caption="">
@@ -234,7 +305,7 @@
       </a>
     </section>
 
-<!--    </div>-->
+    <!--    </div>-->
 
     <!-- *******************************PRESENTATIONS********************************** -->
 
