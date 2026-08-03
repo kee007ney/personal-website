@@ -2,6 +2,7 @@
 Interactive public roadmap prototype for Atlas Vegrandis, built with Vite, React, and React Flow.
 
 ## To deploy
+```bash
 cd roadmap-dev
 npm run build
 rm -rf ../public/roadmap/*
@@ -10,9 +11,10 @@ git status
 git add public/roadmap
 git commit -m "Update roadmap build"
 git push
+```
 
 Check locally:
-npx serve public
+`npx serve public` (from root)
 
 If you get an upgrade error, look at your version:
 node -v
