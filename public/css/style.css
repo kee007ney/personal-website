@@ -660,6 +660,7 @@ font-style:italic;
     width: 64px;
     transform: translateX(-50%);
 
+    /* Use this space to include the page crease effect
     background: linear-gradient(to right,
             rgba(0, 0, 0, 0.00) 0%,
             rgba(0, 0, 0, 0.05) 20%,
@@ -668,7 +669,8 @@ font-style:italic;
             rgba(0, 0, 0, 0.12) 65%,
             rgba(0, 0, 0, 0.05) 80%,
             rgba(0, 0, 0, 0.00) 100%);
-
+    */
+    
     opacity: 0.8;
 }
 
