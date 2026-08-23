@@ -1,7 +1,17 @@
 {
   "name": "personal-website",
   "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply shopping-list --local",
+    "migrate:remote": "wrangler d1 migrations apply shopping-list --remote"
+  },
   "devDependencies": {
     "wrangler": "^4.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260820.1": true
   }
 }

@@ -1,23 +1,50 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "personal-website",
-  "compatibility_date": "2026-06-25",
-  "observability": {
-    "enabled": false,
-    "head_sampling_rate": 1,
-    "logs": {
-      "enabled": true,
-      "head_sampling_rate": 1,
-      "persist": true,
-      "invocation_logs": true
-    },
-    "traces": {
-      "enabled": false,
-      "persist": true,
-      "head_sampling_rate": 1
-    }
-  },
-  "assets": {
-    "directory": "./public",
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "personal-website",
+	"account_id": "ef6ef62499f4704d5be6edcbba42c7dd",
+	"compatibility_date": "2026-08-20",
+	"main": "./src/worker.js",
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "SHOPPING_ROOM",
+				"class_name": "ShoppingRoom"
+			}
+		]
+	},
+	"exports": {
+		"ShoppingRoom": {
+			"type": "durable-object",
+			"storage": "sqlite"
+		}
+	},
+	"observability": {
+		"enabled": false,
+		"head_sampling_rate": 1,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"persist": true,
+			"invocation_logs": true
+		},
+		"traces": {
+			"enabled": false,
+			"persist": true,
+			"head_sampling_rate": 1
+		}
+	},
+	"assets": {
+		"directory": "./public",
+		"binding": "ASSETS",
+		"run_worker_first": [
+			"/api/shopping/*"
+		]
+	},
+	"d1_databases": [
+		{
+			"binding": "SHOPPING_DB",
+			"database_name": "shopping-list",
+			"database_id": "cf84800e-3af7-4edd-9465-1dfdde3fd627"
+		}
+	]
 }
