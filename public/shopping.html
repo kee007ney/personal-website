@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Shopping | Jonathon Keeney</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shopping.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+
+<body class="shopping-page">
+  <header class="site-header">
+    <nav class="nav shopping-nav" aria-label="Primary navigation">
+      <a class="logo" href="/">Jonathon Keeney, Ph.D.</a>
+      <div class="account-nav" hidden>
+        <span id="live-status" class="live-status" data-state="offline">Offline</span>
+        <span id="current-user" class="current-user"></span>
+        <button id="logout-button" class="text-button" type="button">Log out</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shopping-main">
+    <section id="login-view" class="auth-card" aria-labelledby="login-title">
+      <p class="eyebrow">Private utility</p>
+      <h1 id="login-title">Shopping</h1>
+      <p>Sign in to your household shopping list.</p>
+      <form id="login-form" class="stack-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="button primary" type="submit">Sign in</button>
+        <p id="login-error" class="form-message error" role="alert" hidden></p>
+      </form>
+      <button id="show-register-button" class="text-button auth-switch" type="button">Join with an invitation</button>
+    </section>
+
+    <section id="register-view" class="auth-card" aria-labelledby="register-title" hidden>
+      <p class="eyebrow">Household invitation</p>
+      <h1 id="register-title">Create account</h1>
+      <form id="register-form" class="stack-form">
+        <label for="invite-code">Invitation code</label>
+        <input id="invite-code" name="inviteCode" type="text" autocomplete="off" required>
+        <label for="register-display-name">Your name</label>
+        <input id="register-display-name" name="displayName" type="text" autocomplete="name" required>
+        <label for="register-username">Username</label>
+        <input id="register-username" name="username" type="text" autocomplete="username" required>
+        <label for="register-password">Choose a password</label>
+        <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="10" required>
+        <button class="button primary" type="submit">Create account</button>
+        <p id="register-error" class="form-message error" role="alert" hidden></p>
+      </form>
+      <button id="show-login-button" class="text-button auth-switch" type="button">Back to sign in</button>
+    </section>
+
+    <section id="setup-view" class="auth-card setup-card" aria-labelledby="setup-title" hidden>
+      <p class="eyebrow">One-time setup</p>
+      <h1 id="setup-title">Create your household</h1>
+      <p>Create the first administrator account. The setup code is the secret you add during installation.</p>
+      <form id="setup-form" class="stack-form">
+        <label for="setup-code">Setup code</label>
+        <input id="setup-code" name="setupCode" type="password" autocomplete="off" required>
+        <label for="household-name">Household name</label>
+        <input id="household-name" name="householdName" type="text" value="Our Household" required>
+        <label for="setup-display-name">Your name</label>
+        <input id="setup-display-name" name="displayName" type="text" autocomplete="name" required>
+        <label for="setup-username">Username</label>
+        <input id="setup-username" name="username" type="text" autocomplete="username" required>
+        <label for="setup-password">Choose a password</label>
+        <input id="setup-password" name="password" type="password" autocomplete="new-password" minlength="10" required>
+        <button class="button primary" type="submit">Create household</button>
+        <p id="setup-error" class="form-message error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section id="app-view" class="shopping-app" hidden>
+      <div class="app-heading">
+        <div>
+          <p class="eyebrow">Private utility</p>
+          <h1>Shopping</h1>
+        </div>
+        <div class="app-actions">
+          <button id="manage-household-button" class="button secondary compact-button" type="button" hidden>Household</button>
+          <button id="manage-catalog-button" class="button secondary compact-button" type="button">Manage items</button>
+        </div>
+      </div>
+
+      <div class="tab-list" role="tablist" aria-label="Shopping views">
+        <button id="list-tab" class="tab-button is-active" type="button" role="tab" aria-selected="true"
+          aria-controls="list-panel">Shopping List</button>
+        <button id="history-tab" class="tab-button" type="button" role="tab" aria-selected="false"
+          aria-controls="history-panel">Shopping History</button>
+      </div>
+
+      <section id="list-panel" class="tab-panel" role="tabpanel" aria-labelledby="list-tab">
+        <form id="add-item-form" class="add-item-form">
+          <div class="field-grow autocomplete-field">
+            <label for="item-name">Item</label>
+            <input id="item-name" name="name" type="text" placeholder="Start typing an item…" autocomplete="off"
+              aria-autocomplete="list" aria-controls="suggestions" required>
+            <div id="suggestions" class="suggestions" role="listbox" hidden></div>
+          </div>
+          <div class="quantity-field">
+            <label for="item-quantity">Quantity</label>
+            <input id="item-quantity" name="quantity" type="text" value="1" maxlength="40" required>
+          </div>
+          <button class="button primary add-button" type="submit">Add item</button>
+        </form>
+        <p id="list-message" class="form-message" role="status" aria-live="polite"></p>
+
+        <aside id="recommendation-panel" class="recommendation-panel" aria-labelledby="recommendation-title">
+          <span id="recommendation-title" class="recommendation-title">Suggested</span>
+          <div id="recommendation-list" class="recommendation-list"></div>
+          <span id="recommendation-empty" class="recommendation-empty" hidden>Nothing left to suggest!</span>
+        </aside>
+
+        <div class="category-control">
+          <button id="category-toggle" class="text-button" type="button" aria-pressed="false">Hide categories</button>
+        </div>
+
+        <div id="list-tables" class="list-layout">
+          <section class="shopping-table-card" aria-labelledby="shopping-list-title">
+            <div class="table-title-row">
+              <h2 id="shopping-list-title">Shopping List</h2>
+              <span id="shopping-count" class="count-badge">0</span>
+            </div>
+            <div class="table-scroll">
+              <table class="shopping-table">
+                <thead>
+                  <tr>
+                    <th data-table="list" data-column="name" aria-sort="none">
+                      <div class="column-heading">
+                        <button class="sort-button" type="button" data-table="list" data-sort="name" aria-label="Sort Shopping List by name">Name <span class="sort-indicator" aria-hidden="true">↕</span></button>
+                        <button id="copy-list-button" class="copy-list-button" type="button">Copy List</button>
+                      </div>
+                    </th>
+                    <th data-table="list" data-column="quantity" aria-sort="none"><button class="sort-button" type="button" data-table="list" data-sort="quantity" aria-label="Sort Shopping List by quantity">Quantity <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                    <th class="category-column" data-table="list" data-column="category" aria-sort="none"><button class="sort-button" type="button" data-table="list" data-sort="category" aria-label="Sort Shopping List by category">Category <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                  </tr>
+                </thead>
+                <tbody id="shopping-list-body"></tbody>
+              </table>
+            </div>
+            <p id="shopping-list-empty" class="empty-state">Your list is empty.</p>
+          </section>
+
+          <section class="shopping-table-card cart-card" aria-labelledby="cart-title">
+            <div class="table-title-row">
+              <h2 id="cart-title">In Cart</h2>
+              <span id="cart-count" class="count-badge">0</span>
+            </div>
+            <div class="table-scroll">
+              <table class="shopping-table">
+                <thead>
+                  <tr>
+                    <th data-table="cart" data-column="name" aria-sort="none"><button class="sort-button" type="button" data-table="cart" data-sort="name" aria-label="Sort In Cart by name">Name <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                    <th data-table="cart" data-column="quantity" aria-sort="none"><button class="sort-button" type="button" data-table="cart" data-sort="quantity" aria-label="Sort In Cart by quantity">Quantity <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                    <th class="category-column" data-table="cart" data-column="category" aria-sort="none"><button class="sort-button" type="button" data-table="cart" data-sort="category" aria-label="Sort In Cart by category">Category <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                  </tr>
+                </thead>
+                <tbody id="cart-body"></tbody>
+              </table>
+            </div>
+            <p id="cart-empty" class="empty-state">Tap an item when you put it in the cart.</p>
+          </section>
+        </div>
+
+        <button id="finish-shopping-button" class="button primary finish-button" type="button" disabled>Finish Shopping</button>
+      </section>
+
+      <section id="history-panel" class="tab-panel" role="tabpanel" aria-labelledby="history-tab" hidden>
+        <form id="history-search-form" class="history-search" role="search">
+          <label for="history-search">Search shopping history</label>
+          <div class="search-controls">
+            <input id="history-search" type="search" placeholder="Search items, categories, or stores…" autocomplete="off">
+            <button id="clear-search-button" class="button secondary compact-button" type="button">Clear</button>
+          </div>
+        </form>
+        <p id="history-message" class="form-message" role="status" aria-live="polite"></p>
+        <div id="history-results" class="history-results"></div>
+        <div id="history-detail" class="history-detail" hidden></div>
+        <button id="history-back-button" class="floating-back" type="button" hidden aria-label="Back to shopping history">← Back</button>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="catalog-dialog" class="catalog-dialog" aria-labelledby="catalog-title">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">Autocomplete database</p>
+        <h2 id="catalog-title">Manage items</h2>
+      </div>
+      <button id="close-catalog-button" class="icon-button" type="button" aria-label="Close">×</button>
+    </div>
+    <form id="catalog-form" class="catalog-form">
+      <input id="catalog-id" type="hidden">
+      <div>
+        <label for="catalog-name">Name</label>
+        <input id="catalog-name" type="text" required>
+      </div>
+      <div>
+        <label for="catalog-categories">Categories</label>
+        <input id="catalog-categories" type="text" placeholder="Produce, refrigerated (comma-separated)">
+      </div>
+      <div class="catalog-form-actions">
+        <button id="catalog-save-button" class="button primary compact-button" type="submit">Add item</button>
+        <button id="catalog-cancel-button" class="text-button" type="button" hidden>Cancel edit</button>
+      </div>
+    </form>
+    <label for="catalog-filter">Filter items</label>
+    <input id="catalog-filter" type="search" placeholder="Find an item…">
+    <p id="catalog-message" class="form-message" role="status" aria-live="polite"></p>
+    <div class="catalog-table-wrap">
+      <table class="catalog-table">
+        <thead><tr><th>Name</th><th>Categories</th><th><span class="sr-only">Actions</span></th></tr></thead>
+        <tbody id="catalog-body"></tbody>
+      </table>
+    </div>
+  </dialog>
+
+  <dialog id="household-dialog" class="catalog-dialog household-dialog" aria-labelledby="household-title">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">Shared access</p>
+        <h2 id="household-title">Household</h2>
+      </div>
+      <button id="close-household-button" class="icon-button" type="button" aria-label="Close">×</button>
+    </div>
+    <p>Everyone listed here shares this shopping list and receives live updates.</p>
+    <div id="member-list" class="member-list"></div>
+    <div class="invite-panel">
+      <h3>Invite someone</h3>
+      <p>Create a single-use invitation code. It expires after 7 days.</p>
+      <button id="create-invite-button" class="button primary compact-button" type="button">Create invitation</button>
+      <div id="invite-result" class="invite-result" hidden>
+        <label for="generated-invite">Invitation code</label>
+        <div class="copy-row">
+          <input id="generated-invite" type="text" readonly>
+          <button id="copy-invite-button" class="button secondary compact-button" type="button">Copy</button>
+        </div>
+        <p class="invite-warning">This code is shown only once.</p>
+      </div>
+      <p id="household-message" class="form-message" role="status" aria-live="polite"></p>
+    </div>
+  </dialog>
+
+  <script src="js/shopping.js" defer></script>
+</body>
+</html>

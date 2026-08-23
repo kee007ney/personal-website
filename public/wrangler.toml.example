@@ -1,0 +1,8 @@
+name = "jonathon-keeney-site"
+compatibility_date = "2026-08-20"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "SHOPPING_DB"
+database_name = "shopping-list"
+database_id = "PASTE_YOUR_D1_DATABASE_ID_HERE"
