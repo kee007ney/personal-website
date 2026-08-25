@@ -43,6 +43,7 @@ async function routeApi(request, env, path) {
   if (path === "suggestions" && method === "GET") return getSuggestions(env, session);
   if (path === "list" && method === "GET") return getList(env, session);
   if (path === "list" && method === "POST") return createListItem(request, env, session);
+  if (path === "list/cart" && method === "POST") return moveAllItemsToCart(env, session);
   if (path.startsWith("list/") && method === "PUT") return updateListItem(request, env, session, pathPart(path, 1));
   if (path.startsWith("list/") && method === "DELETE") return deleteListItem(env, session, pathPart(path, 1));
   if (path === "finish" && method === "POST") return finishShopping(env, session);
@@ -299,6 +300,14 @@ async function updateListItem(request, env, session, id) {
   const item = await env.SHOPPING_DB.prepare("SELECT * FROM list_items WHERE id = ? AND household_id = ?").bind(id, session.householdId).first();
   await broadcast(env, session.householdId, "list_changed", { by: session.userId });
   return json({ item: serializeListItem(item) });
+}
+
+async function moveAllItemsToCart(env, session) {
+  const result = await env.SHOPPING_DB.prepare("UPDATE list_items SET state = 'cart', updated_at = ? WHERE state = 'list' AND household_id = ?")
+    .bind(new Date().toISOString(), session.householdId).run();
+  const itemCount = Number(result.meta?.changes || 0);
+  if (itemCount) await broadcast(env, session.householdId, "list_changed", { by: session.userId });
+  return json({ itemCount });
 }
 
 async function deleteListItem(env, session, id) {
