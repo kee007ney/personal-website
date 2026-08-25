@@ -14,13 +14,15 @@ const $ = selector => document.querySelector(selector);
 const elements = {
   loginView: $("#login-view"), registerView: $("#register-view"), setupView: $("#setup-view"), appView: $("#app-view"),
   loginForm: $("#login-form"), loginError: $("#login-error"), registerForm: $("#register-form"), registerError: $("#register-error"),
-  setupForm: $("#setup-form"), setupError: $("#setup-error"), showRegister: $("#show-register-button"), showLogin: $("#show-login-button"),
+  setupForm: $("#setup-form"), setupError: $("#setup-error"), showRegister: $("#show-register-button"),
+  showLogin: $("#show-login-button"), showSetupLogin: $("#show-setup-login-button"),
   logout: $("#logout-button"), accountNav: $(".account-nav"), currentUser: $("#current-user"), liveStatus: $("#live-status"),
   listTab: $("#list-tab"), historyTab: $("#history-tab"), listPanel: $("#list-panel"),
   historyPanel: $("#history-panel"), addForm: $("#add-item-form"), itemName: $("#item-name"), quantity: $("#item-quantity"),
   suggestions: $("#suggestions"), listBody: $("#shopping-list-body"), cartBody: $("#cart-body"),
   listEmpty: $("#shopping-list-empty"), cartEmpty: $("#cart-empty"), listCount: $("#shopping-count"), cartCount: $("#cart-count"),
-  listMessage: $("#list-message"), finish: $("#finish-shopping-button"), categoryToggle: $("#category-toggle"), copyList: $("#copy-list-button"),
+  listMessage: $("#list-message"), finish: $("#finish-shopping-button"), moveAllToCart: $("#move-all-to-cart-button"),
+  categoryToggle: $("#category-toggle"), copyList: $("#copy-list-button"),
   sortButtons: [...document.querySelectorAll(".sort-button[data-table][data-sort]")],
   recommendationList: $("#recommendation-list"), recommendationEmpty: $("#recommendation-empty"),
   listTables: $("#list-tables"), historySearch: $("#history-search"), clearSearch: $("#clear-search-button"),
@@ -56,6 +58,7 @@ function bindEvents() {
   elements.setupForm.addEventListener("submit", handleSetup);
   elements.showRegister.addEventListener("click", () => showAuthView("register"));
   elements.showLogin.addEventListener("click", () => showAuthView("login"));
+  elements.showSetupLogin.addEventListener("click", () => showAuthView("login"));
   elements.logout.addEventListener("click", handleLogout);
   elements.listTab.addEventListener("click", () => switchTab("list"));
   elements.historyTab.addEventListener("click", () => switchTab("history"));
@@ -64,6 +67,7 @@ function bindEvents() {
   elements.itemName.addEventListener("keydown", handleSuggestionKeys);
   document.addEventListener("click", event => { if (!event.target.closest(".autocomplete-field")) closeSuggestions(); });
   elements.finish.addEventListener("click", finishShopping);
+  elements.moveAllToCart.addEventListener("click", moveAllItemsToCart);
   elements.categoryToggle.addEventListener("click", toggleCategories);
   elements.copyList.addEventListener("click", copyShoppingList);
   elements.sortButtons.forEach(button => button.addEventListener("click", sortListTable));
@@ -244,6 +248,7 @@ function renderList() {
   elements.listCount.textContent = list.length;
   elements.cartCount.textContent = cart.length;
   elements.finish.disabled = cart.length === 0;
+  elements.moveAllToCart.disabled = list.length === 0;
   elements.copyList.disabled = list.length === 0;
   syncSortControls();
 }
@@ -329,7 +334,11 @@ function renderListRow(item) {
     ? `<button class="edit-quantity" type="button" aria-label="Edit quantity for ${escapeAttribute(item.name)}"><span>${escapeHtml(item.quantity)}</span><span class="edit-quantity-icon" aria-hidden="true">✎</span></button>`
     : escapeHtml(item.quantity);
   row.innerHTML = `
-    <td class="item-name-cell"><div class="item-name-wrap"><span>${escapeHtml(item.name)}</span><button class="remove-item" type="button" aria-label="Remove ${escapeHtml(item.name)}">×</button></div></td>
+    <td class="item-name-cell"><div class="item-name-wrap"><span>${escapeHtml(item.name)}</span><button class="remove-item" type="button" aria-label="Delete ${escapeAttribute(item.name)}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5"></path>
+      </svg>
+    </button></div></td>
     <td class="quantity-cell">${quantityControl}</td>
     <td class="category-column">${renderTags(item.categories)}</td>`;
   row.addEventListener("click", event => {
@@ -404,13 +413,47 @@ async function moveListItem(item) {
   catch (error) { item.state = nextState === "list" ? "cart" : "list"; renderList(); showMessage(elements.listMessage, error.message, true); }
 }
 
+async function moveAllItemsToCart() {
+  const items = state.listItems.filter(item => item.state === "list");
+  if (!items.length) return;
+
+  setBusy(elements.moveAllToCart, true, "Moving…");
+  showMessage(elements.listMessage, "");
+  try {
+    const data = await api("/list/cart", { method: "POST" });
+    for (const item of state.listItems) {
+      if (item.state === "list") item.state = "cart";
+    }
+    renderList();
+    showMessage(elements.listMessage, `${data.itemCount} item${data.itemCount === 1 ? "" : "s"} moved to the cart.`);
+  } catch (error) {
+    showMessage(elements.listMessage, error.message, true);
+  } finally {
+    setBusy(elements.moveAllToCart, false);
+    elements.moveAllToCart.disabled = !state.listItems.some(item => item.state === "list");
+  }
+}
+
 async function removeListItem(id) {
   const item = state.listItems.find(entry => entry.id === id);
-  if (!item || !confirm(`Remove “${item.name}” from the current list?`)) return;
-  await api(`/list/${id}`, { method: "DELETE" });
-  state.listItems = state.listItems.filter(entry => entry.id !== id);
-  renderList();
-  await loadRecommendations();
+  if (!item || !(await confirmItemDeletion())) return;
+  try {
+    await api(`/list/${id}`, { method: "DELETE" });
+    state.listItems = state.listItems.filter(entry => entry.id !== id);
+    renderList();
+    await loadRecommendations();
+  } catch (error) {
+    showMessage(elements.listMessage, error.message, true);
+  }
+}
+
+function confirmItemDeletion() {
+  const dialog = $("#delete-item-dialog");
+  dialog.returnValue = "no";
+  return new Promise(resolve => {
+    dialog.addEventListener("close", () => resolve(dialog.returnValue === "yes"), { once: true });
+    dialog.showModal();
+  });
 }
 
 async function addItem(event) {

@@ -63,6 +63,8 @@
 .shopping-table-card { min-width: 0; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 6px 18px rgba(39,55,70,.055); }
 .cart-card { background: #f0f2f4; color: #6f7880; }
 .table-title-row { display: flex; align-items: center; gap: .65rem; padding: 1rem 1rem .55rem; }
+.move-all-button { margin-left: auto; padding: .42rem .65rem; font-size: .76rem; white-space: nowrap; }
+.move-all-button:disabled { cursor: not-allowed; opacity: .45; }
 .count-badge { display: inline-grid; place-items: center; min-width: 1.65rem; height: 1.65rem; padding: 0 .4rem; border-radius: 99px; background: var(--shopping-soft); color: var(--text-light); font-size: .75rem; font-weight: 700; }
 .table-scroll { overflow-x: auto; }
 .shopping-table, .catalog-table { width: 100%; border-collapse: collapse; font-size: .92rem; line-height: 1.35; }
@@ -82,7 +84,12 @@
 .cart-card .shopping-row:hover, .cart-card .shopping-row:focus { background: #e3e6e8; }
 .item-name-cell { font-weight: 700; }
 .item-name-wrap { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
-.remove-item { flex: 0 0 auto; border: 0; background: transparent; color: var(--text-light); font: inherit; font-size: 1.15rem; cursor: pointer; }
+.remove-item { display: inline-grid; place-items: center; flex: 0 0 auto; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 5px; background: transparent; color: var(--text-light); cursor: pointer; }
+.remove-item:hover, .remove-item:focus-visible { background: rgba(157,62,70,.1); color: var(--shopping-danger); outline: none; }
+.remove-item svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.delete-item-dialog { width: min(420px, calc(100% - 2rem)); padding: 1.5rem; border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-family: var(--site-font); box-shadow: var(--shopping-shadow); }
+.delete-item-dialog::backdrop { background: rgba(25,35,45,.5); backdrop-filter: blur(3px); }
+.delete-dialog-actions { display: flex; justify-content: flex-end; gap: .65rem; margin-top: 1.25rem; }
 .edit-quantity { display: inline-flex; align-items: center; gap: .3rem; min-width: 2rem; padding: .22rem .38rem; border: 1px solid transparent; border-radius: 5px; background: transparent; color: inherit; font: inherit; text-align: left; cursor: text; }
 .edit-quantity:hover, .edit-quantity:focus-visible { border-color: var(--border); background: var(--surface); color: var(--shopping-accent-dark); outline: none; }
 .edit-quantity-icon { color: var(--text-light); font-size: .72rem; opacity: .7; }
