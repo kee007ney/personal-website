@@ -36,6 +36,8 @@ async function routeApi(request, env, path) {
   if (path === "live" && method === "GET") return connectToRoom(request, env, session);
   if (path === "members" && method === "GET") return getMembers(env, session);
   if (path === "invitations" && method === "POST") return createInvitation(env, session);
+  if (path === "note" && method === "GET") return getSharedNote(env, session);
+  if (path === "note" && method === "PUT") return updateSharedNote(request, env, session);
   if (path === "catalog" && method === "GET") return getCatalog(request, env, session);
   if (path === "catalog" && method === "POST") return createCatalogItem(request, env, session);
   if (path.startsWith("catalog/") && method === "PUT") return updateCatalogItem(request, env, session, pathPart(path, 1));
@@ -152,6 +154,28 @@ async function createInvitation(env, session) {
   await env.SHOPPING_DB.prepare(`INSERT INTO household_invitations (token_hash, household_id, created_by, created_at, expires_at) VALUES (?, ?, ?, ?, ?)`)
     .bind(codeHash, session.householdId, session.userId, now.toISOString(), expiresAt.toISOString()).run();
   return json({ invitationCode: code, expiresAt: expiresAt.toISOString() }, 201);
+}
+
+async function getSharedNote(env, session) {
+  const row = await env.SHOPPING_DB.prepare("SELECT note_content, note_color, note_size, note_font, note_updated_at FROM households WHERE id = ?")
+    .bind(session.householdId).first();
+  if (!row) throw publicError("Household not found.", 404);
+  return json({ note: serializeSharedNote(row) });
+}
+
+async function updateSharedNote(request, env, session) {
+  const body = await readJson(request);
+  const note = {
+    content: String(body.content ?? "").replace(/\r\n?/g, "\n").slice(0, 4000),
+    color: cleanNoteStyle(body.color, ["default", "blue", "green", "red"], "color"),
+    size: cleanNoteStyle(body.size, ["small", "medium", "large"], "size"),
+    font: cleanNoteStyle(body.font, ["sans", "serif", "mono", "fun"], "font"),
+    updatedAt: new Date().toISOString(),
+  };
+  await env.SHOPPING_DB.prepare("UPDATE households SET note_content = ?, note_color = ?, note_size = ?, note_font = ?, note_updated_at = ? WHERE id = ?")
+    .bind(note.content, note.color, note.size, note.font, note.updatedAt, session.householdId).run();
+  await broadcast(env, session.householdId, "note_changed", { by: session.userId, note });
+  return json({ note });
 }
 
 async function getCatalog(request, env, session) {
@@ -383,8 +407,10 @@ function requireBindings(env) { if (!env.SHOPPING_DB || !env.SHOPPING_ROOM || !e
 function requireAdmin(session) { if (session.role !== "admin") throw publicError("Administrator access is required.", 403); }
 function serializeCatalogItem(row) { return { id: row.id, name: row.name, categories: parseCategories(row.categories) }; }
 function serializeListItem(row) { return { id: row.id, catalogItemId: row.catalog_item_id, name: row.name, quantity: row.quantity, categories: parseCategories(row.categories), state: row.state, createdAt: row.created_at }; }
+function serializeSharedNote(row) { return { content: row.note_content || "", color: row.note_color || "default", size: row.note_size || "medium", font: row.note_font || "sans", updatedAt: row.note_updated_at || "" }; }
 function parseCategories(value) { try { const parsed = JSON.parse(value || "[]"); return Array.isArray(parsed) ? parsed : []; } catch { return []; } }
 function cleanCategories(value) { const values = Array.isArray(value) ? value : String(value || "").split(","); return [...new Set(values.map(item => String(item).trim()).filter(Boolean))].slice(0, 20); }
+function cleanNoteStyle(value, allowed, label) { const cleaned = String(value || ""); if (!allowed.includes(cleaned)) throw publicError(`Invalid note ${label}.`, 400); return cleaned; }
 function cleanName(value) { return cleanLabel(value, "Item name", 120); }
 function cleanQuantity(value) { return cleanLabel(value ?? "1", "Quantity", 40); }
 function cleanLabel(value, label, max) { const cleaned = String(value || "").trim().replace(/\s+/g, " ").slice(0, max); if (!cleaned) throw publicError(`${label} is required.`, 400); return cleaned; }

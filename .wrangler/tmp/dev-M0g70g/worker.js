@@ -261,6 +261,8 @@ async function routeApi(request, env, path) {
   if (path === "live" && method === "GET") return connectToRoom(request, env, session);
   if (path === "members" && method === "GET") return getMembers(env, session);
   if (path === "invitations" && method === "POST") return createInvitation(env, session);
+  if (path === "note" && method === "GET") return getSharedNote(env, session);
+  if (path === "note" && method === "PUT") return updateSharedNote(request, env, session);
   if (path === "catalog" && method === "GET") return getCatalog(request, env, session);
   if (path === "catalog" && method === "POST") return createCatalogItem(request, env, session);
   if (path.startsWith("catalog/") && method === "PUT") return updateCatalogItem(request, env, session, pathPart(path, 1));
@@ -369,6 +371,26 @@ async function createInvitation(env, session) {
   return json({ invitationCode: code, expiresAt: expiresAt.toISOString() }, 201);
 }
 __name(createInvitation, "createInvitation");
+async function getSharedNote(env, session) {
+  const row = await env.SHOPPING_DB.prepare("SELECT note_content, note_color, note_size, note_font, note_updated_at FROM households WHERE id = ?").bind(session.householdId).first();
+  if (!row) throw publicError2("Household not found.", 404);
+  return json({ note: serializeSharedNote(row) });
+}
+__name(getSharedNote, "getSharedNote");
+async function updateSharedNote(request, env, session) {
+  const body = await readJson(request);
+  const note = {
+    content: String(body.content ?? "").replace(/\r\n?/g, "\n").slice(0, 4e3),
+    color: cleanNoteStyle(body.color, ["default", "blue", "green", "red"], "color"),
+    size: cleanNoteStyle(body.size, ["small", "medium", "large"], "size"),
+    font: cleanNoteStyle(body.font, ["sans", "serif", "mono", "fun"], "font"),
+    updatedAt: (/* @__PURE__ */ new Date()).toISOString()
+  };
+  await env.SHOPPING_DB.prepare("UPDATE households SET note_content = ?, note_color = ?, note_size = ?, note_font = ?, note_updated_at = ? WHERE id = ?").bind(note.content, note.color, note.size, note.font, note.updatedAt, session.householdId).run();
+  await broadcast(env, session.householdId, "note_changed", { by: session.userId, note });
+  return json({ note });
+}
+__name(updateSharedNote, "updateSharedNote");
 async function getCatalog(request, env, session) {
   const query = new URL(request.url).searchParams.get("q")?.trim() || "";
   const statement = query ? env.SHOPPING_DB.prepare("SELECT * FROM catalog_items WHERE household_id = ? AND name LIKE ? ESCAPE '\\' ORDER BY name LIMIT 50").bind(session.householdId, `%${escapeLike(query)}%`) : env.SHOPPING_DB.prepare("SELECT * FROM catalog_items WHERE household_id = ? ORDER BY name LIMIT 500").bind(session.householdId);
@@ -602,6 +624,10 @@ function serializeListItem(row) {
   return { id: row.id, catalogItemId: row.catalog_item_id, name: row.name, quantity: row.quantity, categories: parseCategories(row.categories), state: row.state, createdAt: row.created_at };
 }
 __name(serializeListItem, "serializeListItem");
+function serializeSharedNote(row) {
+  return { content: row.note_content || "", color: row.note_color || "default", size: row.note_size || "medium", font: row.note_font || "sans", updatedAt: row.note_updated_at || "" };
+}
+__name(serializeSharedNote, "serializeSharedNote");
 function parseCategories(value) {
   try {
     const parsed = JSON.parse(value || "[]");
@@ -616,6 +642,12 @@ function cleanCategories(value) {
   return [...new Set(values.map((item) => String(item).trim()).filter(Boolean))].slice(0, 20);
 }
 __name(cleanCategories, "cleanCategories");
+function cleanNoteStyle(value, allowed, label) {
+  const cleaned = String(value || "");
+  if (!allowed.includes(cleaned)) throw publicError2(`Invalid note ${label}.`, 400);
+  return cleaned;
+}
+__name(cleanNoteStyle, "cleanNoteStyle");
 function cleanName(value) {
   return cleanLabel(value, "Item name", 120);
 }
@@ -711,7 +743,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// .wrangler/tmp/bundle-i8tjbM/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-fQNC5n/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -743,7 +775,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// .wrangler/tmp/bundle-i8tjbM/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-fQNC5n/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;

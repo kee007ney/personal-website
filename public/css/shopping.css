@@ -40,6 +40,42 @@
 .tab-list { display: flex; gap: .25rem; margin: 1rem 0 2rem; border-bottom: 1px solid var(--border); }
 .tab-button { padding: .8rem 1rem; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--text-light); font: inherit; font-size: .95rem; font-weight: 700; cursor: pointer; }
 .tab-button.is-active { color: var(--text); border-bottom-color: var(--shopping-accent); }
+.shared-note { max-width: 850px; margin-bottom: 1rem; }
+.shared-note-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; margin-bottom: .4rem; }
+.shared-note-heading label { margin-bottom: 0; }
+.note-toolbar, .note-control-group { display: flex; align-items: center; gap: .25rem; }
+.note-toolbar { flex-wrap: wrap; gap: .4rem .7rem; }
+.note-control-group + .note-control-group { padding-left: .7rem; border-left: 1px solid var(--border); }
+.note-style-button { min-width: 28px; height: 28px; padding: 0 .42rem; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--text-light); font: inherit; font-size: .72rem; cursor: pointer; }
+.note-style-button:hover, .note-style-button:focus-visible { border-color: var(--shopping-accent); color: var(--shopping-accent-dark); outline: none; }
+.note-style-button[aria-pressed="true"] { border-color: var(--shopping-accent); background: var(--shopping-soft); color: var(--shopping-accent-dark); box-shadow: inset 0 0 0 1px var(--shopping-accent); }
+.color-swatch { position: relative; width: 28px; padding: 0; }
+.color-swatch::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: currentColor; }
+.color-default { color: #273746; }
+.color-blue { color: #285f99; }
+.color-green { color: #35724c; }
+.color-red { color: #9d3e46; }
+.note-size-small { font-size: .65rem; }
+.note-size-medium { font-size: .82rem; }
+.note-size-large { font-size: 1rem; }
+.font-sans { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.font-serif { font-family: Georgia, "Times New Roman", serif; }
+.font-mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+.font-fun { font-family: "Comic Sans MS", "Bradley Hand", cursive; }
+.shared-note textarea { display: block; width: 100%; min-height: 4.4rem; padding: .65rem .8rem; resize: vertical; border: 1px solid var(--border); border-radius: 8px; background: #fffdf8; color: var(--text); line-height: 1.45; }
+.shared-note textarea:focus { outline: 3px solid rgba(79,109,138,.18); border-color: var(--shopping-accent); }
+.shared-note textarea[data-note-color="blue"] { color: #285f99; }
+.shared-note textarea[data-note-color="green"] { color: #35724c; }
+.shared-note textarea[data-note-color="red"] { color: #9d3e46; }
+.shared-note textarea[data-note-size="small"] { font-size: .86rem; }
+.shared-note textarea[data-note-size="medium"] { font-size: 1rem; }
+.shared-note textarea[data-note-size="large"] { font-size: 1.22rem; }
+.shared-note textarea[data-note-font="sans"] { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.shared-note textarea[data-note-font="serif"] { font-family: Georgia, "Times New Roman", serif; }
+.shared-note textarea[data-note-font="mono"] { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+.shared-note textarea[data-note-font="fun"] { font-family: "Comic Sans MS", "Bradley Hand", cursive; }
+.shared-note-status { min-height: 1.15em; margin: .25rem 0 0; color: var(--text-light); font-size: .72rem; }
+.shared-note-status.error { color: var(--shopping-danger); }
 .add-item-form { display: flex; align-items: end; gap: .75rem; max-width: 850px; }
 .field-grow { flex: 1; }
 .quantity-field { width: 130px; }

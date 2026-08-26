@@ -3,6 +3,8 @@ const listCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: 
 const state = {
   listItems: [], catalog: [], selectedCatalogItem: null, historyQuery: "", historyScrollY: 0,
   recommendedItems: [],
+  sharedNote: { content: "", color: "default", size: "medium", font: "sans" },
+  noteSaveTimer: null, noteSaving: false, noteDirty: false,
   user: null, socket: null, reconnectTimer: null, reconnectAttempts: 0, authenticated: false,
   listSort: {
     list: { key: null, direction: "asc" },
@@ -23,6 +25,8 @@ const elements = {
   listEmpty: $("#shopping-list-empty"), cartEmpty: $("#cart-empty"), listCount: $("#shopping-count"), cartCount: $("#cart-count"),
   listMessage: $("#list-message"), finish: $("#finish-shopping-button"), moveAllToCart: $("#move-all-to-cart-button"),
   categoryToggle: $("#category-toggle"), copyList: $("#copy-list-button"),
+  noteInput: $("#shared-note-input"), noteStatus: $("#shared-note-status"),
+  noteStyleButtons: [...document.querySelectorAll(".note-style-button[data-note-style][data-note-value]")],
   sortButtons: [...document.querySelectorAll(".sort-button[data-table][data-sort]")],
   recommendationList: $("#recommendation-list"), recommendationEmpty: $("#recommendation-empty"),
   listTables: $("#list-tables"), historySearch: $("#history-search"), clearSearch: $("#clear-search-button"),
@@ -70,6 +74,8 @@ function bindEvents() {
   elements.moveAllToCart.addEventListener("click", moveAllItemsToCart);
   elements.categoryToggle.addEventListener("click", toggleCategories);
   elements.copyList.addEventListener("click", copyShoppingList);
+  elements.noteInput.addEventListener("input", updateSharedNoteDraft);
+  elements.noteStyleButtons.forEach(button => button.addEventListener("click", updateSharedNoteStyle));
   elements.sortButtons.forEach(button => button.addEventListener("click", sortListTable));
   window.addEventListener("resize", debounce(syncCategoryControl, 120));
   elements.historySearch.addEventListener("input", debounce(searchHistory, 180));
@@ -154,6 +160,7 @@ async function enterApp(user) {
   elements.accountNav.hidden = false;
   elements.currentUser.textContent = `${user.displayName} · ${user.householdName}`;
   elements.manageHousehold.hidden = user.role !== "admin";
+  await loadSharedNote();
   await loadList();
   await loadRecommendations();
   connectLive();
@@ -180,6 +187,79 @@ async function switchTab(tab) {
   elements.listPanel.hidden = history;
   elements.historyPanel.hidden = !history;
   if (history) await searchHistory();
+}
+
+async function loadSharedNote() {
+  const data = await api("/note");
+  state.sharedNote = data.note;
+  state.noteDirty = false;
+  renderSharedNote();
+}
+
+function renderSharedNote(updateText = true) {
+  if (updateText) elements.noteInput.value = state.sharedNote.content;
+  elements.noteInput.dataset.noteColor = state.sharedNote.color;
+  elements.noteInput.dataset.noteSize = state.sharedNote.size;
+  elements.noteInput.dataset.noteFont = state.sharedNote.font;
+  elements.noteStyleButtons.forEach(button => {
+    button.setAttribute("aria-pressed", String(state.sharedNote[button.dataset.noteStyle] === button.dataset.noteValue));
+  });
+}
+
+function updateSharedNoteDraft() {
+  state.sharedNote.content = elements.noteInput.value;
+  queueSharedNoteSave();
+}
+
+function updateSharedNoteStyle(event) {
+  const button = event.currentTarget;
+  state.sharedNote[button.dataset.noteStyle] = button.dataset.noteValue;
+  renderSharedNote(false);
+  queueSharedNoteSave(0);
+}
+
+function queueSharedNoteSave(delay = 400) {
+  state.noteDirty = true;
+  clearTimeout(state.noteSaveTimer);
+  showNoteStatus("Unsaved changes…");
+  state.noteSaveTimer = setTimeout(saveSharedNote, delay);
+}
+
+async function saveSharedNote() {
+  if (!state.authenticated) return;
+  if (state.noteSaving) {
+    state.noteSaveTimer = setTimeout(saveSharedNote, 100);
+    return;
+  }
+
+  state.noteSaving = true;
+  state.noteDirty = false;
+  const snapshot = { ...state.sharedNote };
+  showNoteStatus("Saving…");
+  let saveFailed = false;
+  try {
+    const data = await api("/note", { method: "PUT", body: snapshot });
+    if (!state.noteDirty) {
+      state.sharedNote = data.note;
+      renderSharedNote(false);
+      showNoteStatus("Saved");
+    }
+  } catch (error) {
+    state.noteDirty = true;
+    saveFailed = true;
+    showNoteStatus(error.message, true);
+  } finally {
+    state.noteSaving = false;
+    if (state.noteDirty && !saveFailed) {
+      clearTimeout(state.noteSaveTimer);
+      state.noteSaveTimer = setTimeout(saveSharedNote, 250);
+    }
+  }
+}
+
+function showNoteStatus(message, error = false) {
+  elements.noteStatus.textContent = message;
+  elements.noteStatus.classList.toggle("error", error);
 }
 
 async function loadList() {
@@ -741,7 +821,19 @@ function setLiveStatus(status, label) {
 }
 
 async function handleLiveEvent(event) {
-  if (!state.authenticated || event.type === "connected") return;
+  if (!state.authenticated) return;
+  if (event.type === "connected") {
+    if (!state.noteDirty && !state.noteSaving) await loadSharedNote();
+    return;
+  }
+  if (event.type === "note_changed") {
+    if (event.detail?.by !== state.user?.id && !state.noteDirty && !state.noteSaving) {
+      state.sharedNote = event.detail.note;
+      renderSharedNote();
+      showNoteStatus("Updated live");
+    }
+    return;
+  }
   if (["list_changed", "shopping_finished", "catalog_changed"].includes(event.type)) {
     await loadList();
     await loadRecommendations();
