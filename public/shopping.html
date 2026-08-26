@@ -101,6 +101,33 @@
       </div>
 
       <section id="list-panel" class="tab-panel" role="tabpanel" aria-labelledby="list-tab">
+        <section class="shared-note" aria-labelledby="shared-note-label">
+          <div class="shared-note-heading">
+            <label id="shared-note-label" for="shared-note-input">Family note</label>
+            <div class="note-toolbar" role="toolbar" aria-label="Format family note">
+              <div class="note-control-group" role="group" aria-label="Text color">
+                <button class="note-style-button color-swatch color-default" type="button" data-note-style="color" data-note-value="default" aria-label="Default text color" aria-pressed="true"></button>
+                <button class="note-style-button color-swatch color-blue" type="button" data-note-style="color" data-note-value="blue" aria-label="Blue text" aria-pressed="false"></button>
+                <button class="note-style-button color-swatch color-green" type="button" data-note-style="color" data-note-value="green" aria-label="Green text" aria-pressed="false"></button>
+                <button class="note-style-button color-swatch color-red" type="button" data-note-style="color" data-note-value="red" aria-label="Red text" aria-pressed="false"></button>
+              </div>
+              <div class="note-control-group" role="group" aria-label="Text size">
+                <button class="note-style-button note-size-small" type="button" data-note-style="size" data-note-value="small" aria-label="Small text" aria-pressed="false">A</button>
+                <button class="note-style-button note-size-medium" type="button" data-note-style="size" data-note-value="medium" aria-label="Medium text" aria-pressed="true">A</button>
+                <button class="note-style-button note-size-large" type="button" data-note-style="size" data-note-value="large" aria-label="Large text" aria-pressed="false">A</button>
+              </div>
+              <div class="note-control-group" role="group" aria-label="Font">
+                <button class="note-style-button font-sans" type="button" data-note-style="font" data-note-value="sans" aria-pressed="true">Sans</button>
+                <button class="note-style-button font-serif" type="button" data-note-style="font" data-note-value="serif" aria-pressed="false">Serif</button>
+                <button class="note-style-button font-mono" type="button" data-note-style="font" data-note-value="mono" aria-pressed="false">Mono</button>
+                <button class="note-style-button font-fun" type="button" data-note-style="font" data-note-value="fun" aria-pressed="false">Fun</button>
+              </div>
+            </div>
+          </div>
+          <textarea id="shared-note-input" rows="2" maxlength="4000" placeholder="Leave a note for the family here..."></textarea>
+          <p id="shared-note-status" class="shared-note-status" role="status" aria-live="polite"></p>
+        </section>
+
         <form id="add-item-form" class="add-item-form">
           <div class="field-grow autocomplete-field">
             <label for="item-name">Item</label>
