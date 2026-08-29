@@ -1528,12 +1528,14 @@ main,
 }
 
 .generator-term {
+  width: 100%;
   max-width: 100%;
   margin: 0 0 1rem;
   color: var(--text);
   font-size: clamp(2.4rem, 7vw, 4.7rem);
   letter-spacing: -0.045em;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .generator-definition {

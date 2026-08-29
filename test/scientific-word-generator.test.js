@@ -288,6 +288,15 @@ test("page has the required route structure and accessible controls", async () =
   assert.match(html, /generated-definition[\s\S]*generated-usage[\s\S]*randomize-word/);
 });
 
+test("long generated terms stay on one line and scale to the available width", async () => {
+  const css = await readFile(new URL("../public/css/style.css", import.meta.url), "utf8");
+  const app = await readFile(new URL("../public/scientific-word-generator/app.js", import.meta.url), "utf8");
+  assert.match(css, /\.generator-term\s*\{[\s\S]*?white-space:\s*nowrap;/);
+  assert.match(app, /function fitTermToLine\(\)/);
+  assert.match(app, /availableWidth\s*\/\s*renderedWidth/);
+  assert.match(app, /window\.addEventListener\("resize"/);
+});
+
 test("every standard site navigation links to the word generator", async () => {
   const publicDirectory = new URL("../public/", import.meta.url);
   const entries = await readdir(publicDirectory, { withFileTypes: true });
