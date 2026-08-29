@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scientific Word Generator | Jonathon Keeney, Ph.D.</title>
+  <meta name="description"
+    content="Generate playful mock scientific words from curated Greek-derived English combining forms." />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+
+<body class="word-generator-page">
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="logo" href="/">Jonathon Keeney, Ph.D.</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+        Menu
+      </button>
+      <div class="nav-links" id="primary-navigation">
+        <a href="/#projects">Projects</a>
+        <a href="/#presentations">Presentations</a>
+        <a href="/#teaching">Teaching</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/notes.html">Research Notes</a>
+        <a href="/scientific-word-generator/">Word Generator</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="word-generator-main">
+    <section class="generator-intro" aria-labelledby="generator-title">
+      <p class="eyebrow">A lexical field note</p>
+      <h1 id="generator-title">Scientific Word Generator</h1>
+      <p class="generator-setup">
+        Scientific words are typically combinations of Greek or Latin words. Because science is pioneering new
+        territory, these words are often defined for things that we know nothing about, and so get named after some of
+        the most obvious characteristics -- which can sound humorous. For example, "cephalopod," meaning "head legs."
+        This tool lets you create your own scientific words. Enjoy!
+      </p>
+    </section>
+
+    <section class="generator-card" aria-labelledby="generated-term">
+      <p class="generator-category" id="generated-category">Anatomy</p>
+      <h2 class="generator-term" id="generated-term">pogonoglossa</h2>
+      <p class="generator-definition" id="generated-definition">
+        beard tongue
+      </p>
+      <p class="generator-usage" id="generated-usage">As in "My pogonoglossa hurts."</p>
+      <p class="generator-message" id="generator-message" hidden>
+        The word collection is unavailable right now. Please try again later.
+      </p>
+      <button class="generator-button" id="randomize-word" type="button">Randomize!</button>
+      <p class="visually-hidden" id="generator-announcement" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
+    <aside class="generator-note" aria-label="How the generator works">
+      <p><strong>Method note.</strong> Each result uses a fixed modifier + head pattern and a separately reviewed
+        pairing. Spelling follows conventional English scientific forms; the literal gloss is intentionally brief.</p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>A small experiment in scientific language by Jonathon Keeney.</p>
+  </footer>
+
+  <script src="/js/script.js"></script>
+  <script type="module" src="/scientific-word-generator/app.js"></script>
+</body>
+</html>

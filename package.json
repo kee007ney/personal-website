@@ -1,9 +1,11 @@
 {
   "name": "personal-website",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "test": "node --test",
     "migrate:local": "wrangler d1 migrations apply shopping-list --local",
     "migrate:remote": "wrangler d1 migrations apply shopping-list --remote"
   },
